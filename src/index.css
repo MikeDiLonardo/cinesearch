@@ -1,0 +1,150 @@
+:root {
+  /* Colors */
+  --bg-header-footer: #1d242b;
+  --bg-fav-circle: #1d242bcc;
+  --bg-main: #2f3d4c;
+  --stroke-mid: #526d82;
+  --stroke-light: #9db2bf;
+  --white: #dde6ed;
+  --favorite: #dbb023;
+
+  /* Font Weight */
+  --fw-el: 200;
+  --fw-lt: 300;
+  --fw-rg: 400;
+  --fw-sb: 600;
+
+  /* Font Size */
+  --fs-xxxs: 0.5rem; /* 8px */
+  --fs-xxs: 0.63rem; /* 10px */
+  --fs-xs: 0.75rem; /* 12px */
+  --fs-sm: 0.88rem; /* 14px */
+  --fs-base: 1rem; /* 16px */
+  --fs-md: 1.31rem; /* 21px */
+  --fs-lg: 1.75rem; /* 28px */
+  --fs-xl: 2.25rem; /* 36px */
+  --fs-xxl: 3.25rem; /* 52px */
+
+  /* Padding */
+  --p-xxs: 0.5rem;
+  --p-xs: 0.63rem;
+  --p-sm: 0.88rem;
+  --p-md: 1.13rem;
+  --p-lg: 1.38rem;
+  --p-xl: 2rem;
+  --p-xxl: 2.5rem;
+
+  /* Gaps */
+  --gap-sm: 0.5rem;
+  --gap-md: 0.88rem;
+  --gap-lg: 1.13rem;
+
+  /* Radius */
+  --radius-sm: 0.31rem;
+  --radius-md: 0.63rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+/* Text */
+
+/* 10px - light */
+.text--xxs-lt {
+  font-size: var(--fs-xxs);
+  font-weight: var(--fw-lt);
+}
+/* 10px - regular  */
+.text--xxs-rg {
+  font-size: var(--fs-xxs);
+  font-weight: var(--fw-rg);
+}
+/* 10px - semibold */
+.text--xxs-sb {
+  font-size: var(--fs-xxs);
+  font-weight: var(--fw-sb);
+}
+/* 14px - regular  */
+.text--sm-rg {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-rg);
+}
+/* 14px - semibold */
+.text--sm-sb {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-sb);
+}
+/* 16px - light */
+.text--base-lt {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-lt);
+}
+/* 16px - regular */
+.text--base-rg {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-rg);
+}
+
+/* 28px - semibold */
+.text--lg-sb {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-sb);
+}
+
+/* 52px - semibold */
+.text--xxl-sb {
+  font-size: var(--fs-xxl);
+  font-weight: var(--fw-sb);
+}
+
+/* Text classes used so far */
+/* 8px - semibold */
+.text--xxxs-sb {
+  font-size: var(--fs-xxxs);
+  font-weight: var(--fw-sb);
+}
+/* 12px - light */
+.text--xs-lt {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-lt);
+}
+/* 12px - semibold */
+.text--xs-sb {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-sb);
+}
+/* 16px - semibold */
+.text--base-sb {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-sb);
+}
+/* 21px - semibold */
+.text--md-sb {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-sb);
+}
+/* 36px - semibold */
+.text--xl-sb {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-sb);
+}
+
+/* Make form elements inherit styles from their parent */
+input,
+button,
+select {
+  font: inherit;
+  background-color: transparent;
+  color: inherit;
+}
+
+.fav-icon {
+  color: var(--favorite);
+}

@@ -1,0 +1,10 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap-sm);
+  height: 3.75rem;
+  border-top: 1px solid var(--stroke-mid);
+  background-color: var(--bg-header-footer);
+  color: var(--stroke-mid);
+}
