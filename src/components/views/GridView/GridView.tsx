@@ -3,11 +3,11 @@ import MediaCard from "../../cards/MediaCard/MediaCard";
 import FavoriteButton from "../../buttons/FavoriteButton/FavoriteButton";
 
 // Temp placeholder
-function TempItem() {
+function TempGridItem() {
     return (
-        <li>
+        <li className={styles["grid-view__item"]}>
             <MediaCard view="grid"/>
-            <FavoriteButton view="grid"/>
+            <FavoriteButton className={styles["grid-view__fav-btn"]} view="grid"/>
         </li>
     )
 }
@@ -15,7 +15,20 @@ function TempItem() {
 export default function GridView() {
     return (
         <div className={styles["grid-view"]}>
-            <TempItem />
+            <ul className={styles["grid-view__list"]}>
+                <TempGridItem />
+                <TempGridItem />
+                <TempGridItem />
+                <TempGridItem />
+                <TempGridItem />
+                <TempGridItem />
+                <TempGridItem />
+                <TempGridItem />
+                <TempGridItem />
+                <TempGridItem />
+                <TempGridItem />
+                <TempGridItem />
+            </ul>
         </div>
     )
 }

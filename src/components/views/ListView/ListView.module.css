@@ -1,0 +1,27 @@
+.list-view {
+  width: 100%;
+  position: relative;
+}
+
+.list-view__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-view__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 8.75rem;
+  border-bottom: 1px solid var(--stroke-mid);
+}
+
+.list-view__item:last-of-type {
+  border-bottom: 0;
+}
+
+.list-view__mediacard-info {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-lg);
+}

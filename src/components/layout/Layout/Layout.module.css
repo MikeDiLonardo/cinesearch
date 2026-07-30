@@ -4,8 +4,8 @@
   min-height: 100dvh;
 }
 
-main {
-  min-height: calc(100vh - 8.5rem - 3.75rem);  /* Subtracts header / footer height */
+.main {
+  min-height: calc(100vh - 8.5rem - 3.75rem); /* Subtracts header / footer height */
   display: flex;
   flex-direction: column;
   background-color: var(--bg-main);

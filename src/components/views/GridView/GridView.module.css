@@ -12,7 +12,7 @@
 }
 
 .grid-view__item {
-  position: relative;
+  position: relative; /* for the fav button */
 }
 
 .grid-view__fav-btn {
