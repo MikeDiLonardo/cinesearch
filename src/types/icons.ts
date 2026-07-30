@@ -1,5 +1,5 @@
 export interface Icons {
-    className: string,
+    className: string;
     width: number;
     height: number;
 }

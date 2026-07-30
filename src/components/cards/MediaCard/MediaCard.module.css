@@ -1,0 +1,14 @@
+.media-card__placeholder {
+  aspect-ratio: 2 / 3;
+  background-color: green;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--stroke-mid);
+}
+
+.grid {
+  height: 10.75rem;
+}
+
+.list {
+  height: 6.38rem;
+}

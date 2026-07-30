@@ -5,9 +5,9 @@ import styles from "./Layout.module.css";
 
 export default function Layout() {
     return (
-        <div>
+        <div className={styles["layout-container"]}>
             <Header />
-            <main>
+            <main className={styles.main}>
                 <Outlet />
             </main>
             <Footer />
