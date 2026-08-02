@@ -1,23 +1,44 @@
 .toolbar {
-  position: fixed;
+  /* position: fixed; */
   z-index: 10;
-  left: 0;
+  /* left: 0;
   right: 0;
-  top: calc(100lvh - 9.5rem);
+  top: calc(100lvh - 9.5rem); */
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: var(--gap-md);
-  margin-inline: 1rem;
-  width: calc(100% - 2rem);
+  gap: var(--gap-lg);
+  /* margin-inline: 1rem; */
+  width: 100%;
   height: 3.125rem;
-  border-radius: 100vw;
+  /* border-radius: 100vw;
   border: 0.5px var(--white) solid;
-  background-color: var(--bg-main);
+  background-color: var(--bg-main); */
   /* color: var(--stroke-light); */
 }
 
 .toolbar__icon {
   padding: var(--p-xs);
   color: var(--white);
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.icon-wrapper.active::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -10;
+  margin-inline: auto;
+  width: 3.75rem;
+  height: 2.75rem;
+  border-radius: 1rem;
+  border: 0.5px solid var(--stroke-light);
+  background-color: var(--active-icon);
 }

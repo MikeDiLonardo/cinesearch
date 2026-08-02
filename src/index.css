@@ -7,6 +7,7 @@
   --stroke-light: #9db2bf;
   --white: #dde6ed;
   --favorite: #dbb023;
+  --active-icon: var(--stroke-mid);
 
   /* Font Weight */
   --fw-el: 200;
@@ -150,6 +151,7 @@ body {
 input,
 button,
 select {
+  border: 0;
   font: inherit;
   background-color: transparent;
   color: inherit;
