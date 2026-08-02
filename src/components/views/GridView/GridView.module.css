@@ -1,23 +1,13 @@
 .grid-view {
-  padding-block: var(--p-sm);
   width: 100%;
+  padding-block: var(--p-sm);
 }
 
 .grid-view__list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--gap-sm);
-  list-style: none;
   width: 100%;
+  list-style: none;
 }
 
-.grid-view__item {
-  position: relative; /* for the fav button */
-}
-
-.grid-view__fav-btn {
-  position: absolute;
-  z-index: 10;
-  top: 0.38rem;
-  right: 0.38rem;
-}

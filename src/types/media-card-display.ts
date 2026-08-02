@@ -1,4 +1,4 @@
-export interface MediaCardDisplay {
+export interface ViewMode {
     view: "grid" | "list";
     className?: string;    
 }

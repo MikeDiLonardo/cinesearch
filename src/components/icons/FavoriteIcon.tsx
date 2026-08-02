@@ -1,6 +1,6 @@
 import type { Icons } from "../../types/icons";
 
-export default function FavIcon({ className, width, height }: Icons) {
+export default function FavoriteIcon({ className, width, height, strokeWidth }: Icons) {
     return (
         <svg 
             className={className}
@@ -9,7 +9,7 @@ export default function FavIcon({ className, width, height }: Icons) {
             xmlns="http://www.w3.org/2000/svg" 
             fill="none" 
             viewBox="0 0 24 24" 
-            strokeWidth="1.25" 
+            strokeWidth={strokeWidth}
             stroke="currentColor" 
         >
             <path 

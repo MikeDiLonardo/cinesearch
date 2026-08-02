@@ -1,0 +1,23 @@
+.toolbar {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: calc(100lvh - 9.5rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap-md);
+  margin-inline: 1rem;
+  width: calc(100% - 2rem);
+  height: 3.125rem;
+  border-radius: 100vw;
+  border: 0.5px var(--white) solid;
+  background-color: var(--bg-main);
+  /* color: var(--stroke-light); */
+}
+
+.toolbar__icon {
+  padding: var(--p-xs);
+  color: var(--white);
+}

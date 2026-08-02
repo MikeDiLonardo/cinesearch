@@ -1,0 +1,32 @@
+.grid-view__item {
+  position: relative; /* for the fav button */
+}
+
+.grid-view__fav-btn {
+  position: absolute;
+  top: 0.38rem;
+  right: 0.38rem;
+}
+
+.list-view__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 8.75rem;
+  border-bottom: 0.5px solid var(--stroke-mid);
+}
+
+.list-view__mediacard {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-lg);
+}
+
+.list-view__title {
+  color: var(--white);
+}
+
+.list-view__year,
+.list-view__director {
+  color: var(--stroke-mid);
+}
