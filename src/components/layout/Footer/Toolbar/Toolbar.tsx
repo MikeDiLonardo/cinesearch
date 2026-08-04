@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import HomeIcon from "../../icons/HomeIcon";
-import FunnelIcon from "../../icons/FunnelIcon";
-import SearchIcon from "../../icons/SearchIcon";
-import GridIcon from "../../icons/GridIcon";
-import FavoriteIcon from "../../icons/FavoriteIcon";
+import HomeIcon from "../../../icons/HomeIcon";
+import FunnelIcon from "../../../icons/FunnelIcon";
+import SearchIcon from "../../../icons/SearchIcon";
+import GridIcon from "../../../icons/GridIcon";
+import FavoriteIcon from "../../../icons/FavoriteIcon";
 import styles from "./Toolbar.module.css";
 
 

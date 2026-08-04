@@ -1,9 +1,20 @@
-.grid-view__item {
-  position: relative; /* for the fav button */
-}
-
 .favorite-icon {
   color: var(--favorite);
+}
+
+.media-thumbnail {
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--stroke-mid);
+  background-color: green;
+}
+
+.media-thumbnail.list {
+  height: 6.38rem;
+}
+
+.grid-view {
+  position: relative; /* for the fav button */
 }
 
 .favorite-wrapper.grid {
@@ -20,7 +31,7 @@
   background-color: var(--bg-fav-circle);
 }
 
-.list-view__item {
+.list-view {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,11 +39,11 @@
   border-bottom: 0.5px solid var(--stroke-mid);
 }
 
-.list-view__mediacard {
+.list-view__card {
   display: flex;
   align-items: center;
   gap: var(--gap-lg);
-} 
+}
 
 .list-view__title {
   color: var(--white);
@@ -42,4 +53,3 @@
 .list-view__director {
   color: var(--stroke-mid);
 }
-

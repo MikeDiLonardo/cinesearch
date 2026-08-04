@@ -1,4 +1,4 @@
-import TmdbLogo from "../../icons/TmdbLogo";
+import TmdbLogo from "../../../icons/TmdbLogo";
 import styles from "./TmdbCredit.module.css";
 
 export default function TmdbCredit() {
