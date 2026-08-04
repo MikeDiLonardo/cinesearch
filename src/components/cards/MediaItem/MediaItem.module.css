@@ -2,10 +2,22 @@
   position: relative; /* for the fav button */
 }
 
-.grid-view__fav-btn {
+.favorite-icon {
+  color: var(--favorite);
+}
+
+.favorite-wrapper.grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 0.38rem;
   right: 0.38rem;
+  padding-bottom: 0.13rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--bg-fav-circle);
 }
 
 .list-view__item {
@@ -20,7 +32,7 @@
   display: flex;
   align-items: center;
   gap: var(--gap-lg);
-}
+} 
 
 .list-view__title {
   color: var(--white);
@@ -30,3 +42,4 @@
 .list-view__director {
   color: var(--stroke-mid);
 }
+

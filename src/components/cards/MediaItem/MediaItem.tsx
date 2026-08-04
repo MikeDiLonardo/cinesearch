@@ -1,14 +1,16 @@
 import MediaCard from "../MediaCard/MediaCard";
-import FavoriteButton from "../../buttons/FavoriteButton/FavoriteButton";
+import FavoriteIcon from "../../icons/FavoriteIcon";
 import styles from "./MediaItem.module.css";
-
 
 export default function MediaItem({ view }: {view: "grid" | "list"}) {
     if (view === "grid") {
         return (
             <li className={styles["grid-view__item"]}>
                 <MediaCard view={view}/>
-                <FavoriteButton className={styles["grid-view__fav-btn"]} view={view}/>
+
+                <button className={`${styles["favorite-wrapper"]} ${styles[view as keyof typeof styles]}`}>
+                    <FavoriteIcon className={styles["favorite-icon"]} width={24} height={23}/>
+                </button>
             </li>            
         )
     } else {
@@ -21,7 +23,9 @@ export default function MediaItem({ view }: {view: "grid" | "list"}) {
                         <p className={`${styles["list-view__year"]} text--xs-lt`}>Year - Directed By <span className={`${styles["list-view__director"]} text--xs-sb`}>Name</span></p>
                     </div>
                 </div>
-                <FavoriteButton className={styles["list-view__fav-btn"]} view={view}/>
+                <button>
+                    <FavoriteIcon className={styles["favorite-icon"]} width={24} height={23}/>
+                </button>
             </li>            
         )
     }

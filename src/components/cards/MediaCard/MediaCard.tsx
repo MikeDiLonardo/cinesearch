@@ -1,5 +1,5 @@
-import styles from "./MediaCard.module.css";
 import type { ViewMode } from "../../../types/media-card-display";
+import styles from "./MediaCard.module.css";
 
 export default function MediaCard({ className = "", view }: ViewMode) {
     return (

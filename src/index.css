@@ -44,6 +44,10 @@
   /* Radius */
   --radius-sm: 0.31rem;
   --radius-md: 0.63rem;
+
+  /* Header & Footer height */
+  --header-h: 7rem;
+  --footer-h: 4rem;
 }
 
 * {

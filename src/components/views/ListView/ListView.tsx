@@ -1,5 +1,5 @@
-import styles from "./ListView.module.css";
 import MediaItem from "../../cards/MediaItem/MediaItem";
+import styles from "./ListView.module.css";
 
 export default function ListView() {
     return(
