@@ -8,14 +8,14 @@
   height: 3.125rem;
 }
 
-.icon-wrapper {
+.toolbar-icon-wrapper {
   display: flex;
   align-items: center;
   position: relative;
   padding: var(--p-xs);
 }
 
-.icon-wrapper.active::before {
+.toolbar-icon-wrapper.active::before {
   position: absolute;
   content: "";
   top: 50%;
@@ -29,11 +29,6 @@
   background-color: var(--active-icon);
 }
 
-.icon--home,
-.icon--search,
-.icon--favorite,
-.icon--funnel,
-.icon--grid,
-.icon--list {
+.icon {
   color: var(--white);
 }

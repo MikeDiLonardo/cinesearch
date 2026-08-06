@@ -1,17 +1,26 @@
-.icon-wrapper {
-  margin-top: 3rem;
-  padding: var(--p-xs);
+.details {
+  padding: 1rem;
+  background-color: var(--bg-header-footer);
 }
 
-.icon--back-arrow {
+/* arrow icon */
+
+.back-icon-wrapper {
+  display: flex;
+  align-items: center;
+  height: 2.75rem;
+  margin-top: 3rem;
+  padding-inline: var(--p-xs);
+  padding-bottom: var(--p-sm);
+}
+
+.back-icon {
   color: var(--stroke-light);
 }
 
-.details {
-  padding: 1rem;
-}
+/* header */
 
-.details__header {
+.header {
   display: flex;
 }
 
@@ -19,10 +28,28 @@
   width: 10rem;
 }
 
+/* header info */
+
+.info {
+  padding-left: var(--p-lg);
+}
+
+.title,
+.headline,
+.cast-crew {
+  color: var(--white);
+}
+
+.year-director,
+.duration,
+.genre {
+  color: var(--stroke-light);
+}
+
 .genre {
   list-style: none;
 }
 
-.test1 {
-  padding-left: 1rem;
+.genre li {
+  display: inline;
 }

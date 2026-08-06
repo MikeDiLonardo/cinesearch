@@ -4,7 +4,7 @@ import styles from "./ListView.module.css";
 export default function ListView() {
     return(
         <div className={styles["list-view"]}>
-            <ul className={styles["list-view__list"]}>
+            <ul className={styles.list}>
                 <MediaItem view="list" />
                 <MediaItem view="list" />
                 <MediaItem view="list" />

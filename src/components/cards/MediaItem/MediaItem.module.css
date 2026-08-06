@@ -1,15 +1,18 @@
-.favorite-icon {
-  color: var(--favorite);
-}
-
-.media-thumbnail {
+.thumbnail-rectangle {
   aspect-ratio: 2 / 3;
   border-radius: var(--radius-sm);
   border: 1px solid var(--stroke-mid);
   background-color: green;
 }
 
-.media-thumbnail.list {
+.thumbnail-square {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--stroke-mid);
+  background-color: green;
+}
+
+.thumbnail.list {
   height: 6.38rem;
 }
 
@@ -19,7 +22,7 @@
   position: relative;
 }
 
-.favorite-wrapper.grid {
+.favorite-icon-wrapper.grid {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,17 +46,17 @@
   border-bottom: 0.5px solid var(--stroke-mid);
 }
 
-.list-view__card {
+.info {
   display: flex;
   align-items: center;
   gap: var(--gap-lg);
 }
 
-.list-view__title {
+.title {
   color: var(--white);
 }
 
-.list-view__year,
-.list-view__director {
+.year,
+.director {
   color: var(--stroke-mid);
 }

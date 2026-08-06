@@ -1,6 +1,6 @@
 import type { Icons } from "../../types/icons";
 
-export default function BackArrowIcon({ className, width, height, strokeWidth }: Icons) {
+export default function BackIcon({ className, width, height, strokeWidth }: Icons) {
     return (
         <svg
             className={className}    

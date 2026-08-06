@@ -4,7 +4,7 @@
   padding-bottom: calc(var(--footer-h) + var(--p-sm));
 }
 
-.grid-view__list {
+.grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--gap-sm);

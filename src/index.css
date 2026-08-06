@@ -71,11 +71,6 @@ body {
 
 /* Text */
 
-/* 10px - light */
-.text--xxs-lt {
-  font-size: var(--fs-xxs);
-  font-weight: var(--fw-lt);
-}
 /* 10px - regular  */
 .text--xxs-rg {
   font-size: var(--fs-xxs);
@@ -129,6 +124,11 @@ body {
 .text--xs-lt {
   font-size: var(--fs-xs);
   font-weight: var(--fw-lt);
+}
+/* 12px - regular */
+.text--xs-rg {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-rg);
 }
 /* 12px - semibold */
 .text--xs-sb {
