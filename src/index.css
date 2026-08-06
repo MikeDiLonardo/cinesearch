@@ -27,13 +27,13 @@
   --fs-xxl: 3.25rem; /* 52px */
 
   /* Padding */
-  --p-xxs: 0.5rem;
-  --p-xs: 0.63rem;
-  --p-sm: 0.88rem;
-  --p-md: 1.13rem;
-  --p-lg: 1.38rem;
-  --p-xl: 2rem;
-  --p-xxl: 2.5rem;
+  --p-xxs: 0.5rem; /* 8px */
+  --p-xs: 0.63rem; /* 10px */
+  --p-sm: 0.88rem; /* 14px */
+  --p-md: 1.13rem; /* 18px */
+  --p-lg: 1.38rem; /* 22px */
+  --p-xl: 2rem; /* 32px */
+  --p-xxl: 2.5rem; /* 40px */
 
   /* Gaps */
   --gap-sm: 0.5rem;
@@ -46,7 +46,7 @@
   --radius-md: 0.63rem;
 
   /* Header & Footer height */
-  --header-h: 7rem;
+  --header-h: 6rem;
   --footer-h: 4rem;
 }
 
@@ -58,7 +58,7 @@
 
 html,
 body {
-  background-color: var(--bg-header-footer);
+  background-color: var(--bg-main);
 }
 
 html {

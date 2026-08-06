@@ -13,8 +13,10 @@
   height: 6.38rem;
 }
 
+/* grid view */
+
 .grid-view {
-  position: relative; /* for the fav button */
+  position: relative;
 }
 
 .favorite-wrapper.grid {
@@ -30,6 +32,8 @@
   border-radius: 50%;
   background-color: var(--bg-fav-circle);
 }
+
+/* list view */
 
 .list-view {
   display: flex;

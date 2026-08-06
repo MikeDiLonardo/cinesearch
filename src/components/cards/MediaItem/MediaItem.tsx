@@ -1,7 +1,7 @@
 import FavoriteIcon from "../../icons/FavoriteIcon";
 import styles from "./MediaItem.module.css";
 
-export default function MediaItem({ view }: {view: "grid" | "list"}) {
+export default function MediaItem({ view, className }: { view: "grid" | "list" | "details", className?: string }) {
     if (view === "grid") {
         return (
             <li className={styles["grid-view"]}>
@@ -12,7 +12,7 @@ export default function MediaItem({ view }: {view: "grid" | "list"}) {
                 </button>
             </li>            
         )
-    } else {
+    } else if (view === "list") {
         return (
             <li className={styles["list-view"]}>
                 <div className={styles["list-view__card"]}>
@@ -27,6 +27,12 @@ export default function MediaItem({ view }: {view: "grid" | "list"}) {
                     <FavoriteIcon className={styles["favorite-icon"]} width={24} height={23}/>
                 </button>
             </li>            
+        )
+    } else {
+        return (
+            <div className={`${styles["details-view"]} ${className}`}>
+                <div className={`${styles["media-thumbnail"]} ${styles.details}`}></div>
+            </div>
         )
     }
 }

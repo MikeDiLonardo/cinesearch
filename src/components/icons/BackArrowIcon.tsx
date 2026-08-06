@@ -1,6 +1,6 @@
 import type { Icons } from "../../types/icons";
 
-export default function ArrowIcon({ className, width, height, strokeWidth }: Icons) {
+export default function BackArrowIcon({ className, width, height, strokeWidth }: Icons) {
     return (
         <svg
             className={className}    
@@ -15,8 +15,9 @@ export default function ArrowIcon({ className, width, height, strokeWidth }: Ico
             <path 
                 strokeLinecap="round" 
                 strokeLinejoin="round" 
-                d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" 
+                d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
             />
         </svg>
     )
 }
+

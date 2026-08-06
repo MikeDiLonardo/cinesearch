@@ -1,0 +1,28 @@
+.icon-wrapper {
+  margin-top: 3rem;
+  padding: var(--p-xs);
+}
+
+.icon--back-arrow {
+  color: var(--stroke-light);
+}
+
+.details {
+  padding: 1rem;
+}
+
+.details__header {
+  display: flex;
+}
+
+.media-cover {
+  width: 10rem;
+}
+
+.genre {
+  list-style: none;
+}
+
+.test1 {
+  padding-left: 1rem;
+}

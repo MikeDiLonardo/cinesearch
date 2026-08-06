@@ -29,6 +29,11 @@
   background-color: var(--active-icon);
 }
 
-.toolbar__icon {
+.icon--home,
+.icon--search,
+.icon--favorite,
+.icon--funnel,
+.icon--grid,
+.icon--list {
   color: var(--white);
 }
