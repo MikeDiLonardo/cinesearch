@@ -13,20 +13,26 @@ export default function Details() {
                 <BackIcon className={styles["back-icon"]} width={32} height={32} strokeWidth={1.25} />
             </button>
             <section className={styles.header}>
-                    <MediaItem view="details" className={styles["media-cover"]} shape="rectangle" />
+                    <MediaItem view="details" shape="rectangle" />
 
                     <div className={styles.info}>
                         <h2 className={`${styles.title} text--md-sb`}>Hell House LLC</h2>
 
-                        <p className={`${styles["year-director"]} text--xs-lt`}><time dateTime="2019">2019</time> - Directed by <span className="text--xs-sb">Stephen Cognetti</span></p>
+                        <p className={`${styles.year} text--xs-lt`}><time dateTime="2019">2019</time></p>
+
+                        <div>
+                            <p className={`${styles["directed-by"]}  text--xs-lt`}>Directed by</p>
+                            <p className={`${styles.director} text--xs-sb`}>Stephen Cognetti</p>
+                        </div>
+
 
                         <p className={`${styles.duration} text--xs-lt`}><time dateTime="PT96M">96 mins</time></p>
 
                         <div className={styles.rating}>
-                            <FavoriteIcon width={18} height={18} className={styles.star} strokeWidth={1}/>
-                            <FavoriteIcon width={18} height={18} className={styles.star} strokeWidth={1}/>
-                            <FavoriteIcon width={18} height={18} className={styles.star} strokeWidth={1}/>
-                            <FavoriteIcon width={18} height={18} className={styles.star} strokeWidth={1}/>
+                            <FavoriteIcon width={18} height={18} className={styles.star} fill="var(--favorite)" strokeWidth={1}/>
+                            <FavoriteIcon width={18} height={18} className={styles.star} fill="var(--favorite)" strokeWidth={1}/>
+                            <FavoriteIcon width={18} height={18} className={styles.star} fill="var(--favorite)" strokeWidth={1}/>
+                            <FavoriteIcon width={18} height={18} className={styles.star} fill="var(--favorite)" strokeWidth={1}/>
                             <FavoriteIcon width={18} height={18} className={styles.star} strokeWidth={1}/>
                         </div>
                         <ul className={`${styles.genre} text--xs-lt`}>
@@ -44,7 +50,7 @@ export default function Details() {
             </section>
             <section className={styles["cast-crew"]}>
                 <h3 className={styles.cast}>Cast</h3>
-                <MediaItem view="details" className="" shape="square" />
+                <MediaItem view="details" shape="square" />
                 <p className={styles.actor}>Danny Bellini</p>
                 <p className={styles.role}>Alex Taylor</p>
                 <h3 className={styles.crew}>Crew</h3>

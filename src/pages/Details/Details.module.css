@@ -3,7 +3,23 @@
   background-color: var(--bg-header-footer);
 }
 
-/* arrow icon */
+.details section {
+  padding-block: var(--p-lg);
+  border-bottom: 1px solid var(--stroke-mid);
+}
+
+.details section:first-of-type {
+  padding-top: var(--p-xs);
+}
+
+.title,
+.headline,
+.cast-crew,
+.genre {
+  color: var(--white);
+}
+
+/* back icon */
 
 .back-icon-wrapper {
   display: flex;
@@ -22,34 +38,43 @@
 
 .header {
   display: flex;
+  align-items: flex-start;
+  gap: var(--gap-lg);
 }
-
-.media-cover {
-  width: 10rem;
-}
-
-/* header info */
 
 .info {
-  padding-left: var(--p-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
 }
 
-.title,
-.headline,
-.cast-crew {
-  color: var(--white);
-}
-
-.year-director,
+.year,
+.directed-by,
+.director,
 .duration,
-.genre {
+.summary {
   color: var(--stroke-light);
 }
 
 .genre {
+  display: flex;
+  flex-wrap: wrap;
   list-style: none;
 }
 
 .genre li {
-  display: inline;
+  margin: 0.13rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 100vw;
+  background-color: var(--stroke-mid);
+  letter-spacing: -0.01rem;
+}
+
+.headline {
+  padding-bottom: var(--p-sm);
+  letter-spacing: 0.01rem;
+}
+
+.summary {
+  line-height: 1.3;
 }

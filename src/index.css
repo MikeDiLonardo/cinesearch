@@ -36,6 +36,7 @@
   --p-xxl: 2.5rem; /* 40px */
 
   /* Gaps */
+  --gap-xs: 0.25rem;
   --gap-sm: 0.5rem;
   --gap-md: 0.88rem;
   --gap-lg: 1.13rem;

@@ -1,12 +1,12 @@
-import FavoriteIcon from "../../icons/FavoriteIcon";
 import type {MediaItem} from "../../../types/media-item";
+import FavoriteIcon from "../../icons/FavoriteIcon";
 import styles from "./MediaItem.module.css";
 
-export default function MediaItem({ view, shape, className }: MediaItem) {
+export default function MediaItem({ view, shape }: MediaItem) {
     if (view === "grid") {
         return (
             <li className={styles["grid-view"]}>
-                <div className={`${styles["thumbnail-rectangle"]} ${styles.grid}`}></div>
+                <div className={`${styles.thumbnail} ${styles.rectangle} ${styles.grid}`}></div>
               
                 <button className={`${styles["favorite-icon-wrapper"]} ${styles.grid}`}>
                     <FavoriteIcon className={styles["favorite-icon"]} width={24} height={23}/>
@@ -17,7 +17,7 @@ export default function MediaItem({ view, shape, className }: MediaItem) {
         return (
             <li className={styles["list-view"]}>
                 <div className={styles.info}>
-                    <div className={`${styles["thumbnail-rectangle"]} ${styles.list}`}></div>
+                    <div className={`${styles.thumbnail} ${styles.rectangle} ${styles.list}`}></div>
                      
                     <div>
                         <p className={`${styles.title} text--base-sb`}>Title</p>
@@ -31,8 +31,14 @@ export default function MediaItem({ view, shape, className }: MediaItem) {
         )
     } else {
         return (
-            <div className={`${styles["details-view"]} ${className}`}>
-                <div className={`${styles[`thumbnail-${shape}`]} ${styles.details}`}></div>
+            <div className={`${styles["details-view"]}`}>
+                <div className={`${styles.thumbnail} ${styles[`${shape}`]} ${styles.details}`}></div>
+
+            { shape === "rectangle" ? (
+                <button className={`${styles["favorite-icon-wrapper"]} ${styles.details}`}>
+                    <FavoriteIcon className={styles["favorite-icon"]} width={24} height={23}/>
+                </button>
+            ) : null }
             </div>
         )
     }

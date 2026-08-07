@@ -1,28 +1,38 @@
-.thumbnail-rectangle {
+.thumbnail {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--stroke-mid);
+  background-color: green;
+}
+
+.thumbnail.rectangle {
   aspect-ratio: 2 / 3;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--stroke-mid);
-  background-color: green;
 }
 
-.thumbnail-square {
+.thumbnail.square {
   aspect-ratio: 1 / 1;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--stroke-mid);
-  background-color: green;
 }
 
-.thumbnail.list {
-  height: 6.38rem;
+.thumbnail.rectangle.list {
+  width: 4.38rem;
+}
+
+.thumbnail.rectangle.details {
+  width: 7rem;
+}
+
+.thumbnail.square.details {
+  width: 3.13rem;
 }
 
 /* grid view */
 
-.grid-view {
+.grid-view,
+.details-view {
   position: relative;
 }
 
-.favorite-icon-wrapper.grid {
+.favorite-icon-wrapper.grid,
+.favorite-icon-wrapper.details {
   display: flex;
   justify-content: center;
   align-items: center;

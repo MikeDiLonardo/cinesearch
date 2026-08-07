@@ -12,3 +12,8 @@
 .list-view__list > li:last-of-type {
   border-bottom: 0;
 }
+
+.media-cover-list {
+  width: 4.38rem;
+}
+

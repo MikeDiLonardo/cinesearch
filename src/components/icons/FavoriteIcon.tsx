@@ -1,13 +1,13 @@
 import type { Icons } from "../../types/icons";
 
-export default function FavoriteIcon({ className, width, height, strokeWidth, stroke = "var(--favorite)" }: Icons) {
+export default function FavoriteIcon({ className, width, height, fill = "none", strokeWidth, stroke = "var(--favorite)" }: Icons) {
     return (
         <svg 
             className={className}
             width={width}
             height={height}         
             xmlns="http://www.w3.org/2000/svg" 
-            fill="none" 
+            fill={fill} 
             viewBox="0 0 24 24" 
             strokeWidth={strokeWidth}
             stroke={stroke} 
