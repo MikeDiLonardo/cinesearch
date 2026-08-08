@@ -1,0 +1,16 @@
+.credit-item {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-md);
+  padding: var(--p-xxs);
+}
+
+.credit-name {
+  margin-bottom: 0.15rem;
+  color: var(--white);
+}
+
+.credit-role {
+  color: var(--stroke-light);
+}
+

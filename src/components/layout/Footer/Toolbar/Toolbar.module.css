@@ -9,9 +9,9 @@
 }
 
 .toolbar-icon-wrapper {
+  position: relative;
   display: flex;
   align-items: center;
-  position: relative;
   padding: var(--p-xs);
 }
 
@@ -21,7 +21,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: -10;
   width: 3.75rem;
   height: 2.75rem;
   border-radius: 1rem;
@@ -30,5 +29,6 @@
 }
 
 .icon {
+  z-index: 10;
   color: var(--white);
 }

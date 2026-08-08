@@ -97,11 +97,6 @@ body {
   font-size: var(--fs-base);
   font-weight: var(--fw-lt);
 }
-/* 16px - regular */
-.text--base-rg {
-  font-size: var(--fs-base);
-  font-weight: var(--fw-rg);
-}
 
 /* 28px - semibold */
 .text--lg-sb {
@@ -135,6 +130,11 @@ body {
 .text--xs-sb {
   font-size: var(--fs-xs);
   font-weight: var(--fw-sb);
+}
+/* 16px - regular */
+.text--base-rg {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-rg);
 }
 /* 16px - semibold */
 .text--base-sb {

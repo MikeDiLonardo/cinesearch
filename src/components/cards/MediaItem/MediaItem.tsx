@@ -9,7 +9,7 @@ export default function MediaItem({ view, shape }: MediaItem) {
                 <div className={`${styles.thumbnail} ${styles.rectangle} ${styles.grid}`}></div>
               
                 <button className={`${styles["favorite-icon-wrapper"]} ${styles.grid}`}>
-                    <FavoriteIcon className={styles["favorite-icon"]} width={24} height={23}/>
+                    <FavoriteIcon className={styles["favorite-icon"]} width={48} height={48}/>
                 </button>
             </li>            
         )
@@ -25,7 +25,7 @@ export default function MediaItem({ view, shape }: MediaItem) {
                     </div>
                 </div>
                 <button className={styles["favorite-icon-wrapper"]}>
-                    <FavoriteIcon className={styles["favorite-icon"]} width={24} height={23}/>
+                    <FavoriteIcon className={styles["favorite-icon"]} width={48} height={48}/>
                 </button>
             </li>            
         )
@@ -36,7 +36,7 @@ export default function MediaItem({ view, shape }: MediaItem) {
 
             { shape === "rectangle" ? (
                 <button className={`${styles["favorite-icon-wrapper"]} ${styles.details}`}>
-                    <FavoriteIcon className={styles["favorite-icon"]} width={24} height={23}/>
+                    <FavoriteIcon className={styles["favorite-icon"]} width={48} height={48}/>
                 </button>
             ) : null }
             </div>

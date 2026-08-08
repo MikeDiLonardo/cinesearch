@@ -1,4 +1,4 @@
-export interface CastCrew {
+export interface CreditItem {
     name: string,
     role: string,
 }
