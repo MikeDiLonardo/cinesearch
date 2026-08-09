@@ -61,6 +61,7 @@ export default function Details() {
                         <CreditItem />
                         <CreditItem />
                         <CreditItem />
+                        <CreditItem />
                     </ul>
                 </div>
             </section>
