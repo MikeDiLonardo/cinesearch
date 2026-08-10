@@ -70,8 +70,7 @@ body {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-/* Text */
-
+/* #region Text - unused */
 /* 10px - regular  */
 .text--xxs-rg {
   font-size: var(--fs-xxs);
@@ -81,11 +80,6 @@ body {
 .text--xxs-sb {
   font-size: var(--fs-xxs);
   font-weight: var(--fw-sb);
-}
-/* 14px - regular  */
-.text--sm-rg {
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-rg);
 }
 /* 14px - semibold */
 .text--sm-sb {
@@ -97,7 +91,6 @@ body {
   font-size: var(--fs-base);
   font-weight: var(--fw-lt);
 }
-
 /* 28px - semibold */
 .text--lg-sb {
   font-size: var(--fs-lg);
@@ -109,8 +102,9 @@ body {
   font-size: var(--fs-xxl);
   font-weight: var(--fw-sb);
 }
+/* #endregion */
 
-/* Text classes used so far */
+/* #region Text classes used so far */
 /* 8px - semibold */
 .text--xxxs-sb {
   font-size: var(--fs-xxxs);
@@ -130,6 +124,11 @@ body {
 .text--xs-sb {
   font-size: var(--fs-xs);
   font-weight: var(--fw-sb);
+}
+/* 14px - regular  */
+.text--sm-rg {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-rg);
 }
 /* 16px - regular */
 .text--base-rg {
@@ -151,6 +150,7 @@ body {
   font-size: var(--fs-xl);
   font-weight: var(--fw-sb);
 }
+/* #endregion */
 
 /* Make form elements inherit styles from their parent */
 input,

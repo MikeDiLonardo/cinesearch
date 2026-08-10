@@ -12,10 +12,6 @@
   width: 4.38rem;
 }
 
-.thumbnail.rectangle.details {
-  width: 7rem;
-}
-
 .thumbnail.square.details {
   aspect-ratio: 1 / 1;
   width: 3.5rem;
@@ -30,7 +26,7 @@
 
 .favorite-icon {
   position: relative;
-  padding: 0.5rem;
+  padding: var(--p-xs);
   z-index: 10;
 }
 

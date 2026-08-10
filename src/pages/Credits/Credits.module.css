@@ -1,0 +1,81 @@
+/* main div */
+
+.credits {
+  background-color: var(--bg-header-footer);
+}
+
+/* header */
+
+.header-wrapper {
+  border-bottom: 1px solid var(--stroke-mid);
+  padding: 1rem;
+  padding-bottom: 0rem;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--gap-lg);
+  padding-block: var(--p-xs); /* for arrow */
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+}
+
+/* back icon */
+
+.back-icon-wrapper {
+  display: flex;
+  align-items: center;
+  height: 2.75rem;
+  margin-top: 3rem;
+  padding-inline: var(--p-xs);
+  padding-bottom: var(--p-sm);
+}
+
+/* biography-filmography */
+
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 3rem;
+
+  border-radius: var(--radius-md);
+  color: var(--stroke-light);
+}
+
+.tabs .active {
+  color: var(--white);
+  text-decoration: underline;
+  text-decoration-thickness: 2.5px;
+  text-underline-offset: 0.5rem;
+}
+
+.biography {
+  padding: 1rem;
+  padding-bottom: calc(var(--footer-h) + 1rem);
+  color: var(--white);
+  background-color: var(--bg-main);
+  white-space: pre-line;
+}
+.filmography {
+  padding: 1rem;
+  background-color: var(--bg-main);
+}
+
+/* colors */
+
+.name,
+.headline {
+  color: var(--white);
+}
+
+.back-icon,
+.job,
+.birthplace,
+.age {
+  color: var(--stroke-light);
+}

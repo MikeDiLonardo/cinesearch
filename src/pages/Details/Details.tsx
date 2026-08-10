@@ -20,7 +20,7 @@ export default function Details() {
                         <h2 className={`${styles.title} text--md-sb`}>Hell House LLC</h2>
                         <p className={`${styles.year} text--xs-lt`}><time dateTime="2019">2019</time></p>
                         <div>
-                            <p className={`${styles["directed-by"]}  text--xs-lt`}>Directed by</p>
+                            <p className={`${styles["directed-by"]} text--xs-lt`}>Directed by</p>
                             <p className={`${styles.director} text--xs-sb`}>Stephen Cognetti</p>
                         </div>
                         <p className={`${styles.duration} text--xs-lt`}><time dateTime="PT96M">96 mins</time></p>

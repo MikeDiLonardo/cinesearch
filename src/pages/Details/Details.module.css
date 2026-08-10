@@ -1,4 +1,4 @@
-/* main details div & sections */
+/* main div & sections */
 
 .details {
   padding: 1rem;
@@ -7,12 +7,12 @@
 }
 
 .details section {
-  padding-block: var(--p-lg);
   border-bottom: 1px solid var(--stroke-mid);
+  padding-block: var(--p-lg);
 }
 
 .details section:first-of-type {
-  padding-top: var(--p-xs);
+  padding-top: var(--p-xs); /* for arrow */
 }
 
 .details section:last-of-type {
@@ -34,8 +34,8 @@
 /* header */
 
 .header {
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   gap: var(--gap-lg);
 }
 
