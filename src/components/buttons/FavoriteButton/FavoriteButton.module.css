@@ -1,0 +1,29 @@
+.favorite-icon {
+  position: relative;
+  padding: var(--p-xs);
+  z-index: 10;
+}
+.favorite-icon-wrapper.grid,
+.favorite-icon-wrapper.details {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0.25rem;
+  right: 0.25rem;
+  padding-bottom: 0.13rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+/* opacity is on ::before to prevent the favorite icon from inheriting it */
+.favorite-icon-wrapper.grid::before,
+.favorite-icon-wrapper.details::before {
+  opacity: 0.1;
+  position: absolute;
+  content: "";
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--bg-fav-circle);
+}

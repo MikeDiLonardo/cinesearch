@@ -1,19 +1,14 @@
-import { useNavigate } from "react-router-dom";
 import MediaItem from "../../components/cards/MediaItem/MediaItem";
 import GridView from "../../components/views/GridView/GridView";
 // import ListView from "../../components/views/ListView/ListView";
-import BackIcon from "../../components/icons/BackIcon";
+import BackButton from "../../components/buttons/BackButton/BackButton";
 import styles from "./Credits.module.css";
 
 export default function Credits() {
-    const navigate = useNavigate();
-
     return (
         <div className={styles.credits}>
             <div className={styles["header-wrapper"]}>
-                <button onClick={() => navigate(-1)} className={styles["back-icon-wrapper"]} aria-label="Go Back">
-                    <BackIcon className={styles["back-icon"]} width={32} height={32} strokeWidth={1.25} />
-                </button>
+                <BackButton />
                 <section className={styles.header}>
                         <MediaItem view="credits" shape="rectangle" />
 

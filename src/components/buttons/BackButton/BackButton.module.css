@@ -1,0 +1,12 @@
+.back-icon-wrapper {
+  display: flex;
+  align-items: center;
+  height: 2.75rem;
+  margin-top: 3rem;
+  padding-inline: var(--p-xs);
+  padding-bottom: var(--p-sm);
+}
+
+.back-icon {
+  color: var(--stroke-light);
+}
