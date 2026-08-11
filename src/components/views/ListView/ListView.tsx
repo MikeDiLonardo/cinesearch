@@ -9,8 +9,7 @@ export default function ListView() {
                 <MediaItem view="list" />
                 <MediaItem view="list" />
                 <MediaItem view="list" />
-                <MediaItem view="list" />
-                <MediaItem view="list" />
+
             </ul>
         </div>
     )

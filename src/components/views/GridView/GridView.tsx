@@ -14,13 +14,6 @@ export default function GridView() {
                 <MediaItem view="grid"/>
                 <MediaItem view="grid"/>
                 <MediaItem view="grid"/>
-                <MediaItem view="grid"/>
-                <MediaItem view="grid"/>
-                <MediaItem view="grid"/>
-                <MediaItem view="grid"/>
-                <MediaItem view="grid"/>
-                <MediaItem view="grid"/>
-
             </ul>
         </div>
     )

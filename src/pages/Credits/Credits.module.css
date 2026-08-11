@@ -54,15 +54,18 @@
   text-underline-offset: 0.5rem;
 }
 
+.biography,
+.filmography {
+  padding-inline: 1rem;
+}
+
 .biography {
-  padding: 1rem;
   padding-bottom: calc(var(--footer-h) + 1rem);
   color: var(--white);
   background-color: var(--bg-main);
   white-space: pre-line;
 }
 .filmography {
-  padding: 1rem;
   background-color: var(--bg-main);
 }
 
