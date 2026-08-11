@@ -1,4 +1,4 @@
-import GridView from "../../components/views/GridView/GridView";
+// import GridView from "../../components/views/GridView/GridView";
 import ListView from "../../components/views/ListView/ListView";
 // import styles from "./Home.module.css";
 

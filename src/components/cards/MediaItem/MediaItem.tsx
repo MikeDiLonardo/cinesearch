@@ -5,7 +5,7 @@ import styles from "./MediaItem.module.css";
 export default function MediaItem({ view, shape }: MediaItem) {
     if (view === "grid") {
         return (
-            <li className={styles["grid-view"]}>
+            <li className={styles["grid-item"]}>
                 <div className={`${styles.thumbnail} ${styles.rectangle} ${styles.grid}`}></div>
               
                 <button className={`${styles["favorite-icon-wrapper"]} ${styles.grid}`}>
@@ -15,7 +15,7 @@ export default function MediaItem({ view, shape }: MediaItem) {
         )
     } else if (view === "list") {
         return (
-            <li className={styles["list-view"]}>
+            <li className={styles["list-item"]}>
                 <div className={styles.info}>
                     <div className={`${styles.thumbnail} ${styles.rectangle} ${styles.list}`}></div>
                      
@@ -29,9 +29,9 @@ export default function MediaItem({ view, shape }: MediaItem) {
                 </button>
             </li>            
         )
-    } else {
+    } else if (view === "details") {
         return (
-            <div className={`${styles["details-view"]}`}>
+            <div className={`${styles["details-item"]}`}>
                 <div className={`${styles.thumbnail} ${styles[`${shape}`]} ${styles.details}`}></div>
 
             { shape === "rectangle" ? (
@@ -41,5 +41,7 @@ export default function MediaItem({ view, shape }: MediaItem) {
             ) : null }
             </div>
         )
+    } else {
+        return <div className={`${styles.thumbnail} ${styles.rectangle} ${styles.credits}`}></div>
     }
 }

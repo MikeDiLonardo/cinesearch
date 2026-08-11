@@ -3,8 +3,10 @@ import styles from "./GridView.module.css";
 
 export default function GridView() {
     return (
-        <div className={styles["grid-view"]}>
-            <ul className={styles.grid}>
+            <ul className={styles["grid-view"]}>
+                <MediaItem view="grid"/>
+                <MediaItem view="grid"/>
+                <MediaItem view="grid"/>
                 <MediaItem view="grid"/>
                 <MediaItem view="grid"/>
                 <MediaItem view="grid"/>
@@ -15,6 +17,5 @@ export default function GridView() {
                 <MediaItem view="grid"/>
                 <MediaItem view="grid"/>
             </ul>
-        </div>
     )
 }

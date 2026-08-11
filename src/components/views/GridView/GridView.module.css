@@ -1,13 +1,9 @@
 .grid-view {
-  width: 100%;
-  padding-top: var(--p-sm);
-  padding-bottom: calc(var(--footer-h) + var(--p-sm));
-}
-
-.grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--gap-sm);
   width: 100%;
+  padding-top: var(--p-sm);
+  padding-bottom: calc(var(--footer-h) + var(--p-sm));
   list-style: none;
 }
