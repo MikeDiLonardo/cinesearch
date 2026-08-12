@@ -1,21 +1,16 @@
-/* main div & sections */
+/* container & sections */
 
-.details {
-  padding: 1rem;
+.container {
+  padding-inline: 1rem;
   padding-bottom: var(--footer-h);
-  background-color: var(--bg-header-footer);
 }
 
-.details section {
+.container section {
   border-bottom: 1px solid var(--stroke-mid);
   padding-block: var(--p-lg);
 }
 
-.details section:first-of-type {
-  padding-top: var(--p-xs); /* for arrow */
-}
-
-.details section:last-of-type {
+.container section:last-of-type {
   border-bottom: 0;
   padding-bottom: 0;
 }
@@ -45,7 +40,6 @@
   border-radius: 100vw;
   padding: 0.15rem 0.55rem;
   background-color: var(--stroke-mid);
-  letter-spacing: -0.01rem;
 }
 
 /* headeline & summary */
@@ -57,23 +51,20 @@
 
 .summary {
   line-height: 1.3;
+  letter-spacing: 0.01rem;
 }
 
 /* cast & crew */
 
-.cast,
-.crew {
-  margin-block: 1rem;
-}
-
-.cast-info li:nth-child(odd),
-.crew-info li:nth-child(odd) {
+.cast li:nth-child(odd),
+.crew li:nth-child(odd) {
   border-radius: var(--radius-sm);
   background-color: var(--bg-main);
 }
 
-.cast-info,
-.crew-info {
+.cast,
+.crew {
+  margin-block: 1rem;
   list-style: none;
 }
 

@@ -1,14 +1,13 @@
+import CreditsDetailsLayout from "../../components/layout/Layout/CreditsDetailsLayout/CreditsDetailsLayout";
 import MediaItem from "../../components/cards/MediaItem/MediaItem";
 import GridView from "../../components/views/GridView/GridView";
 // import ListView from "../../components/views/ListView/ListView";
-import BackButton from "../../components/buttons/BackButton/BackButton";
 import styles from "./Credits.module.css";
 
 export default function Credits() {
     return (
-        <div className={styles.credits}>
-            <div className={styles["header-wrapper"]}>
-                <BackButton />
+        <CreditsDetailsLayout page="credits">  
+            <div className={styles.container}>
                 <section className={styles.header}>
                         <MediaItem view="credits" shape="rectangle" />
 
@@ -23,10 +22,11 @@ export default function Credits() {
                             </div>
                         </div>
                 </section>
-                <div className={`${styles["tabs"]} text--sm-rg`}>
+                <div className={`${styles.tabs} text--sm-rg`}>
                     <button className={`${styles["biography-tab"]}`}>Biography</button>
                     <button className={`${styles["filmography-tab"]} ${styles.active}`}>Filmography</button>
                 </div>
+
             </div>
             {/* <div className={`${styles["biography"]} text--sm-rg`}>
                 <p>
@@ -42,6 +42,6 @@ export default function Credits() {
             <div className={styles.filmography}>
                 <GridView />
             </div>
-        </div>
+        </CreditsDetailsLayout>
     )    
-}
+}   

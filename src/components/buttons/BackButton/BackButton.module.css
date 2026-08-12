@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   height: 2.75rem;
-  margin-top: 3rem;
   padding-inline: var(--p-xs);
+  padding-left: calc(1rem + var(--p-xs));
   padding-bottom: var(--p-sm);
 }
 

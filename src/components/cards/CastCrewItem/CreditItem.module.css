@@ -5,8 +5,13 @@
   padding: var(--p-xxs);
 }
 
+.credit-name-role {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
 .credit-name {
-  margin-bottom: 0.15rem;
   color: var(--white);
 }
 
