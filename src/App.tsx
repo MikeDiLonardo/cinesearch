@@ -20,7 +20,6 @@ export default function App() {
 
       <Route path="/details" element={<Details />} />
       <Route path="/credits" element={<Credits />} />        
-      
       </Route>
     </Routes>
   </BrowserRouter>

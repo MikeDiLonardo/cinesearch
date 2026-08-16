@@ -32,3 +32,25 @@
   z-index: 10;
   color: var(--white);
 }
+
+.funnel-icon,
+.grid-icon,
+.list-icon {
+  cursor: pointer;
+}
+
+.clicked {
+  animation: upscale 0.1s linear;
+}
+
+@keyframes upscale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
