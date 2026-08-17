@@ -4,7 +4,7 @@ import ClearIcon from "../../icons/ClearIcon"
 import InfoIcon from "../../icons/InfoIcon";
 import styles from "./Header.module.css";
 
-export default function Header() {
+export default function Header({ openModal }: { openModal: () => void}) {
     const searchId = useId();
 
     return (
@@ -16,7 +16,7 @@ export default function Header() {
                 </label>
                 <ClearIcon className={styles["clear-icon"]} width={20} height={20} strokeWidth={2}/>
             </div>
-            <button className={styles["info-icon-wrapper"]}>
+            <button className={styles["info-icon-wrapper"]} onClick={openModal}>
                 <InfoIcon className={styles["info-icon"]} width={32} height={32} strokeWidth={1.25} />
             </button>              
         </div>

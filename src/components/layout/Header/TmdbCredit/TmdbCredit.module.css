@@ -1,10 +1,30 @@
+dialog {
+  max-width: calc(100% - 2rem);
+  width: 100%;
+  margin: auto 1rem;
+  border: none;
+  background: transparent;
+}
+
 .tmdb-credit {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: var(--gap-sm);
-  height: 3rem;
-  border-top: 1px solid var(--stroke-mid);
+  gap: var(--gap-md);
+  height: 40vh;
+  border: 0.5px solid var(--bg-main);
+  border-radius: var(--radius-md);
   background-color: var(--bg-header-footer);
   color: var(--stroke-mid);
 }
+
+.tmdb-credit p {
+  text-align: center;
+  color: var(--stroke-light);
+}
+
+dialog::backdrop {
+  backdrop-filter: blur(3px) brightness(0.6);
+}
+

@@ -1,6 +1,6 @@
-import type { LayoutToggle } from "../../../../types/layout-toggle.ts";
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { LayoutContext } from "../../Layout/Context/LayoutContext";
 import HomeIcon from "../../../icons/HomeIcon";
 import FunnelIcon from "../../../icons/FunnelIcon";
 import SearchIcon from "../../../icons/SearchIcon";
@@ -9,20 +9,13 @@ import ListIcon from "../../../icons/ListIcon";
 import FavoriteIcon from "../../../icons/FavoriteIcon";
 import styles from "./Toolbar.module.css";
 
-export default function Toolbar({ isGrid, onToggleLayout }: LayoutToggle){
-    const [clickedIcon, setClickedIcon] = useState("");
-
-    function handleClickedIcon(iconName: string) {
-        setClickedIcon(iconName);
-        
-        setTimeout(() => {
-            setClickedIcon("");
-        }, 500);
-    }
+export default function Toolbar(){
+    const context = useContext(LayoutContext);
+    if (!context) return null;
+    const { clickedIcon, isGrid, handleClickedIcon, onToggleLayout } = context;
 
     return (
         <div className={styles.toolbar}>
-
             <NavLink
                 className={({ isActive }) =>
                     `${styles["toolbar-icon-wrapper"]} ${isActive ? styles.active : "" }`
