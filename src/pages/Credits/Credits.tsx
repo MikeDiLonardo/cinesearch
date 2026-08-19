@@ -1,10 +1,17 @@
+import { useContext } from "react";
+import { LayoutContext } from "../../components/layout/Layout/Context/LayoutContext";
 import CreditsDetailsLayout from "../../components/layout/Layout/CreditsDetailsLayout/CreditsDetailsLayout";
 import MediaItem from "../../components/cards/MediaItem/MediaItem";
 import GridView from "../../components/views/GridView/GridView";
-// import ListView from "../../components/views/ListView/ListView";
+import ListView from "../../components/views/ListView/ListView";
 import styles from "./Credits.module.css";
 
 export default function Credits() {
+    const context = useContext(LayoutContext);
+    if (!context) return null;
+    const { isGrid } = context;
+
+
     return (
         <CreditsDetailsLayout page="credits">  
             <div className={styles.container}>
@@ -40,7 +47,7 @@ export default function Credits() {
                 </p>
             </div> */}
             <div className={styles.filmography}>
-                <GridView />
+                {isGrid ? <GridView /> : <ListView />}
             </div>
         </CreditsDetailsLayout>
     )    

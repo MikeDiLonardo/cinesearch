@@ -15,7 +15,7 @@ export default function FavoriteButton({ view }: {view: string}) {
 
     return (
         <button 
-            className={`${styles["favorite-icon-wrapper"]} ${styles[`${view}`]} ${clickedIcon === "favorite" ? styles.clicked : ""}`} 
+            className={`${styles["favorite-icon-wrapper"]} ${styles[`${view}`]} ${clickedIcon === "favorite" ? "clicked" : ""}`} 
             onClick={() => {
                 handleIsFilled();
                 handleClickedIcon("favorite")                

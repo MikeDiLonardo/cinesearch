@@ -25,7 +25,7 @@ export default function Toolbar(){
                 onClick={() => handleClickedIcon("home")}
             > 
                 <HomeIcon 
-                    className={`${styles.icon} ${styles["home-icon"]} ${clickedIcon === "home" ? styles.clicked : ""}`} 
+                    className={`${styles.icon} ${styles["home-icon"]} ${clickedIcon === "home" ? "clicked" : ""}`} 
                     width={28} 
                     height={28} 
                     strokeWidth={1.25} />
@@ -40,7 +40,7 @@ export default function Toolbar(){
                 onClick={() => handleClickedIcon("search")}
             > 
                 <SearchIcon 
-                    className={`${styles.icon} ${styles["search-icon"]} ${clickedIcon === "search" ? styles.clicked : ""}`} 
+                    className={`${styles.icon} ${styles["search-icon"]} ${clickedIcon === "search" ? "clicked" : ""}`} 
                     width={28} 
                     height={28} 
                     strokeWidth={1.25} />
@@ -55,7 +55,7 @@ export default function Toolbar(){
                 onClick={() => handleClickedIcon("favorites")}
             > 
                 <FavoriteIcon 
-                    className={`${styles.icon} ${styles["favorite-icon"]} ${clickedIcon === "favorites" ? styles.clicked : ""}`} 
+                    className={`${styles.icon} ${styles["favorite-icon"]} ${clickedIcon === "favorites" ? "clicked" : ""}`} 
                     width={28} 
                     height={28} 
                     strokeWidth={1.25} 
@@ -68,7 +68,7 @@ export default function Toolbar(){
                 onClick={() => handleClickedIcon("funnel")}
             >
                 <FunnelIcon 
-                    className={`${styles.icon} ${styles["funnel-icon"]} ${clickedIcon === "funnel" ? styles.clicked : ""}`} 
+                    className={`${styles.icon} ${styles["funnel-icon"]} ${clickedIcon === "funnel" ? "clicked" : ""}`} 
                     width={28} 
                     height={28} 
                     strokeWidth={1.25} />
@@ -83,13 +83,13 @@ export default function Toolbar(){
             >
                 {isGrid ? 
                   <GridIcon 
-                    className={`${styles.icon} ${styles["grid-icon"]} ${clickedIcon === "view" ? styles.clicked : ""}`} 
+                    className={`${styles.icon} ${styles["grid-icon"]} ${clickedIcon === "view" ? "clicked" : ""}`} 
                     width={28} 
                     height={28} 
                     strokeWidth={1.25} />
                 : 
                   <ListIcon 
-                    className={`${styles.icon} ${styles["list-icon"]} ${clickedIcon === "view" ? styles.clicked : ""}`} 
+                    className={`${styles.icon} ${styles["list-icon"]} ${clickedIcon === "view" ? "clicked" : ""}`} 
                     width={28} 
                     height={28} 
                     strokeWidth={1.25} />

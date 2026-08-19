@@ -27,19 +27,3 @@
   border-radius: 50%;
   background-color: var(--bg-fav-circle);
 }
-
-.clicked {
-  animation: upscale 0.1s linear;
-}
-
-@keyframes upscale {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
