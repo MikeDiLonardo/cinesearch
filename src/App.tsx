@@ -7,9 +7,18 @@ import Details from "./pages/Details/Details";
 import Home from "./pages/Home/Home";
 import Search from "./pages/Search/Search";
 import Favorites from "./pages/Favorites/Favorites";
-import { getMovie } from "./utils/movies";
+import { apiFetcher } from "./utils/apiFetcher";
+import { useSuspenseQuery } from "@tanstack/react-query";
 
 export default function App() {
+
+  const { data: movies } = useSuspenseQuery({
+    queryKey: ["movies"],
+    queryFn: () => apiFetcher("get", "3/trending/movie/day"),
+  });
+
+  console.log(movies);
+  
   return <BrowserRouter>
     <Suspense fallback={<p>Loading...</p>}>
       <Routes>
