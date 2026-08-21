@@ -7,7 +7,7 @@ import ListView from "../../components/views/ListView/ListView";
 export default function Home() {
     const context = useContext(LayoutContext);
     if (!context) return null;
-    const { isGrid } = context;
+    const { isGrid } = context;    
 
     return (
         <div className="home">

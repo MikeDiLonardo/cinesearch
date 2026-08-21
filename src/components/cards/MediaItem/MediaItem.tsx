@@ -2,11 +2,15 @@ import type {MediaItem} from "../../../types/media-item";
 import FavoriteButton from "../../buttons/FavoriteButton/FavoriteButton";
 import styles from "./MediaItem.module.css";
 
-export default function MediaItem({ view, shape }: MediaItem) {
+export default function MediaItem({ view, shape, poster }: MediaItem) {
     if (view === "grid") {
         return (
             <li className={styles["grid-item"]}>
-                <div className={`${styles.thumbnail} ${styles.rectangle} ${styles.grid}`}></div>
+                {/* <div className={`${styles.thumbnail} ${styles.rectangle} ${styles.grid}`}></div> */}
+                <img className={`${styles.thumbnail} ${styles.rectangle} ${styles.grid}`}
+                    src={`https://image.tmdb.org/t/p/w500/${poster}`}
+                    alt="Movie Poster"                
+                />
                 <FavoriteButton view="grid" />
             </li>            
         )
