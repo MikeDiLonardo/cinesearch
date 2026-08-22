@@ -22,6 +22,7 @@ export default function App() {
 
         <Route path="/details" element={<Details />} />
         <Route path="/credits" element={<Credits />} />        
+        <Route path="*" element={<p>Page Not Found</p>} />
         </Route>
       </Routes>
     </Suspense>

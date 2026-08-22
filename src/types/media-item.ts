@@ -1,5 +1,5 @@
 export interface MediaItem {
     view: "grid" | "list" | "details" | "credits",
-    poster: string,
+    image?: string,
     shape?: "rectangle" | "square",
 }

@@ -1,7 +1,6 @@
 .thumbnail {
   border-radius: var(--radius-sm);
   border: 1px solid var(--stroke-mid);
-  /* background-color: green; */
   width: 100%;
 }
 .thumbnail.rectangle {

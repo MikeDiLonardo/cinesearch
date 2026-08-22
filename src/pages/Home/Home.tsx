@@ -3,7 +3,6 @@ import { LayoutContext } from "../../components/layout/Layout/Context/LayoutCont
 import GridView from "../../components/views/GridView/GridView";
 import ListView from "../../components/views/ListView/ListView";
 
-
 export default function Home() {
     const context = useContext(LayoutContext);
     if (!context) return null;

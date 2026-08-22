@@ -32,7 +32,7 @@
   color: var(--stroke-light);
 }
 
-.tabs .active {
+.tabs .clicked-tab{
   color: var(--white);
   text-decoration: underline;
   text-decoration-thickness: 2.5px;
