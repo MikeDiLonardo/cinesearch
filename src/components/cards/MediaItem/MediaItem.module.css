@@ -40,6 +40,6 @@
   color: var(--white);
 }
 .year,
-.director {
-  color: var(--stroke-mid);
+.rating {
+  color: var(--stroke-light);
 }

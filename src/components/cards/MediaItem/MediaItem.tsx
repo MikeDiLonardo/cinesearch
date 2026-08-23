@@ -2,8 +2,10 @@ import type {MediaItem} from "../../../types/media-item";
 import FavoriteButton from "../../buttons/FavoriteButton/FavoriteButton";
 import styles from "./MediaItem.module.css";
 
-export default function MediaItem({ view, shape, image }: MediaItem) {
+export default function MediaItem({ view, shape, image, title, releaseDate, voteAverage }: MediaItem) {
     const isMovie = shape === "rectangle"; 
+    const year = releaseDate?.substring(0, 4); 
+    const rating = voteAverage?.toFixed(1);
 
     if (view === "grid") {
         return (
@@ -24,8 +26,8 @@ export default function MediaItem({ view, shape, image }: MediaItem) {
                         alt="Movie Poster"   
                     />
                     <div>
-                        <p className={`${styles.title} text--base-sb`}>Title</p>
-                        <p className={`${styles.year} text--xs-lt`}>Year - Directed By <span className={`${styles.director} text--xs-sb`}>Name</span></p>
+                        <p className={`${styles.title} text--base-sb`}>{title}</p>
+                        <p className={`${styles.year} text--xs-lt`}>{year} - Rating: <span className={`${styles.rating} text--xs-sb`}>{rating}</span></p>
                     </div>
                 </div>
                 <FavoriteButton view="list" />

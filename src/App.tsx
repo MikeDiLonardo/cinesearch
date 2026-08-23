@@ -20,7 +20,7 @@ export default function App() {
           <Route path="/favorites" element={<Favorites />} />
         </Route>
 
-        <Route path="/details" element={<Details />} />
+        <Route path="/details/:id" element={<Details />} />
         <Route path="/credits" element={<Credits />} />        
         <Route path="*" element={<p>Page Not Found</p>} />
         </Route>
