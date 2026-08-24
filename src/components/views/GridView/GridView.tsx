@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useTrendingMovies from "../../../hooks/useTrendingMovies";
+import useTrendingMovies from "../../../hooks/useTrending";
 import MediaItem from "../../cards/MediaItem/MediaItem";
 import styles from "./GridView.module.css";
 

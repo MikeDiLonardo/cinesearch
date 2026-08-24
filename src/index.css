@@ -162,7 +162,13 @@ select {
   color: inherit;
 }
 
-.clicked {
+a {
+  text-decoration: none;
+}
+
+/* animation */
+
+.clicked-icon {
   animation: upscale 0.1s linear;
 }
 

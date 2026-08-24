@@ -1,5 +1,5 @@
 import type { Movie } from "./movie";
 
-export interface TMDBResponse {
+export interface Movies {
     results: Movie[];
 }
