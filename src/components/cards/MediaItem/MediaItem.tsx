@@ -7,11 +7,13 @@ export default function MediaItem({ view, shape, image, title, releaseDate, vote
     const year = releaseDate?.substring(0, 4); 
     const rating = voteAverage?.toFixed(1);
 
+    const finalImage = image?.includes("placeholder") ? image : `https://image.tmdb.org/t/p/w500/${image}`;
+
     if (view === "grid") {
         return (
             <li className={styles["grid-item"]}>
                 <img className={`${styles.thumbnail} ${styles.rectangle} ${styles.grid}`}
-                    src={`https://image.tmdb.org/t/p/w500/${image}`}
+                    src={finalImage}
                     alt="Movie Poster"                
                 />
                 <FavoriteButton view="grid" />
@@ -22,7 +24,7 @@ export default function MediaItem({ view, shape, image, title, releaseDate, vote
             <li className={styles["list-item"]}>
                 <div className={styles.info}>
                     <img className={`${styles.thumbnail} ${styles.rectangle} ${styles.list}`}
-                        src={`https://image.tmdb.org/t/p/w500/${image}`}
+                        src={finalImage}
                         alt="Movie Poster"   
                     />
                     <div>
@@ -37,7 +39,7 @@ export default function MediaItem({ view, shape, image, title, releaseDate, vote
         return (
             <div className={`${styles["details-item"]}`}>
                 <img className={`${styles.thumbnail} ${styles[`${shape}`]} ${styles.details}`}
-                    src={`https://image.tmdb.org/t/p/w500/${image}`}
+                    src={finalImage}
                     alt={ isMovie ? "Movie Poster" : "Credit Photo" }
                 />
                 { isMovie ? <FavoriteButton view="details" /> : null }
@@ -46,7 +48,7 @@ export default function MediaItem({ view, shape, image, title, releaseDate, vote
     } else {
         return (
             <img className={`${styles.thumbnail} ${styles.rectangle} ${styles.credits}`}
-                src={`https://image.tmdb.org/t/p/w500/${image}`} 
+                src={finalImage} 
                 alt="Credit Photo"  
             />
         )

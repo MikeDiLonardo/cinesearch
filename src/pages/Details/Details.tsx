@@ -28,6 +28,8 @@ export default function Details() {
         }
     }
 
+
+
     return (
         <CreditsDetailsLayout page="details">
             <div className={styles.container}>
@@ -61,11 +63,29 @@ export default function Details() {
                 <section className={styles.credit}>
                     <h3 className={styles["credit-heading"]}>Cast</h3>
                     <ul className={styles.cast}>
-                        {movie.credits.cast.map(cast => <li key={cast.id}><CreditItem name={cast.name} image={cast.profile_path} role={cast.character}/></li>)}
+                        {movie.credits.cast.map((cast, index) => 
+                            <li key={cast.id}>
+                                <CreditItem 
+                                    index={index}
+                                    name={cast.name} 
+                                    image={cast.profile_path ? cast.profile_path : 
+                                        `/profile-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
+                                    role={cast.character}
+                                />
+                            </li>)}
                     </ul>
                     <h3 className={styles["credit-heading"]}>Crew</h3>
                     <ul className={styles.crew}>
-                        {movie.credits.crew.map(crew => <li key={crew.id}><CreditItem name={crew.name} image={crew.profile_path} role={crew.job}/></li>)}
+                        {movie.credits.crew.map((crew, index) =>
+                            <li key={crew.id}>
+                                <CreditItem 
+                                    index={index}                                
+                                    name={crew.name} 
+                                    image={crew.profile_path ? crew.profile_path : 
+                                        `/profile-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
+                                    role={crew.job}
+                                />
+                            </li>)}
                     </ul>
                 </section>
             </div>
