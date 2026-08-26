@@ -1,10 +1,11 @@
 import type { Movie } from "./movie";
-import type { CastCrew } from "./cast-crew";
+import type { Credits } from "./credits";
 
 export interface MovieCreditsDetails extends Movie {
+    backdrop_path: string;
     credits: {
-        cast: CastCrew[];   
-        crew: CastCrew[];    
+        cast: Credits[];   
+        crew: Credits[];    
     };    
     genres: {
         id: number;

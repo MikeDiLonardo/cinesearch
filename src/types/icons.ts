@@ -5,4 +5,5 @@ export interface Icons {
     fill?: string;
     strokeWidth?: number;
     stroke?: string;
+    isHalf?: boolean,
 }

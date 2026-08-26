@@ -1,17 +1,23 @@
 import type { Icons } from "../../types/icons";
 
-export default function FavoriteIcon({ className, width, height, fill = "none", strokeWidth, stroke = "var(--favorite)" }: Icons) {
+export default function FavoriteIcon({ className, width, height, fill = "none", strokeWidth, stroke = "var(--favorite)", isHalf }: Icons) {
     return (
         <svg 
             className={className}
             width={width}
             height={height}         
             xmlns="http://www.w3.org/2000/svg" 
-            fill={fill} 
+            fill={isHalf ? "url(#halfStar)" : fill} 
             viewBox="0 0 24 24" 
             strokeWidth={strokeWidth}
             stroke={stroke} 
         >
+            <defs>
+                <linearGradient id="halfStar">
+                    <stop offset="50%" stopColor="var(--favorite)" />
+                    <stop offset="50%" stopColor="transparent" />
+                </linearGradient>
+            </defs>
             <path 
                 strokeLinecap="round" 
                 strokeLinejoin="round" 

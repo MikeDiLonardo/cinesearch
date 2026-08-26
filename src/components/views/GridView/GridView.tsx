@@ -10,8 +10,8 @@ export default function GridView() {
     return (        
         <ul className={styles["grid-view"]}>
             {movies.map(movie => (
-                <Link to={`/details/${movie.id}`}>
-                    <MediaItem view="grid" key={movie.id} image={movie.poster_path}/>
+                <Link to={`/details/${movie.id}`} key={movie.id}>
+                    <MediaItem view="grid" image={movie.poster_path}/>
                 </Link>
             ))}
         </ul>

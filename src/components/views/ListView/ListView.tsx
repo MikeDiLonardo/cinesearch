@@ -10,8 +10,8 @@ export default function ListView() {
     return(
         <ul className={styles["list-view"]}>
             {movies.map(movie => (
-                <Link to={`/${movie.id}`}>
-                    <MediaItem view="list" key={movie.id} image={movie.poster_path} title={movie.title} releaseDate={movie.release_date} voteAverage={movie.vote_average}/>
+                <Link to={`/details/${movie.id}`} key={movie.id}>
+                    <MediaItem view="list" image={movie.poster_path} title={movie.title} releaseDate={movie.release_date} voteAverage={movie.vote_average} />
                 </Link>
             ))}
         </ul>
