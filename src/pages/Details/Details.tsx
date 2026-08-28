@@ -69,7 +69,7 @@ export default function Details() {
                                     index={index}
                                     name={cast.name} 
                                     image={cast.profile_path ? cast.profile_path : 
-                                        `/profile-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
+                                        `/credits-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
                                     role={cast.character}
                                 />
                             </li>)}
@@ -82,7 +82,7 @@ export default function Details() {
                                     index={index}                                
                                     name={crew.name} 
                                     image={crew.profile_path ? crew.profile_path : 
-                                        `/profile-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
+                                        `/credits-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
                                     role={crew.job}
                                 />
                             </li>)}

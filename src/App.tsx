@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Suspense } from "react";
+import SuspenseFallback from "./components/common/Suspense/SuspenseFallback";
+import PageNotFound from "./components/common/PageNotFound/PageNotFound";
 import BaseLayout from "./components/layout/Layout/BaseLayout/BaseLayout";
 import HeaderLayout from "./components/layout/Layout/HeaderLayout/HeaderLayout";
 import Credits from "./pages/Credits/Credits";
@@ -10,7 +12,7 @@ import Favorites from "./pages/Favorites/Favorites";
 
 export default function App() {
   return <BrowserRouter>
-    <Suspense fallback={<p>Loading...</p>}>
+    <Suspense fallback={<SuspenseFallback />}>
       <Routes>
         <Route element={<BaseLayout />}>
 
@@ -22,7 +24,7 @@ export default function App() {
 
         <Route path="/details/:id" element={<Details />} />
         <Route path="/credits" element={<Credits />} />        
-        <Route path="*" element={<p>Page Not Found</p>} />
+        <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
     </Suspense>
