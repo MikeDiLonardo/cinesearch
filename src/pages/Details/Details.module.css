@@ -1,6 +1,8 @@
 /* container & sections */
 
 .container {
+  position: relative;
+  z-index: 20;
   padding-inline: 1rem;
   padding-bottom: var(--footer-h);
 }
@@ -56,6 +58,11 @@
 
 /* cast & crew */
 
+.cast img,
+.crew img {
+  object-position: 50% 30%;
+}
+
 .cast li:nth-child(odd),
 .crew li:nth-child(odd) {
   border-radius: var(--radius-sm);
@@ -66,6 +73,22 @@
 .crew {
   margin-block: 1rem;
   list-style: none;
+}
+
+.credit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.credit button {
+  align-self: center;
+  margin-block: 1rem;
+  border-radius: var(--radius-sm);
+  border: 0.5px solid var(--stroke-mid);
+  padding: var(--p-xxs) var(--p-sm);
+  background-color: var(--bg-main);
+  color: var(--stroke-light);
 }
 
 /* colors */

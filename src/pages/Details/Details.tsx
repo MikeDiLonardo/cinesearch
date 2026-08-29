@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 import useCreditsDetails from "../../hooks/useCreditsDetails";
 import CreditsDetailsLayout from "../../components/layout/Layout/CreditsDetailsLayout/CreditsDetailsLayout";
 import MediaItem from "../../components/cards/MediaItem/MediaItem";
@@ -12,6 +13,7 @@ export default function Details() {
     const movieId = Number.parseInt(id ?? "", 10); // ?? "" in case there's no number after details/
     const movie = useCreditsDetails(movieId);
     console.log(movie);
+    const [visibleCredits, setVisibleCredits] = useState(10);
     
     const year = movie.release_date.substring(0, 4); 
     const director = movie.credits.crew.filter(person => person.job === "Director").map(person => person.name).join(", ");
@@ -28,7 +30,23 @@ export default function Details() {
         }
     }
 
-    return (
+    console.log(movie.credits.cast.length)
+
+    return (<>
+        <div /* background image */
+            style={{
+                position: "absolute",
+                top: "0",
+                height: "40vh",
+                width: "100%",
+                zIndex: "10",
+                opacity: "0.5",
+                backgroundImage: `linear-gradient(180deg, rgba(0, 0 , 0, 0), var(--bg-header-footer)), url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path})`, 
+                backgroundSize: "150%", 
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center top",
+            }}      
+        ></div>
         <CreditsDetailsLayout page="details">
             <div className={styles.container}>
                 <section className={styles.header}>
@@ -72,6 +90,8 @@ export default function Details() {
                                 />
                             </li>)}
                     </ul>
+                    <button>More</button>
+
                     <h3 className={styles["credit-heading"]}>Crew</h3>
                     <ul className={styles.crew}>
                         {movie.credits.crew.map((crew, index) =>
@@ -88,5 +108,5 @@ export default function Details() {
                 </section>
             </div>
         </CreditsDetailsLayout>
-    )    
+    </>)    
 }
