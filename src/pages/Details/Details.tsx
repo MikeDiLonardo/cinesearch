@@ -28,8 +28,6 @@ export default function Details() {
         }
     }
 
-
-
     return (
         <CreditsDetailsLayout page="details">
             <div className={styles.container}>
@@ -55,7 +53,7 @@ export default function Details() {
                 
                 <section className={styles["headline-summary"]}>
                     <h3 className={`${styles.headline} text--base-sb`}>
-                        {movie.tagline !== "" ? movie.tagline : "Summary" }
+                        {movie.tagline === "" ? "Summary" : movie.tagline }
                     </h3>
                     <p className={`${styles.summary} text--xs-rg`}>{movie.overview}</p>
                 </section>

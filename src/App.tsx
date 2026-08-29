@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Suspense } from "react";
+import ScrollToTop from "./components/common/ScrollToTop";
 import SuspenseFallback from "./components/common/Suspense/SuspenseFallback";
 import PageNotFound from "./components/common/PageNotFound/PageNotFound";
 import BaseLayout from "./components/layout/Layout/BaseLayout/BaseLayout";
@@ -11,7 +12,9 @@ import Search from "./pages/Search/Search";
 import Favorites from "./pages/Favorites/Favorites";
 
 export default function App() {
-  return <BrowserRouter>
+  return (
+  <BrowserRouter>
+    <ScrollToTop />
     <Suspense fallback={<SuspenseFallback />}>
       <Routes>
         <Route element={<BaseLayout />}>
@@ -29,4 +32,5 @@ export default function App() {
       </Routes>
     </Suspense>
   </BrowserRouter>
+  )
 }
