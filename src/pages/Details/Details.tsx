@@ -13,7 +13,8 @@ export default function Details() {
     const movieId = Number.parseInt(id ?? "", 10); // ?? "" in case there's no number after details/
     const movie = useCreditsDetails(movieId);
     console.log(movie);
-    const [visibleCredits, setVisibleCredits] = useState(10);
+    const [visibleCast, setVisibleCast] = useState(10);
+    const [visibleCrew, setVisibleCrew] = useState(10);
     
     const year = movie.release_date.substring(0, 4); 
     const director = movie.credits.crew.filter(person => person.job === "Director").map(person => person.name).join(", ");
@@ -30,6 +31,46 @@ export default function Details() {
         }
     }
 
+    function handleMoreCast() {
+        setVisibleCast(movie.credits.cast.length);
+    }
+
+    function handleLessCast() {
+        setVisibleCast(10);
+    }
+
+    function handleMoreCrew() {
+        setVisibleCrew(movie.credits.crew.length);
+    }
+
+    function handleLessCrew() {
+        setVisibleCrew(10);
+    }
+
+    const castList = movie.credits.cast.slice(0, visibleCast).map((cast, index) => 
+                        <li key={cast.id}>
+                            <CreditItem 
+                                index={index}
+                                name={cast.name} 
+                                image={cast.profile_path ? cast.profile_path : 
+                                    `/credits-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
+                                role={cast.character}
+                            />
+                        </li>);
+    
+    const crewList = movie.credits.crew.slice(0, visibleCrew).map((crew, index) =>
+                        <li key={crew.id}>
+                            <CreditItem 
+                                index={index}                                
+                                name={crew.name} 
+                                image={crew.profile_path ? crew.profile_path : 
+                                    `/credits-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
+                                role={crew.job}
+                            />
+                        </li>)
+                        
+
+    
     console.log(movie.credits.cast.length)
 
     return (<>
@@ -37,7 +78,7 @@ export default function Details() {
             style={{
                 position: "absolute",
                 top: "0",
-                height: "40vh",
+                height: "35vh",
                 width: "100%",
                 zIndex: "10",
                 opacity: "0.5",
@@ -79,32 +120,27 @@ export default function Details() {
                 <section className={styles.credit}>
                     <h3 className={styles["credit-heading"]}>Cast</h3>
                     <ul className={styles.cast}>
-                        {movie.credits.cast.map((cast, index) => 
-                            <li key={cast.id}>
-                                <CreditItem 
-                                    index={index}
-                                    name={cast.name} 
-                                    image={cast.profile_path ? cast.profile_path : 
-                                        `/credits-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
-                                    role={cast.character}
-                                />
-                            </li>)}
+                        {castList}
                     </ul>
-                    <button>More</button>
+                    {movie.credits.cast.length > 10 ? 
+                        <button onClick={visibleCast === 10 ? handleMoreCast : handleLessCast}>
+                            {visibleCast === 10 ? "More" : "Less"}
+                        </button>    
+                    :
+                        null
+                    }
 
                     <h3 className={styles["credit-heading"]}>Crew</h3>
                     <ul className={styles.crew}>
-                        {movie.credits.crew.map((crew, index) =>
-                            <li key={crew.id}>
-                                <CreditItem 
-                                    index={index}                                
-                                    name={crew.name} 
-                                    image={crew.profile_path ? crew.profile_path : 
-                                        `/credits-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
-                                    role={crew.job}
-                                />
-                            </li>)}
+                        {crewList}
                     </ul>
+                    {movie.credits.crew.length  > 10 ? 
+                        <button onClick={visibleCrew === 10 ? handleMoreCrew : handleLessCrew}>
+                            {visibleCrew === 10 ? "More" : "Less"}
+                        </button>    
+                    :
+                        null
+                    }                             
                 </section>
             </div>
         </CreditsDetailsLayout>

@@ -3,6 +3,7 @@ import { LayoutContext } from "./LayoutContext";
 
 export function LayoutProvider(props: {children: React.ReactNode}) {
     const [clickedIcon, setClickedIcon] = useState("");
+    const [favorites, setFavorites] = useState<string[]>([]);
     const [isGrid, setIsGrid] = useState(true);
 
     function handleClickedIcon(iconName: string) {
@@ -13,10 +14,19 @@ export function LayoutProvider(props: {children: React.ReactNode}) {
         }, 500);
     }
 
+    function handleAddFavorite(newFavorite: string) {
+        setFavorites([...favorites, newFavorite]);
+    }
+
+    function handleRemoveFavorite(exFavorite: string) {
+        const remainingFavorites = favorites.filter(favorite => favorite !== exFavorite);
+        setFavorites(remainingFavorites);
+    }
+
     function onToggleLayout() {
         setIsGrid(!isGrid)
     }
 
     
-    return <LayoutContext value={{clickedIcon, isGrid, handleClickedIcon, onToggleLayout}}>{props.children}</LayoutContext>
+    return <LayoutContext value={{clickedIcon, favorites, isGrid, handleClickedIcon, handleAddFavorite, handleRemoveFavorite, onToggleLayout}}>{props.children}</LayoutContext>
 }

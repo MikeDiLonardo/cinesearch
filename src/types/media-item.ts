@@ -1,4 +1,5 @@
 export interface MediaItem {
+    id: number;
     view: "grid" | "list" | "details" | "credits";
     title?: string;
     voteAverage?: number;

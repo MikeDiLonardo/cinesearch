@@ -2,7 +2,7 @@ import type {MediaItem} from "../../../types/media-item";
 import FavoriteButton from "../../buttons/FavoriteButton/FavoriteButton";
 import styles from "./MediaItem.module.css";
 
-export default function MediaItem({ view, shape, image, title, releaseDate, voteAverage }: MediaItem) {
+export default function MediaItem({ id, view, shape, image, title, releaseDate, voteAverage }: MediaItem) {
     const isMovie = shape === "rectangle"; 
     const year = releaseDate?.substring(0, 4); 
     const rating = voteAverage?.toFixed(1);

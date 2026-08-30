@@ -1,7 +1,7 @@
 .grid-view {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--gap-sm);
+  gap: var(--gap-xs) var(--gap-sm);
   width: 100%;
   padding-inline: 1rem;
   padding-top: var(--p-sm);
