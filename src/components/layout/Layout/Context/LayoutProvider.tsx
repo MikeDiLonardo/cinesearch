@@ -1,9 +1,10 @@
+import type { Movie } from "../../../../types/movie";
 import { useState } from "react";
 import { LayoutContext } from "./LayoutContext";
 
 export function LayoutProvider(props: {children: React.ReactNode}) {
     const [clickedIcon, setClickedIcon] = useState("");
-    const [favorites, setFavorites] = useState<string[]>([]);
+    const [favorites, setFavorites] = useState<Movie[]>([]);
     const [isGrid, setIsGrid] = useState(true);
 
     function handleClickedIcon(iconName: string) {
@@ -14,12 +15,12 @@ export function LayoutProvider(props: {children: React.ReactNode}) {
         }, 500);
     }
 
-    function handleAddFavorite(newFavorite: string) {
+    function handleAddFavorite(newFavorite: Movie) {
         setFavorites([...favorites, newFavorite]);
     }
 
-    function handleRemoveFavorite(exFavorite: string) {
-        const remainingFavorites = favorites.filter(favorite => favorite !== exFavorite);
+    function handleRemoveFavorite(exFavorite: Movie) {
+        const remainingFavorites = favorites.filter(favorite => favorite.id !== exFavorite.id);
         setFavorites(remainingFavorites);
     }
 

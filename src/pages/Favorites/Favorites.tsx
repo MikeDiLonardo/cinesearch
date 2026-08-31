@@ -6,13 +6,11 @@ import ListView from "../../components/views/ListView/ListView";
 export default function Favorites() {
     const context = useContext(LayoutContext);
     if (!context) return null;
-    const { clickedIcon, isGrid } = context;
-
-    const favorites = []
+    const { isGrid } = context;
 
     return (
         <div className="favorites">
-            {isGrid ? <GridView /> : <ListView />}
+            {isGrid ? <GridView page="favorites" /> : <ListView page="favorites" />}
         </div>
     )    
 }

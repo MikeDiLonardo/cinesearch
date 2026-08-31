@@ -1,25 +1,25 @@
-import { useState, useContext } from "react"
+import type { Movie } from "../../../types/movie";
+import { useContext } from "react"
 import { LayoutContext } from "../../layout/Layout/Context/LayoutContext";
 import FavoriteIcon from "../../icons/FavoriteIcon"
 import styles from "./FavoriteButton.module.css"
 
-export default function FavoriteButton({ view }: {view: string}) {
-    const [isFilled, setIsFilled] = useState(false);
+export default function FavoriteButton({ movie, view }: {movie: Movie, view: string}) {
     const context = useContext(LayoutContext);
     if (!context) return null;
-    const { clickedIcon, handleClickedIcon } = context;
-
-    function handleIsFilled() {
-        setIsFilled(!isFilled);
-    }
+    const { clickedIcon, favorites, handleClickedIcon, handleAddFavorite, handleRemoveFavorite } = context;
 
     return (
         <button 
             className={`${styles["favorite-icon-wrapper"]} ${styles[`${view}`]} ${clickedIcon === "favorite" ? "clicked" : ""}`} 
             onClick={(event) => {
                 event.preventDefault();
-                handleIsFilled();
-                handleClickedIcon("favorite")                
+                handleClickedIcon("favorite");
+                if (favorites.find(favorite => favorite.id === movie.id)) {
+                    handleRemoveFavorite(movie);
+                } else {
+                    handleAddFavorite(movie);
+                }
             }} 
             aria-label="Toggle favorite"
         >
@@ -27,7 +27,7 @@ export default function FavoriteButton({ view }: {view: string}) {
                 className={styles["favorite-icon"]} 
                 width={48} 
                 height={48}
-                fill={isFilled ? "var(--favorite)" : "none"}
+                fill={favorites.find(favorite => favorite.id === movie.id) ? "var(--favorite)" : "none"}
                 />
         </button>
     )    

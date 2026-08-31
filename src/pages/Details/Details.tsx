@@ -91,7 +91,7 @@ export default function Details() {
         <CreditsDetailsLayout page="details">
             <div className={styles.container}>
                 <section className={styles.header}>
-                    <MediaItem view="details" shape="rectangle" key={movie.id} image={movie.poster_path} />
+                    <MediaItem movie={movie} view="details" shape="rectangle" key={movie.id} image={movie.poster_path} />
 
                     <div className={styles.info}>
                         <h2 className={`${styles.title} text--md-sb`}>{movie.title}</h2>

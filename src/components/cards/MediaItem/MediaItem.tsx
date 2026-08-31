@@ -2,7 +2,7 @@ import type {MediaItem} from "../../../types/media-item";
 import FavoriteButton from "../../buttons/FavoriteButton/FavoriteButton";
 import styles from "./MediaItem.module.css";
 
-export default function MediaItem({ id, view, shape, image, title, releaseDate, voteAverage }: MediaItem) {
+export default function MediaItem({ movie, view, shape, image, title, releaseDate, voteAverage }: MediaItem) {
     const isMovie = shape === "rectangle"; 
     const year = releaseDate?.substring(0, 4); 
     const rating = voteAverage?.toFixed(1);
@@ -16,7 +16,7 @@ export default function MediaItem({ id, view, shape, image, title, releaseDate, 
                     src={finalImage}
                     alt="Movie Poster"                
                 />
-                <FavoriteButton view="grid" />
+                <FavoriteButton movie={movie} view="grid" />
             </li>            
         )
     } else if (view === "list") {
@@ -32,7 +32,7 @@ export default function MediaItem({ id, view, shape, image, title, releaseDate, 
                         <p className={`${styles.year} text--xs-lt`}>{year} - Rating: <span className={`${styles.rating} text--xs-sb`}>{rating}</span></p>
                     </div>
                 </div>
-                <FavoriteButton view="list" />
+                <FavoriteButton movie={movie} view="list" />
             </li>            
         )
     } else if (view === "details") {
@@ -42,7 +42,7 @@ export default function MediaItem({ id, view, shape, image, title, releaseDate, 
                     src={finalImage}
                     alt={ isMovie ? "Movie Poster" : "Credit Photo" }
                 />
-                { isMovie ? <FavoriteButton view="details" /> : null }
+                { isMovie ? <FavoriteButton movie={movie} view="details" /> : null }
             </div>
         )
     } else {

@@ -1,5 +1,7 @@
+import type { Movie } from "./movie";
+
 export interface MediaItem {
-    id: number;
+    movie: Movie;
     view: "grid" | "list" | "details" | "credits";
     title?: string;
     voteAverage?: number;
