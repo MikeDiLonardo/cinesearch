@@ -16,11 +16,15 @@ export default function Details() {
     const [visibleCast, setVisibleCast] = useState(10);
     const [visibleCrew, setVisibleCrew] = useState(10);
     
+    /* Variables for header */
+
     const year = movie.release_date.substring(0, 4); 
     const director = movie.credits.crew.filter(person => person.job === "Director").map(person => person.name).join(", ");
 
-    const movieRating = Math.round(movie.vote_average) / 2 
+    /* Rating system */
+
     const rating = [];
+    const movieRating = Math.round(movie.vote_average) / 2;
     for (let i = 0; i < 5; i++) {
         if (i + 1 <= movieRating) {
             rating.push(<FavoriteIcon width={18} height={18} className={styles.star} fill="var(--favorite)" strokeWidth={1} isHalf={false}  key={i}/>) 
@@ -31,47 +35,83 @@ export default function Details() {
         }
     }
 
+    /* Cast */
+
+    const uniqueCast = new Map();
+    movie.credits.cast.forEach(member => {
+        if (uniqueCast.has(member.id)) {
+            uniqueCast.set(member.id, {
+                id: member.id,
+                name: member.name,
+                profile_path: member.profile_path,
+                character: `${uniqueCast.get(member.id).character}, ${member.character}`,
+            });
+        } else {
+            uniqueCast.set(member.id, {
+                id: member.id,
+                name: member.name,
+                profile_path: member.profile_path,
+                character: member.character,
+            });
+        }
+    })
+    const cast = [...uniqueCast.values()];
+    const castList = cast.slice(0, visibleCast).map((cast, index) => 
+        <li key={cast.id}>
+            <CreditItem 
+                index={index}
+                name={cast.name} 
+                image={cast.profile_path ? cast.profile_path : 
+                    `/credits-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
+                role={cast.character}
+            />
+        </li>);
+
     function handleMoreCast() {
         setVisibleCast(movie.credits.cast.length);
     }
-
     function handleLessCast() {
         setVisibleCast(10);
     }
+    
+    /* Crew */
+    
+    const uniqueCrew = new Map();
+    movie.credits.crew.forEach(member => {
+        if (uniqueCrew.has(member.id)) {
+            uniqueCrew.set(member.id, {
+                id: member.id,
+                name: member.name,
+                profile_path: member.profile_path,
+                job: `${uniqueCrew.get(member.id).job}, ${member.job}`,
+            });
+        } else {
+            uniqueCrew.set(member.id, {
+                id: member.id,
+                name: member.name,
+                profile_path: member.profile_path,
+                job: member.job,
+            });
+        }
+    })
+    const crew = [...uniqueCrew.values()];
+    const crewList = crew.slice(0, visibleCrew).map((crew, index) =>
+        <li key={crew.id}>
+            <CreditItem 
+                index={index}                                
+                name={crew.name} 
+                image={crew.profile_path ? crew.profile_path : 
+                    `/credits-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
+                role={crew.job}
+            />
+        </li>);             
 
     function handleMoreCrew() {
         setVisibleCrew(movie.credits.crew.length);
     }
-
     function handleLessCrew() {
         setVisibleCrew(10);
     }
-
-    const castList = movie.credits.cast.slice(0, visibleCast).map((cast, index) => 
-                        <li key={cast.id}>
-                            <CreditItem 
-                                index={index}
-                                name={cast.name} 
-                                image={cast.profile_path ? cast.profile_path : 
-                                    `/credits-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
-                                role={cast.character}
-                            />
-                        </li>);
-    
-    const crewList = movie.credits.crew.slice(0, visibleCrew).map((crew, index) =>
-                        <li key={crew.id}>
-                            <CreditItem 
-                                index={index}                                
-                                name={crew.name} 
-                                image={crew.profile_path ? crew.profile_path : 
-                                    `/credits-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
-                                role={crew.job}
-                            />
-                        </li>)
-                        
-
-    
-    console.log(movie.credits.cast.length)
 
     return (<>
         <div /* background image */

@@ -7,14 +7,13 @@ import styles from "./FavoriteButton.module.css"
 export default function FavoriteButton({ movie, view }: {movie: Movie, view: string}) {
     const context = useContext(LayoutContext);
     if (!context) return null;
-    const { clickedIcon, favorites, handleClickedIcon, handleAddFavorite, handleRemoveFavorite } = context;
+    const { favorites, handleAddFavorite, handleRemoveFavorite } = context;
 
     return (
         <button 
-            className={`${styles["favorite-icon-wrapper"]} ${styles[`${view}`]} ${clickedIcon === "favorite" ? "clicked" : ""}`} 
+            className={`${styles["favorite-icon-wrapper"]} ${styles[`${view}`]}`} 
             onClick={(event) => {
                 event.preventDefault();
-                handleClickedIcon("favorite");
                 if (favorites.find(favorite => favorite.id === movie.id)) {
                     handleRemoveFavorite(movie);
                 } else {
