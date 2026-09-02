@@ -26,7 +26,7 @@ export default function App() {
         </Route>
 
         <Route path="/details/:id" element={<Details />} />
-        <Route path="/credits" element={<Credits />} />        
+        <Route path="/credits/:id" element={<Credits />} />        
         <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>

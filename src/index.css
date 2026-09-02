@@ -49,6 +49,7 @@
   /* Header & Footer height */
   --header-h: 6rem;
   --footer-h: 4rem;
+  --header-footer-h: calc(var(--header-h) + var(--footer-h));
 }
 
 * {

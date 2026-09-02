@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import useTrendingMovies from "../../../hooks/useTrending";
 import { useContext } from "react"
 import { LayoutContext } from "../../layout/Layout/Context/LayoutContext";
+import useTrendingMovies from "../../../hooks/useTrending";
 import MediaItem from "../../cards/MediaItem/MediaItem";
+import NoFavorites from "../../../pages/Favorites/NoFavorites";
 import styles from "./ListView.module.css";
 
 export default function ListView({page}: {page: string}) {
@@ -24,14 +25,20 @@ export default function ListView({page}: {page: string}) {
             </ul>
         )    
     } else {
-        return(
-            <ul className={styles["list-view"]}>
-                {favorites.map(favorite => (
-                    <Link to={`/details/${favorite.id}`} key={favorite.id}>
-                        <MediaItem movie={favorite} view="list" image={favorite.poster_path} title={favorite.title} releaseDate={favorite.release_date} voteAverage={favorite.vote_average} />
-                    </Link>
-                ))}
-            </ul>
-        )            
+        if (favorites.length > 0) {
+            return(
+                <ul className={styles["list-view"]}>
+                    {favorites.map(favorite => (
+                        <Link to={`/details/${favorite.id}`} key={favorite.id}>
+                            <MediaItem movie={favorite} view="list" image={favorite.poster_path} title={favorite.title} releaseDate={favorite.release_date} voteAverage={favorite.vote_average} />
+                        </Link>
+                    ))}
+                </ul>
+            )   
+        } else {
+            return (
+                <NoFavorites />
+            )
+        }
     }
 }

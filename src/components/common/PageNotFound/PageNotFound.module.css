@@ -1,19 +1,19 @@
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: var(--gap-xs);    
-    width: 100vw;
-    height: 100vh;
-    padding-inline: 1rem;
-  }
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap-xs);
+  width: 100vw;
+  height: calc(100vh - var(--header-footer-h));
+  padding-inline: 1rem;
+}
 
-  .container h1 {
-    color: var(--stroke-light);
-  }
+.container h1 {
+  color: var(--stroke-light);
+}
 
-  .container p {
-    text-align: center;
-    color: var(--stroke-mid);
-  }
+.container p {
+  text-align: center;
+  color: var(--stroke-mid);
+}

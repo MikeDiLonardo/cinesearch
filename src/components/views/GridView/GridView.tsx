@@ -3,6 +3,7 @@ import useTrendingMovies from "../../../hooks/useTrending";
 import { useContext } from "react"
 import { LayoutContext } from "../../layout/Layout/Context/LayoutContext";
 import MediaItem from "../../cards/MediaItem/MediaItem";
+import NoFavorites from "../../../pages/Favorites/NoFavorites";
 import styles from "./GridView.module.css";
 
 export default function GridView({page}: {page: string}) {
@@ -24,14 +25,20 @@ export default function GridView({page}: {page: string}) {
             </ul>    
         )
     } else {
-        return (
-            <ul className={styles["grid-view"]}>
-                {favorites.map(favorite => (
-                    <Link to={`/details/${favorite.id}`} key={favorite.id}>
-                        <MediaItem movie={favorite} view="grid" image={favorite.poster_path}/>
-                    </Link>
-                ))}
-            </ul>  
-        )
+        if (favorites.length > 0) {
+            return (
+                <ul className={styles["grid-view"]}>
+                    {favorites.map(favorite => (
+                        <Link to={`/details/${favorite.id}`} key={favorite.id}>
+                            <MediaItem movie={favorite} view="grid" image={favorite.poster_path}/>
+                        </Link>
+                    ))}
+                </ul>  
+            )            
+        } else {
+            return (
+                <NoFavorites />
+            )
+        }
     } 
 }

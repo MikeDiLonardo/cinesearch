@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
 import useCreditsDetails from "../../hooks/useCreditsDetails";
 import CreditsDetailsLayout from "../../components/layout/Layout/CreditsDetailsLayout/CreditsDetailsLayout";
@@ -57,15 +57,17 @@ export default function Details() {
     })
     const cast = [...uniqueCast.values()];
     const castList = cast.slice(0, visibleCast).map((cast, index) => 
-        <li key={cast.id}>
-            <CreditItem 
-                index={index}
-                name={cast.name} 
-                image={cast.profile_path ? cast.profile_path : 
-                    `/credits-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
-                role={cast.character}
-            />
-        </li>);
+            <li key={cast.id}>
+                <CreditItem 
+                    index={index}
+                    name={cast.name} 
+                    image={cast.profile_path ? cast.profile_path : 
+                        `/credits-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
+                    role={cast.character}
+                />
+            </li>)
+
+
 
     function handleMoreCast() {
         setVisibleCast(movie.credits.cast.length);
@@ -130,6 +132,9 @@ export default function Details() {
         ></div>
         <CreditsDetailsLayout page="details">
             <div className={styles.container}>
+
+                {/* header */}
+
                 <section className={styles.header}>
                     <MediaItem movie={movie} view="details" shape="rectangle" key={movie.id} image={movie.poster_path} />
 
@@ -150,6 +155,8 @@ export default function Details() {
                     </div>
                 </section>
                 
+                {/* headline / summary */}
+
                 <section className={styles["headline-summary"]}>
                     <h3 className={`${styles.headline} text--base-sb`}>
                         {movie.tagline === "" ? "Summary" : movie.tagline }
@@ -157,8 +164,10 @@ export default function Details() {
                     <p className={`${styles.summary} text--xs-rg`}>{movie.overview}</p>
                 </section>
                 
-                <section className={styles.credit}>
-                    <h3 className={styles["credit-heading"]}>Cast</h3>
+                {/* credits */}
+
+                <section className={styles.credits}>
+                    <h3 className={styles["credits-heading"]}>Cast</h3>
                     <ul className={styles.cast}>
                         {castList}
                     </ul>
@@ -170,7 +179,7 @@ export default function Details() {
                         null
                     }
 
-                    <h3 className={styles["credit-heading"]}>Crew</h3>
+                    <h3 className={styles["credits-heading"]}>Crew</h3>
                     <ul className={styles.crew}>
                         {crewList}
                     </ul>

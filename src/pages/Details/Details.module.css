@@ -58,13 +58,13 @@
 
 /* cast & crew */
 
-.credit {
+.credits {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.credit button {
+.credits button {
   align-self: center;
   border-radius: var(--radius-sm);
   border: 0.5px solid var(--stroke-mid);
@@ -74,7 +74,7 @@
   cursor: pointer;
 }
 
-.credit button:last-of-type {
+.credits button:last-of-type {
   margin-bottom: 1rem;
 }
 
@@ -100,7 +100,7 @@
 .title,
 .genres,
 .headline,
-.credit-heading {
+.credits-heading {
   color: var(--white);
 }
 

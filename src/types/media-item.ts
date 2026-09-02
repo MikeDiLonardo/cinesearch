@@ -1,8 +1,8 @@
 import type { Movie } from "./movie";
 
 export interface MediaItem {
-    movie: Movie;
     view: "grid" | "list" | "details" | "credits";
+    movie?: Movie;
     title?: string;
     voteAverage?: number;
     releaseDate?: string;

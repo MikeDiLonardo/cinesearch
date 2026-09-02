@@ -65,7 +65,7 @@ export default function Credits() {
                 </div> 
             : 
                 <div className={styles.filmography}>
-                    {isGrid ? <GridView /> : <ListView />}
+                    {isGrid ? <GridView page="credits" /> : <ListView page="credits" />}
                 </div> 
             }
 
