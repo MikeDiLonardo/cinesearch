@@ -34,6 +34,10 @@
   color: var(--stroke-light);
 }
 
+.tabs button {
+  cursor: pointer;  
+}
+
 .tabs .clicked-tab{
   color: var(--white);
   text-decoration: underline;

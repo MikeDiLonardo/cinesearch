@@ -1,25 +1,17 @@
+import type { View } from "../../../types/view";
 import { useContext } from "react"
 import { LayoutContext } from "../../layout/Layout/Context/LayoutContext";
-import { useParams } from "react-router-dom";
 import useTrendingMovies from "../../../hooks/useTrending";
-import usePerson from "../../../hooks/usePerson";
 import MediaItem from "../../cards/MediaItem/MediaItem";
 import NoFavorites from "../../../pages/Favorites/NoFavorites";
 import styles from "./GridView.module.css";
 
-export default function GridView({page}: {page: string}) {
+export default function GridView({page, person}: View) {
     const movies = useTrendingMovies()
     const context = useContext(LayoutContext);
 
-    const {id} = useParams();
-    const actorId = Number.parseInt(id ?? "", 10); // ?? "" in case there's no number after credits/    
-    const person = usePerson(actorId);
-
     if (!context) return null;
     const {favorites} = context;
-
-    console.log(movies);
-    console.log(person);
 
     if (page === "home") {
         return (
@@ -44,6 +36,19 @@ export default function GridView({page}: {page: string}) {
             )
         }
     } else {
-
+        return (<>
+            <h2>As Cast</h2>
+            <ul className={styles["grid-view"]}>
+                {person.movie_credits.cast.map(movie => (
+                    <MediaItem movie={movie} view="grid" image={movie.poster_path} key={movie.id}/>
+                ))}
+            </ul>
+            <h2>As Crew</h2>
+            <ul className={styles["grid-view"]}>
+                {person.movie_credits.crew.map(movie => (
+                    <MediaItem movie={movie} view="grid" image={movie.poster_path} key={movie.id}/>
+                ))}
+            </ul>
+        </>)
     }
 }

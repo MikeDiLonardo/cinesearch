@@ -13,6 +13,7 @@ export default function Credits() {
     const {id} = useParams();
     const actorId = Number.parseInt(id ?? "", 10); // ?? "" in case there's no number after credits/    
     const person = usePerson(actorId);
+    
     const context = useContext(LayoutContext);
     if (!context) return null;
     const { isGrid } = context;
@@ -36,7 +37,6 @@ export default function Credits() {
         } else {
             return knownFor
         }
-
     }
 
     function handleClickedTab(tabName: string) {
@@ -98,7 +98,7 @@ export default function Credits() {
                 </div> 
             : 
                 <div className={styles.filmography}>
-                    {isGrid ? <GridView page="credits" /> : <ListView page="credits" />}
+                    {isGrid ? <GridView page="credits" person={person} /> : <ListView page="credits" person={person} />}
                 </div> 
             }
 

@@ -5,14 +5,13 @@ import CreditsDetailsLayout from "../../components/layout/Layout/CreditsDetailsL
 import MediaItem from "../../components/cards/MediaItem/MediaItem";
 import CreditItem from "../../components/cards/CreditItem/CreditItem";
 import FavoriteIcon from "../../components/icons/FavoriteIcon";
-// import BackButton from "../../components/buttons/BackButton/BackButton";
 import styles from "./Details.module.css";
 
 export default function Details() {
     const {id} = useParams();    
     const movieId = Number.parseInt(id ?? "", 10); // ?? "" in case there's no number after details/
     const movie = useCreditsDetails(movieId);
-    console.log(movie);
+
     const [visibleCast, setVisibleCast] = useState(10);
     const [visibleCrew, setVisibleCrew] = useState(10);
     

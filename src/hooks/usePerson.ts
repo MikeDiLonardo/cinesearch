@@ -8,7 +8,5 @@ export default function usePerson(id: number) {
         queryFn: () => apiFetcher("get", `3/person/${id}`, undefined, "append_to_response=movie_credits"),
     });
 
-    console.log(data);
-
     return data
 }

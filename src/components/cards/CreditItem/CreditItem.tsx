@@ -4,7 +4,6 @@ import MediaItem from "../MediaItem/MediaItem";
 import styles from "./CreditItem.module.css";
 
 export default function CreditItem({ id, name, image, role }: CreditItem) {
-    console.log(id)
     return (
         <div className={styles["credit-item"]}>
             <Link to={`/credits/${id}`}>
