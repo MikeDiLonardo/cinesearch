@@ -1,5 +1,7 @@
 import { useState, useContext } from "react";
+import { useParams } from "react-router-dom";
 import { LayoutContext } from "../../components/layout/Layout/Context/LayoutContext";
+import usePerson from "../../hooks/usePerson";
 import CreditsDetailsLayout from "../../components/layout/Layout/CreditsDetailsLayout/CreditsDetailsLayout";
 import MediaItem from "../../components/cards/MediaItem/MediaItem";
 import GridView from "../../components/views/GridView/GridView";
@@ -8,28 +10,67 @@ import styles from "./Credits.module.css";
 
 export default function Credits() {
     const [clickedTab, setClickedTab] = useState("filmography")
+    const {id} = useParams();
+    const actorId = Number.parseInt(id ?? "", 10); // ?? "" in case there's no number after credits/    
+    const person = usePerson(actorId);
     const context = useContext(LayoutContext);
     if (!context) return null;
     const { isGrid } = context;
+    console.log(person)
+
+    const knownFor = person.known_for_department;
+    const currentYear = new Date();
+    const birthday = new Date(person.birthday);
+    let age = currentYear.getFullYear() - birthday.getFullYear();
+    if (currentYear.getMonth() < birthday.getMonth() || 
+        currentYear.getMonth() === birthday.getMonth() && currentYear.getDate() < birthday.getDate()) 
+    {
+        age -= 1;
+    } 
+
+    function job() {
+        if (knownFor === "Acting" || knownFor === "Directing" || knownFor === "Editing") {
+            return knownFor.replace("ing", "or");
+        } else if (knownFor === "Writing") {
+            return knownFor.replace("ing", "er");
+        } else {
+            return knownFor
+        }
+
+    }
 
     function handleClickedTab(tabName: string) {
         setClickedTab(tabName);
     }
 
-    return (
+    return (<>
+        <div /* background image */
+            style={{
+                position: "absolute",
+                top: "0",
+                height: "35vh",
+                width: "100%",
+                zIndex: "10",
+                opacity: "0.45",
+                backgroundImage: `linear-gradient(180deg, rgba(0, 0 , 0, 0), var(--bg-header-footer)), url(https://image.tmdb.org/t/p/w500/${person.profile_path})`, 
+                backgroundSize: "100%", 
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center 40%",
+            }}      
+        ></div>        
         <CreditsDetailsLayout page="credits">  
             <div className={styles.container}>
                 <section className={styles.header}>
-                        <MediaItem view="credits" shape="rectangle" />
+                        <MediaItem view="credits" shape="rectangle" image={person.profile_path} />
 
                         <div className={styles.info}>
                             <div>
-                                <h2 className={`${styles.name} text--md-sb`}>Gore Abrams</h2>
-                                <p className={`${styles.job} text--base-sb`}>Actor</p>
+                                <h2 className={`${styles.name} text--md-sb`}>{person.name}</h2>
+                                <p className={`${styles.job} text--base-sb`}>{job()}</p>
                             </div>
                             <div>
-                                <p className={`${styles.birthplace} text--sm-rg`}>Born in New York</p>
-                                <p className={`${styles.age} text--sm-rg`}>35 years old</p>
+                                <p className={`${styles.birthplace} text--sm-rg`}>Born in <span className="text--sm-sb">{person.place_of_birth}</span></p>
+                                <p className={`${styles.age} text--sm-rg`}>{age} years old</p>
                             </div>
                         </div>
                 </section>
@@ -52,16 +93,8 @@ export default function Credits() {
 
             </div>
             {clickedTab === "biography" ? 
-                <div className={`${styles["biography"]} text--sm-rg`}>
-                    <p>
-                        Sed elementum turpis lorem, nec suscipit felis tempus a. Aenean volutpat ultrices accumsan. Nullam tristique velit lectus, vitae aliquet turpis fermentum ac. Phasellus fringilla libero et arcu posuere, commodo.
-                    </p>
-                    <p>                 
-                        Sede in velit sodales, sollicitudin sapien quis, ullamcorper metus. Mauris auctor nec tellus sit amet tincidunt. Cras vestibulum lacinia risus eu vehicula. Praesent leo ipsum, semper eget ullamcorper at, suscipit id elit. Vestibulum dignissim consequat condimentum. Phasellus finibus lectus sit amet lorem eleifend, id pretium erat convallis. 
-                    </p>   
-                    <p>
-                        In orci tellus, molestie eu vulputate ac, laoreet in velit. Pellentesque a tempor eros. Proin cursus nisl nec molestie efficitur. Aenean varius euismod tempor. 
-                    </p>
+                <div className={`${styles["biography-wrapper"]} text--sm-rg`}>
+                    {person.biography ? person.biography.split("\n").map(bio => <p>&nbsp;{bio}</p>) : "No biography provided. Please try again later."}
                 </div> 
             : 
                 <div className={styles.filmography}>
@@ -70,5 +103,5 @@ export default function Credits() {
             }
 
         </CreditsDetailsLayout>
-    )    
+    </>)    
 }   

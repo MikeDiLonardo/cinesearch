@@ -1,8 +1,8 @@
 export interface Credits {
-    id: number; // for entire database
-    credit_id: string; // per movie
-    name: string;
     profile_path: string;
-    character?: string;
-    job?: string;    
+    name: string;
+    known_for_department: string;
+    place_of_birth: string;
+    birthday: string;
+    biography: string;
 }

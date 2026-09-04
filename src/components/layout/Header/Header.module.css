@@ -64,4 +64,5 @@
 
 .info-icon {
   color: var(--stroke-mid);
+  cursor: pointer;
 }

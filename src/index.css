@@ -82,11 +82,6 @@ body {
   font-size: var(--fs-xxs);
   font-weight: var(--fw-sb);
 }
-/* 14px - semibold */
-.text--sm-sb {
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-sb);
-}
 /* 16px - light */
 .text--base-lt {
   font-size: var(--fs-base);
@@ -97,7 +92,6 @@ body {
   font-size: var(--fs-lg);
   font-weight: var(--fw-sb);
 }
-
 /* 52px - semibold */
 .text--xxl-sb {
   font-size: var(--fs-xxl);
@@ -130,6 +124,11 @@ body {
 .text--sm-rg {
   font-size: var(--fs-sm);
   font-weight: var(--fw-rg);
+}
+/* 14px - semibold */
+.text--sm-sb {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-sb);
 }
 /* 16px - regular */
 .text--base-rg {

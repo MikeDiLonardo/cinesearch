@@ -1,6 +1,8 @@
 /* container */
 
 .container {
+  position: relative;
+  z-index: 20;  
   border-bottom: 1px solid var(--stroke-mid);
   padding-inline: 1rem;
 }
@@ -39,7 +41,7 @@
   text-underline-offset: 0.5rem;
 }
 
-.biography {
+.biography-wrapper {
   padding: 1rem;
   padding-bottom: calc(var(--footer-h) + 2rem);
   background-color: var(--bg-main);

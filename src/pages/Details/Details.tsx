@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState } from "react";
 import useCreditsDetails from "../../hooks/useCreditsDetails";
 import CreditsDetailsLayout from "../../components/layout/Layout/CreditsDetailsLayout/CreditsDetailsLayout";
@@ -59,13 +59,14 @@ export default function Details() {
     const castList = cast.slice(0, visibleCast).map((cast, index) => 
             <li key={cast.id}>
                 <CreditItem 
+                    id={cast.id}
                     index={index}
                     name={cast.name} 
                     image={cast.profile_path ? cast.profile_path : 
                         `/credits-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
                     role={cast.character}
                 />
-            </li>)
+            </li>);
 
 
 
@@ -100,6 +101,7 @@ export default function Details() {
     const crewList = crew.slice(0, visibleCrew).map((crew, index) =>
         <li key={crew.id}>
             <CreditItem 
+                id={crew.id}
                 index={index}                                
                 name={crew.name} 
                 image={crew.profile_path ? crew.profile_path : 
@@ -123,7 +125,7 @@ export default function Details() {
                 height: "35vh",
                 width: "100%",
                 zIndex: "10",
-                opacity: "0.5",
+                opacity: "0.40",
                 backgroundImage: `linear-gradient(180deg, rgba(0, 0 , 0, 0), var(--bg-header-footer)), url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path})`, 
                 backgroundSize: "150%", 
                 backgroundRepeat: "no-repeat",
