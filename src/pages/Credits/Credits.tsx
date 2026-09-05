@@ -19,19 +19,27 @@ export default function Credits() {
     const { isGrid } = context;
     console.log(person)
 
-    const knownFor = person.known_for_department;
+    /* age */
+
     const currentYear = new Date();
     const birthday = new Date(person.birthday);
-    let age = currentYear.getFullYear() - birthday.getFullYear();
-    if (currentYear.getMonth() < birthday.getMonth() || 
-        currentYear.getMonth() === birthday.getMonth() && currentYear.getDate() < birthday.getDate()) 
+    const deathday = person.deathday ? new Date(person.deathday) : null
+    const latestYear = deathday === null ? currentYear : deathday; 
+    let age = latestYear.getFullYear() - birthday.getFullYear();
+    if (latestYear.getMonth() < birthday.getMonth() || 
+        latestYear.getMonth() === birthday.getMonth() && latestYear.getDate() < birthday.getDate()) 
     {
         age -= 1;
     } 
 
+    /* role */
+
+    const knownFor = person.known_for_department;
     function job() {
-        if (knownFor === "Acting" || knownFor === "Directing" || knownFor === "Editing") {
-            return knownFor.replace("ing", "or");
+        if (knownFor === "Acting" && person.gender === 1) {
+            return knownFor.replace("ing", "ress");
+        } else if (knownFor === "Acting" || knownFor === "Directing" || knownFor === "Editing") {
+            return knownFor.replace("ing", "or");            
         } else if (knownFor === "Writing") {
             return knownFor.replace("ing", "er");
         } else {
@@ -48,7 +56,7 @@ export default function Credits() {
             style={{
                 position: "absolute",
                 top: "0",
-                height: "35vh",
+                height: "40vh",
                 width: "100%",
                 zIndex: "10",
                 opacity: "0.45",
@@ -70,7 +78,7 @@ export default function Credits() {
                             </div>
                             <div>
                                 <p className={`${styles.birthplace} text--sm-rg`}>Born in <span className="text--sm-sb">{person.place_of_birth}</span></p>
-                                <p className={`${styles.age} text--sm-rg`}>{age} years old</p>
+                                <p className={`${styles.age} text--sm-rg`}>{deathday? `${age} years old (Deceased)` : `${age} years old`}</p>
                             </div>
                         </div>
                 </section>
@@ -94,7 +102,13 @@ export default function Credits() {
             </div>
             {clickedTab === "biography" ? 
                 <div className={`${styles["biography-wrapper"]} text--sm-rg`}>
-                    {person.biography ? person.biography.split("\n").map(bio => <p>&nbsp;{bio}</p>) : "No biography provided. Please try again later."}
+                    {person.biography ? 
+                        person.biography.split("\n").map((bio, index) => (bio === "" ? 
+                            <p key={index}>&nbsp;</p> // To create paragraphs
+                            :
+                            <p key={index}>{bio}</p>)) // Without &nbsp; to not add a space at the beginning of each paragraph
+                        : 
+                        "No biography provided. Please try again later."}
                 </div> 
             : 
                 <div className={styles.filmography}>
@@ -105,3 +119,4 @@ export default function Credits() {
         </CreditsDetailsLayout>
     </>)    
 }   
+

@@ -37,17 +37,13 @@ export default function GridView({page, person}: View) {
         }
     } else {
         return (<>
-            <h2>As Cast</h2>
             <ul className={styles["grid-view"]}>
                 {person.movie_credits.cast.map(movie => (
                     <MediaItem movie={movie} view="grid" image={movie.poster_path} key={movie.id}/>
                 ))}
-            </ul>
-            <h2>As Crew</h2>
-            <ul className={styles["grid-view"]}>
                 {person.movie_credits.crew.map(movie => (
                     <MediaItem movie={movie} view="grid" image={movie.poster_path} key={movie.id}/>
-                ))}
+                ))}                
             </ul>
         </>)
     }

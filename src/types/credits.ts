@@ -2,6 +2,7 @@ import type { Movie } from "./movie"
 
 export interface Credits {
     id: number;
+    gender: number;
     movie_credits: {
         cast: Movie[];
         crew: Movie[];
@@ -11,5 +12,6 @@ export interface Credits {
     known_for_department: string;
     place_of_birth: string;
     birthday: string;
+    deathday: string;
     biography: string;
 }

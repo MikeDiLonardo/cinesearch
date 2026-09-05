@@ -46,6 +46,12 @@
 
 /* headeline & summary */
 
+.headline-summary {
+  position: relative;
+  z-index: 20;  
+
+}
+
 .headline {
   padding-bottom: var(--p-sm);
   letter-spacing: 0.01rem;
