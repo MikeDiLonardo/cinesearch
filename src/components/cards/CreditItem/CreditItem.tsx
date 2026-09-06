@@ -7,7 +7,11 @@ export default function CreditItem({ id, name, image, role }: CreditItem) {
     return (
         <div className={styles["credit-item"]}>
             <Link to={`/credits/${id}`}>
-                <MediaItem view="details" shape="square" image={image} />
+                <MediaItem 
+                    view="details" 
+                    shape="square" 
+                    image={image} 
+                />
             </Link>
             <div className={styles["credit-name-role"]}>
                 <Link to={`/credits/${id}`}>

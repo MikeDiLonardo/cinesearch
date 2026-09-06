@@ -13,7 +13,15 @@ export default function ListView({page, movies}: View) {
         return (
             <ul className={styles["list-view"]}>
                 {movies.map(movie => (
-                    <MediaItem movie={movie} view="list" image={movie.poster_path} title={movie.title} releaseDate={movie.release_date} voteAverage={movie.vote_average} key={movie.id}/>
+                    <MediaItem 
+                        movie={movie} 
+                        view="list" 
+                        image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"}
+                        title={movie.title} 
+                        releaseDate={movie.release_date} 
+                        voteAverage={movie.vote_average} 
+                        key={movie.id}
+                    />
                 ))}
             </ul>
         )    
@@ -22,7 +30,15 @@ export default function ListView({page, movies}: View) {
             return (
                 <ul className={styles["list-view"]}>
                     {movies.map(movie => (
-                        <MediaItem movie={movie} view="list" image={movie.poster_path} title={movie.title} releaseDate={movie.release_date} voteAverage={movie.vote_average} key={movie.id}/>
+                        <MediaItem 
+                            movie={movie} 
+                            view="list" 
+                            image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"}
+                            title={movie.title} 
+                            releaseDate={movie.release_date} 
+                            voteAverage={movie.vote_average} 
+                            key={movie.id}
+                        />
                     ))}
                 </ul>
             )   
@@ -35,7 +51,15 @@ export default function ListView({page, movies}: View) {
         return (
             <ul className={styles["list-view"]}>
                 {movies.map(movie => (
-                    <MediaItem movie={movie} view="grid" image={movie.poster_path ? movie.poster_path : "/movie-photo-placeholder.svg"} key={movie.id}/>
+                    <MediaItem 
+                        movie={movie} 
+                        view="list" 
+                        image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"}
+                        title={movie.title}
+                        releaseDate={movie.release_date}
+                        voteAverage={movie.vote_average}
+                        key={movie.id}
+                    />
                 ))}            
             </ul>           
         )

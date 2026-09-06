@@ -3,9 +3,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: calc(100vh - var(--header-footer-h));
+  width: 100%;
+  height: 100vh;
   padding-inline: 1rem;
+  background-color: var(--bg-main);
 }
 
 .container h1 {

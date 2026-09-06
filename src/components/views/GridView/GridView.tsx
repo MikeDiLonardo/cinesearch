@@ -13,7 +13,12 @@ export default function GridView({page, movies}: View) {
         return (
             <ul className={styles["grid-view"]}>
                 {movies.map(movie => (
-                    <MediaItem movie={movie} view="grid" image={movie.poster_path} key={movie.id}/>
+                    <MediaItem 
+                        movie={movie} 
+                        view="grid" 
+                        image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"}
+                        key={movie.id}
+                    />
                 ))}
             </ul>    
         )
@@ -22,7 +27,12 @@ export default function GridView({page, movies}: View) {
             return (
                 <ul className={styles["grid-view"]}>
                     {movies.map(movie => (
-                        <MediaItem movie={movie} view="grid" image={movie.poster_path ? movie.poster_path : "/movie-photo-placeholder.svg"} key={movie.id}/>
+                        <MediaItem 
+                            movie={movie} 
+                            view="grid" 
+                            image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"} 
+                            key={movie.id}
+                        />
                     ))}
                 </ul>  
             )            
@@ -35,7 +45,12 @@ export default function GridView({page, movies}: View) {
         return (<>
             <ul className={styles["grid-view"]}>
                 {movies.map(movie => (
-                    <MediaItem movie={movie} view="grid" image={movie.poster_path ? movie.poster_path : "/movie-photo-placeholder.svg"} key={movie.id}/>
+                    <MediaItem 
+                        movie={movie} 
+                        view="grid" 
+                        image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"} 
+                        key={movie.id}
+                    />
                 ))}             
             </ul>
         </>)

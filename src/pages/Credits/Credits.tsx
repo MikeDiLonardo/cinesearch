@@ -88,33 +88,24 @@ export default function Credits() {
                         <MediaItem 
                             view="credits" 
                             shape="rectangle" 
-                            image={person.profile_path ? person.profile_path :
-                                "/credit-page-placeholder.svg"
-                            } 
+                            image={person.profile_path ? `https://image.tmdb.org/t/p/w500/${person.profile_path}` : "/credit-page-placeholder.svg"} 
                         />
 
                         <div className={styles.info}>
                             <div>
                                 <h2 className={`${styles.name} text--md-sb`}>{person.name}</h2>
-                                {person.known_for_department ? 
-                                    <p className={`${styles.job} text--base-sb`}>{job()}</p>                                
-                                :
-                                    <p className={`${styles.job} text--base-sb`}>Occupation Unknown</p>  
-                                }
-
+                                {person.known_for_department ? <p className={`${styles.job} text--base-sb`}>{job()}</p> : <p className={`${styles.job} text--base-sb`}>Occupation Unknown</p>}
                             </div>
                             <div>
                                 {person.place_of_birth ?
-                                    <p className={`${styles.birthplace} text--sm-rg`}>
-                                        Born in <span className="text--sm-sb">{person.place_of_birth}</span>
-                                    </p>
-                                : 
-                                    <p className={`${styles.birthplace} text--sm-rg`}>
-                                        Birthplace Unknown
-                                    </p>
+                                    <p className={`${styles.birthplace} text--sm-rg`}>Born in <span className="text--sm-sb">{person.place_of_birth}</span></p>
+                                    : 
+                                    <p className={`${styles.birthplace} text--sm-rg`}> Birthplace <span className="text--sm-sb">Unknown</span></p>
                                 }
                                 {person.birthday? 
-                                    <p className={`${styles.age} text--sm-rg`}>{deathday? `${age} years old (Deceased)` : `${age} years old`}</p>
+                                    <p className={`${styles.age} text--sm-rg`}>
+                                        {deathday ? `${age} years old (Deceased)` : `${age} years old`}
+                                    </p>
                                 : 
                                     <p className={`${styles.age} text--sm-rg`}>Age Unknown</p>
                                 }
@@ -137,7 +128,6 @@ export default function Credits() {
                         Filmography
                     </button>
                 </div>
-
             </div>
             {clickedTab === "biography" ? 
                 <div className={`${styles["biography-wrapper"]} text--sm-rg`}>
@@ -149,12 +139,11 @@ export default function Credits() {
                         : 
                         "No biography provided. Please try again later."}
                 </div> 
-            : 
+                : 
                 <div className={styles.filmography}>
                     {isGrid ? <GridView page="credits" movies={uniqueMovies} /> : <ListView page="credits" movies={uniqueMovies} />}
                 </div> 
             }
-
         </CreditsDetailsLayout>
     </>)    
 }   

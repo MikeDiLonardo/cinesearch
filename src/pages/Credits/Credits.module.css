@@ -58,7 +58,8 @@
 
 .filmography {
   position: relative;
-  z-index: 20;  
+  z-index: 20;
+  height: 100%;  
 }
 
 /* colors */

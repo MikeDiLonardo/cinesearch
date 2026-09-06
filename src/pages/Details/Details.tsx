@@ -61,8 +61,7 @@ export default function Details() {
                     id={cast.id}
                     index={index}
                     name={cast.name} 
-                    image={cast.profile_path ? cast.profile_path : 
-                        `/credit-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
+                    image={cast.profile_path ? `https://image.tmdb.org/t/p/w500/${cast.profile_path}` : `/credit-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
                     role={cast.character}
                 />
             </li>);
@@ -103,8 +102,7 @@ export default function Details() {
                 id={crew.id}
                 index={index}                                
                 name={crew.name} 
-                image={crew.profile_path ? crew.profile_path : 
-                    `/credit-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
+                image={crew.profile_path ? `https://image.tmdb.org/t/p/w500/${crew.profile_path}`: `/credit-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
                 role={crew.job}
             />
         </li>);             
@@ -137,7 +135,12 @@ export default function Details() {
                 {/* header */}
 
                 <section className={styles.header}>
-                    <MediaItem movie={movie} view="details" shape="rectangle" key={movie.id} image={movie.poster_path ? movie.poster_path : "/movie-photo-placeholder.svg"}
+                    <MediaItem 
+                        movie={movie} 
+                        view="details" 
+                        shape="rectangle" 
+                        key={movie.id} 
+                        image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"}
                      />
 
                     <div className={styles.info}>
@@ -160,8 +163,7 @@ export default function Details() {
                 {/* headline / summary */}
 
                 <section className={styles["headline-summary"]}>
-                    <h3 className={`${styles.headline} text--base-sb`}>
-                        {movie.tagline === "" ? "Summary" : movie.tagline }
+                    <h3 className={`${styles.headline} text--base-sb`}> {movie.tagline === "" ? "Summary" : movie.tagline}
                     </h3>
                     <p className={`${styles.summary} text--xs-rg`}>{movie.overview}</p>
                 </section>

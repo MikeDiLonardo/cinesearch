@@ -7,14 +7,12 @@ export default function MediaItem({ movie, view, shape, image, title, releaseDat
     const year = releaseDate?.substring(0, 4); 
     const rating = voteAverage?.toFixed(1);
 
-    const finalImage = image?.includes("placeholder") ? image : `https://image.tmdb.org/t/p/w500/${image}`;
-
     if (view === "grid") {
         return (
             <Link to={`/details/${movie?.id}`}>        
                 <li className={styles["grid-item"]}>
                     <img className={`${styles.thumbnail} ${styles.rectangle} ${styles.grid}`}
-                        src={finalImage}
+                        src={image}
                         alt="Movie Poster"                
                     />
                     <FavoriteButton movie={movie} view="grid" />
@@ -27,12 +25,15 @@ export default function MediaItem({ movie, view, shape, image, title, releaseDat
                 <li className={styles["list-item"]}>
                     <div className={styles.info}>
                         <img className={`${styles.thumbnail} ${styles.rectangle} ${styles.list}`}
-                            src={finalImage}
+                            src={image}
                             alt="Movie Poster"   
                         />
                         <div>
                             <p className={`${styles.title} text--base-sb`}>{title}</p>
-                            <p className={`${styles.year} text--xs-lt`}>{year} - Rating: <span className={`${styles.rating} text--xs-sb`}>{rating}</span></p>
+                            <p className={`${styles.year} text--xs-lt`}>
+                                {year? year : "????"}
+                                - Rating: <span className={`${styles.rating} text--xs-sb`}>{rating}</span>
+                            </p>
                         </div>
                     </div>
                     <FavoriteButton movie={movie} view="list" />
@@ -43,7 +44,7 @@ export default function MediaItem({ movie, view, shape, image, title, releaseDat
         return (
             <div className={`${styles["details-item"]}`}>
                 <img className={`${styles.thumbnail} ${styles[`${shape}`]} ${styles.details}`}
-                    src={finalImage}
+                    src={image}
                     alt={ movie ? "Movie Poster" : "Credit Photo" }
                 />
                 { movie ? <FavoriteButton movie={movie} view="details" /> : null }
@@ -52,7 +53,7 @@ export default function MediaItem({ movie, view, shape, image, title, releaseDat
     } else {
         return (
             <img className={`${styles.thumbnail} ${styles.rectangle} ${styles.credits}`}
-                src={finalImage} 
+                src={image} 
                 alt="Credit Photo"  
             />
         )

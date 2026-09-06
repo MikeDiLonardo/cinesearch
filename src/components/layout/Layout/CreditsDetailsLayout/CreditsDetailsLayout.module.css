@@ -2,5 +2,6 @@
 .details {
   position: relative;
   padding-top: 3rem;
+  height: 100%;
   background-color: var(--bg-header-footer);
 }
