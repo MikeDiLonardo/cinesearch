@@ -1,17 +1,13 @@
 import type { View } from "../../../types/view";
 import { useContext } from "react"
 import { LayoutContext } from "../../layout/Layout/Context/LayoutContext";
-import useTrendingMovies from "../../../hooks/useTrending";
 import MediaItem from "../../cards/MediaItem/MediaItem";
 import NoFavorites from "../../../pages/Favorites/NoFavorites";
 import styles from "./GridView.module.css";
 
-export default function GridView({page, person}: View) {
-    const movies = useTrendingMovies()
+export default function GridView({page, movies}: View) {
     const context = useContext(LayoutContext);
-
     if (!context) return null;
-    const {favorites} = context;
 
     if (page === "home") {
         return (
@@ -22,11 +18,11 @@ export default function GridView({page, person}: View) {
             </ul>    
         )
     } else if (page === "favorites") {
-        if (favorites.length > 0) {
+        if (movies.length > 0) {
             return (
                 <ul className={styles["grid-view"]}>
-                    {favorites.map(favorite => (
-                        <MediaItem movie={favorite} view="grid" image={favorite.poster_path} key={favorite.id}/>
+                    {movies.map(movie => (
+                        <MediaItem movie={movie} view="grid" image={movie.poster_path ? movie.poster_path : "/movie-photo-placeholder.svg"} key={movie.id}/>
                     ))}
                 </ul>  
             )            
@@ -38,13 +34,11 @@ export default function GridView({page, person}: View) {
     } else {
         return (<>
             <ul className={styles["grid-view"]}>
-                {person.movie_credits.cast.map(movie => (
-                    <MediaItem movie={movie} view="grid" image={movie.poster_path} key={movie.id}/>
-                ))}
-                {person.movie_credits.crew.map(movie => (
-                    <MediaItem movie={movie} view="grid" image={movie.poster_path} key={movie.id}/>
-                ))}                
+                {movies.map(movie => (
+                    <MediaItem movie={movie} view="grid" image={movie.poster_path ? movie.poster_path : "/movie-photo-placeholder.svg"} key={movie.id}/>
+                ))}             
             </ul>
         </>)
     }
 }
+

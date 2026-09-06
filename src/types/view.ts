@@ -1,6 +1,6 @@
-import type { Person } from "./person";
+import type { Movie } from "./movie";
 
 export interface View {
     page: string;
-    person: Person;
-}
+    movies: Movie[];
+} 

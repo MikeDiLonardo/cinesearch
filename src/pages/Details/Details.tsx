@@ -62,7 +62,7 @@ export default function Details() {
                     index={index}
                     name={cast.name} 
                     image={cast.profile_path ? cast.profile_path : 
-                        `/credits-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
+                        `/credit-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
                     role={cast.character}
                 />
             </li>);
@@ -104,7 +104,7 @@ export default function Details() {
                 index={index}                                
                 name={crew.name} 
                 image={crew.profile_path ? crew.profile_path : 
-                    `/credits-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
+                    `/credit-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
                 role={crew.job}
             />
         </li>);             
@@ -137,7 +137,8 @@ export default function Details() {
                 {/* header */}
 
                 <section className={styles.header}>
-                    <MediaItem movie={movie} view="details" shape="rectangle" key={movie.id} image={movie.poster_path} />
+                    <MediaItem movie={movie} view="details" shape="rectangle" key={movie.id} image={movie.poster_path ? movie.poster_path : "/movie-photo-placeholder.svg"}
+                     />
 
                     <div className={styles.info}>
                         <h2 className={`${styles.title} text--md-sb`}>{movie.title}</h2>

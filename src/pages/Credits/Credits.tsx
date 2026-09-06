@@ -42,10 +42,26 @@ export default function Credits() {
             return knownFor.replace("ing", "or");            
         } else if (knownFor === "Writing") {
             return knownFor.replace("ing", "er");
+        } else if (knownFor === "Art") {
+            return knownFor.replace("Art", "Artist");
         } else {
             return knownFor
         }
     }
+
+    const uniqueMovie = new Map();
+    person.movie_credits.cast.forEach(movie => {
+        if (!uniqueMovie.has(movie.id)) {
+            uniqueMovie.set(movie.id, movie)
+        } 
+    })
+    person.movie_credits.crew.forEach(movie => {
+        if (!uniqueMovie.has(movie.id)) {
+            uniqueMovie.set(movie.id, movie)
+        } 
+    })    
+
+    const uniqueMovies = [...uniqueMovie.values()];
 
     function handleClickedTab(tabName: string) {
         setClickedTab(tabName);
@@ -69,16 +85,39 @@ export default function Credits() {
         <CreditsDetailsLayout page="credits">  
             <div className={styles.container}>
                 <section className={styles.header}>
-                        <MediaItem view="credits" shape="rectangle" image={person.profile_path} />
+                        <MediaItem 
+                            view="credits" 
+                            shape="rectangle" 
+                            image={person.profile_path ? person.profile_path :
+                                "/credit-page-placeholder.svg"
+                            } 
+                        />
 
                         <div className={styles.info}>
                             <div>
                                 <h2 className={`${styles.name} text--md-sb`}>{person.name}</h2>
-                                <p className={`${styles.job} text--base-sb`}>{job()}</p>
+                                {person.known_for_department ? 
+                                    <p className={`${styles.job} text--base-sb`}>{job()}</p>                                
+                                :
+                                    <p className={`${styles.job} text--base-sb`}>Occupation Unknown</p>  
+                                }
+
                             </div>
                             <div>
-                                <p className={`${styles.birthplace} text--sm-rg`}>Born in <span className="text--sm-sb">{person.place_of_birth}</span></p>
-                                <p className={`${styles.age} text--sm-rg`}>{deathday? `${age} years old (Deceased)` : `${age} years old`}</p>
+                                {person.place_of_birth ?
+                                    <p className={`${styles.birthplace} text--sm-rg`}>
+                                        Born in <span className="text--sm-sb">{person.place_of_birth}</span>
+                                    </p>
+                                : 
+                                    <p className={`${styles.birthplace} text--sm-rg`}>
+                                        Birthplace Unknown
+                                    </p>
+                                }
+                                {person.birthday? 
+                                    <p className={`${styles.age} text--sm-rg`}>{deathday? `${age} years old (Deceased)` : `${age} years old`}</p>
+                                : 
+                                    <p className={`${styles.age} text--sm-rg`}>Age Unknown</p>
+                                }
                             </div>
                         </div>
                 </section>
@@ -112,7 +151,7 @@ export default function Credits() {
                 </div> 
             : 
                 <div className={styles.filmography}>
-                    {isGrid ? <GridView page="credits" person={person} /> : <ListView page="credits" person={person} />}
+                    {isGrid ? <GridView page="credits" movies={uniqueMovies} /> : <ListView page="credits" movies={uniqueMovies} />}
                 </div> 
             }
 
