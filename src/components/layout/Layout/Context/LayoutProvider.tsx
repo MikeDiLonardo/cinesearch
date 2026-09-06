@@ -1,11 +1,15 @@
 import type { Movie } from "../../../../types/movie";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LayoutContext } from "./LayoutContext";
 
 export function LayoutProvider(props: {children: React.ReactNode}) {
     const [clickedIcon, setClickedIcon] = useState("");
-    const [favorites, setFavorites] = useState<Movie[]>([]);
+    const [favorites, setFavorites] = useState<Movie[]>(JSON.parse(localStorage.getItem("favorites") || "[]"));
     const [isGrid, setIsGrid] = useState(true);
+
+    useEffect(() => {
+          localStorage.setItem("favorites", JSON.stringify(favorites))
+    }, [favorites])
 
     function handleClickedIcon(iconName: string) {
         setClickedIcon(iconName);
