@@ -6,8 +6,7 @@ import ListView from "../../components/views/ListView/ListView";
 
 export default function Home() {
     const movies = useTrending()    
-    const context = useContext(LayoutContext);
-    if (!context) return null;
+    const context = useContext(LayoutContext)!;
     const { isGrid } = context;    
 
     return (

@@ -35,6 +35,11 @@
 
 /* search & clear icons */
 
+.search-icon-wrapper,
+.clear-icon-wrapper {
+  cursor: pointer;
+}
+
 .search-icon,
 .clear-icon {
   position: absolute;

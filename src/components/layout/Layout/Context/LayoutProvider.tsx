@@ -6,10 +6,9 @@ export function LayoutProvider(props: {children: React.ReactNode}) {
     const [clickedIcon, setClickedIcon] = useState("");
     const [favorites, setFavorites] = useState<Movie[]>(JSON.parse(localStorage.getItem("favorites") || "[]"));
     const [isGrid, setIsGrid] = useState(true);
+    const [query, setQuery] = useState("");    
 
-    useEffect(() => {
-          localStorage.setItem("favorites", JSON.stringify(favorites))
-    }, [favorites])
+    /* clicked toolbar icons */
 
     function handleClickedIcon(iconName: string) {
         setClickedIcon(iconName);
@@ -18,6 +17,12 @@ export function LayoutProvider(props: {children: React.ReactNode}) {
             setClickedIcon("");
         }, 500);
     }
+    
+    /* favorites */
+
+    useEffect(() => {
+          localStorage.setItem("favorites", JSON.stringify(favorites))
+    }, [favorites])
 
     function handleAddFavorite(newFavorite: Movie) {
         setFavorites([...favorites, newFavorite]);
@@ -28,10 +33,23 @@ export function LayoutProvider(props: {children: React.ReactNode}) {
         setFavorites(remainingFavorites);
     }
 
+    /* search */
+
+    function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
+        setQuery(event.target.value);
+    }
+
+    function handleResetSearch() {
+        setQuery("");
+    }
+    
+    /* grid / list switch */
+
     function onToggleLayout() {
         setIsGrid(!isGrid)
     }
 
+
     
-    return <LayoutContext value={{clickedIcon, favorites, isGrid, handleClickedIcon, handleAddFavorite, handleRemoveFavorite, onToggleLayout}}>{props.children}</LayoutContext>
+    return <LayoutContext value={{clickedIcon, favorites, query, isGrid, handleClickedIcon, handleAddFavorite, handleRemoveFavorite, handleSearch, handleResetSearch , onToggleLayout}}>{props.children}</LayoutContext>
 }

@@ -5,8 +5,7 @@ import FavoriteIcon from "../../icons/FavoriteIcon"
 import styles from "./FavoriteButton.module.css"
 
 export default function FavoriteButton({ movie, view }: {movie: Movie | undefined, view: string}) {
-    const context = useContext(LayoutContext);
-    if (!context) return null;
+    const context = useContext(LayoutContext)!;
     const { favorites, handleAddFavorite, handleRemoveFavorite } = context;
     if (!movie) return null;
 

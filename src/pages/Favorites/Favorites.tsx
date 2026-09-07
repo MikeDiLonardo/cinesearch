@@ -4,8 +4,7 @@ import GridView from "../../components/views/GridView/GridView";
 import ListView from "../../components/views/ListView/ListView";
 
 export default function Favorites() {
-    const context = useContext(LayoutContext);
-    if (!context) return null;
+    const context = useContext(LayoutContext)!;
     const { favorites, isGrid } = context;
 
     return (

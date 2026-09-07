@@ -4,13 +4,12 @@ import GridView from "../../components/views/GridView/GridView";
 import ListView from "../../components/views/ListView/ListView";
 
 export default function Search() {
-    const context = useContext(LayoutContext);
-    if (!context) return null;
+    const context = useContext(LayoutContext)!;
     const { isGrid } = context;
 
     return (
         <div className="search">
-            {isGrid ? <GridView /> : <ListView />}
+            {isGrid ? <GridView page="search" movies={movies}/> : <ListView page="search" movies={movies}/>}
         </div>
     )    
 }

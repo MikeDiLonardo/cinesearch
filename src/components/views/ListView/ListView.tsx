@@ -1,14 +1,9 @@
 import type { View } from "../../../types/view";
-import { useContext } from "react"
-import { LayoutContext } from "../../layout/Layout/Context/LayoutContext";
 import MediaItem from "../../cards/MediaItem/MediaItem";
 import NoFavorites from "../../../pages/Favorites/NoFavorites";
 import styles from "./ListView.module.css";
 
 export default function ListView({page, movies}: View) {
-    const context = useContext(LayoutContext);
-    if (!context) return null;
-
     if (page === "home") {
         return (
             <ul className={styles["list-view"]}>

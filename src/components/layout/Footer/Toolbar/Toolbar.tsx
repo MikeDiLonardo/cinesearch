@@ -10,8 +10,7 @@ import FavoriteIcon from "../../../icons/FavoriteIcon";
 import styles from "./Toolbar.module.css";
 
 export default function Toolbar(){
-    const context = useContext(LayoutContext);
-    if (!context) return null;
+    const context = useContext(LayoutContext)!;
     const { clickedIcon, isGrid, handleClickedIcon, onToggleLayout } = context;
 
     return (

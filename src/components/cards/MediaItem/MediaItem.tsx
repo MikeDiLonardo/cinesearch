@@ -9,7 +9,7 @@ export default function MediaItem({ movie, view, shape, image, title, releaseDat
 
     if (view === "grid") {
         return (
-            <Link to={`/details/${movie?.id}`}>        
+            <Link to={`/details/${movie?.id}`}>     
                 <li className={styles["grid-item"]}>
                     <img className={`${styles.thumbnail} ${styles.rectangle} ${styles.grid}`}
                         src={image}
