@@ -2,8 +2,9 @@ import type { View } from "../../../types/view";
 import MediaItem from "../../cards/MediaItem/MediaItem";
 import NoFavorites from "../../../pages/Favorites/NoFavorites";
 import styles from "./GridView.module.css";
+import NoSearch from "../../../pages/Search/NoSearch";
 
-export default function GridView({page, movies}: View) {
+export default function GridView({page, movies, query}: View) {
     if (page === "home") {
         return (
             <ul className={styles["grid-view"]}>
@@ -18,18 +19,24 @@ export default function GridView({page, movies}: View) {
             </ul>    
         )
     } else if (page === "search") {
-        return (
-            <ul className={styles["grid-view"]}>
-                {movies.map(movie => (
-                    <MediaItem 
-                        movie={movie} 
-                        view="grid" 
-                        image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"}
-                        key={movie.id}
-                    />
-                ))}
-            </ul>                
-        )
+        if (movies.length > 0) {
+            return (
+                <ul className={styles["grid-view"]}>
+                    {movies.map(movie => (
+                        <MediaItem 
+                            movie={movie} 
+                            view="grid" 
+                            image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"}
+                            key={movie.id}
+                        />
+                    ))}
+                </ul>                
+            )
+        } else {
+            return (
+                <NoSearch />
+            )            
+        }
     } else if (page === "favorites") {
         if (movies.length > 0) {
             return (

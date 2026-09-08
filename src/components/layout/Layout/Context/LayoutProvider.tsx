@@ -7,6 +7,7 @@ export function LayoutProvider(props: {children: React.ReactNode}) {
     const [favorites, setFavorites] = useState<Movie[]>(JSON.parse(localStorage.getItem("favorites") || "[]"));
     const [isGrid, setIsGrid] = useState(true);
     const [query, setQuery] = useState("");    
+    const [submittedQuery, setSubmittedQuery] = useState("");    
 
     /* clicked toolbar icons */
 
@@ -51,5 +52,5 @@ export function LayoutProvider(props: {children: React.ReactNode}) {
 
 
     
-    return <LayoutContext value={{clickedIcon, favorites, query, isGrid, handleClickedIcon, handleAddFavorite, handleRemoveFavorite, handleSearch, handleResetSearch , onToggleLayout}}>{props.children}</LayoutContext>
+    return <LayoutContext value={{clickedIcon, favorites, query, submittedQuery, isGrid, handleClickedIcon, setSubmittedQuery , handleAddFavorite, handleRemoveFavorite, handleSearch, handleResetSearch , onToggleLayout}}>{props.children}</LayoutContext>
 }

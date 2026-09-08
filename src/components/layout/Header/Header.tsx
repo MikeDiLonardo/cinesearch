@@ -2,7 +2,6 @@ import { useId } from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { LayoutContext } from "../Layout/Context/LayoutContext";
-import useSearch from "../../../hooks/useSearch";
 import SearchIcon from "../../icons/SearchIcon"
 import ClearIcon from "../../icons/ClearIcon"
 import InfoIcon from "../../icons/InfoIcon";
@@ -12,12 +11,12 @@ export default function Header({ openModal }: { openModal: () => void}) {
     const searchId = useId();
     const navigate = useNavigate();
     const context = useContext(LayoutContext)!;
-    const { query, handleSearch, handleResetSearch } = context;
-    const searchedMovies = useSearch(query);  
+    const { query , setSubmittedQuery, handleSearch, handleResetSearch } = context;
 
     function handleSearchSubmit(event: React.SubmitEvent<HTMLFormElement>) {
         event.preventDefault();
         navigate("/search");
+        setSubmittedQuery(query)
     }
 
     return (
@@ -39,7 +38,7 @@ export default function Header({ openModal }: { openModal: () => void}) {
                         />
                     </label>
 
-                    <button className={styles["clear-icon-wrapper"]} onClick={handleResetSearch}>
+                    <button type="button" className={styles["clear-icon-wrapper"]} onClick={handleResetSearch} >
                         <ClearIcon className={styles["clear-icon"]} width={20} height={20} strokeWidth={2}/>
                     </button>                
                 </div>
