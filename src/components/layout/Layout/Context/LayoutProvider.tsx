@@ -8,6 +8,7 @@ export function LayoutProvider(props: {children: React.ReactNode}) {
     const [isGrid, setIsGrid] = useState(true);
     const [query, setQuery] = useState("");    
     const [submittedQuery, setSubmittedQuery] = useState("");    
+    const [pageNumber, setPageNumber] = useState(1);
 
     /* clicked toolbar icons */
 
@@ -18,7 +19,20 @@ export function LayoutProvider(props: {children: React.ReactNode}) {
             setClickedIcon("");
         }, 500);
     }
-    
+
+    /* page navigation */
+
+    function handlePreviousPage() {
+        if (pageNumber > 1) {
+            setPageNumber(pageNumber - 1);
+        }
+    }
+    function handleNextPage(totalPages: number) {
+        if (pageNumber < totalPages) {
+            setPageNumber(pageNumber + 1);
+        }
+    }
+
     /* favorites */
 
     useEffect(() => {
@@ -50,7 +64,15 @@ export function LayoutProvider(props: {children: React.ReactNode}) {
         setIsGrid(!isGrid)
     }
 
-
-    
-    return <LayoutContext value={{clickedIcon, favorites, query, submittedQuery, isGrid, handleClickedIcon, setSubmittedQuery , handleAddFavorite, handleRemoveFavorite, handleSearch, handleResetSearch , onToggleLayout}}>{props.children}</LayoutContext>
+    return <LayoutContext 
+            value={{
+                clickedIcon, handleClickedIcon, 
+                query, submittedQuery, setSubmittedQuery, 
+                pageNumber, handlePreviousPage, handleNextPage,
+                handleSearch, handleResetSearch ,
+                favorites, handleAddFavorite, handleRemoveFavorite,
+                isGrid, onToggleLayout
+            }}>
+            {props.children}
+            </LayoutContext>
 }

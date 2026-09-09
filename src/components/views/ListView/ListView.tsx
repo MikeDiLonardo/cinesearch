@@ -1,14 +1,15 @@
 import type { View } from "../../../types/view";
 import MediaItem from "../../cards/MediaItem/MediaItem";
 import NoFavorites from "../../../pages/Favorites/NoFavorites";
+import NoSearch from "../../../pages/Search/NoSearch/NoSearch";
+import NoResults from "../../../pages/Search/NoResults/NoResults";
 import styles from "./ListView.module.css";
-import NoSearch from "../../../pages/Search/NoSearch";
 
-export default function ListView({page, movies}: View) {
+export default function ListView({page, movies, query, currentPage, totalPages}: View) {
     if (page === "home") {
         return (
             <ul className={styles["list-view"]}>
-                {movies.map(movie => (
+                {movies.slice(0, 18).map(movie => (
                     <MediaItem 
                         movie={movie} 
                         view="list" 
@@ -22,10 +23,14 @@ export default function ListView({page, movies}: View) {
             </ul>
         )    
     } else if (page === "search") {
-        if (movies.length > 0) {
+        if (query && movies.length === 0) {
+            return (
+                <NoResults />
+            )              
+        } else if (query) {
             return (
                 <ul className={styles["list-view"]}>
-                    {movies.map(movie => (
+                    {movies.slice(0, 18).map(movie => (
                         <MediaItem 
                             movie={movie} 
                             view="list" 
@@ -36,6 +41,7 @@ export default function ListView({page, movies}: View) {
                             key={movie.id}
                         />
                     ))}
+                    <li>{currentPage}{totalPages}</li>
                 </ul>                
             )
         } else {
@@ -47,7 +53,7 @@ export default function ListView({page, movies}: View) {
         if (movies.length > 0) {
             return (
                 <ul className={styles["list-view"]}>
-                    {movies.map(movie => (
+                    {movies.slice(0, 18).map(movie => (
                         <MediaItem 
                             movie={movie} 
                             view="list" 
@@ -68,7 +74,7 @@ export default function ListView({page, movies}: View) {
     } else {
         return (
             <ul className={styles["list-view"]}>
-                {movies.map(movie => (
+                {movies.slice(0, 18).map(movie => (
                     <MediaItem 
                         movie={movie} 
                         view="list" 

@@ -1,14 +1,20 @@
 import type { View } from "../../../types/view";
+import { useContext } from "react";
+import { LayoutContext } from "../../layout/Layout/Context/LayoutContext";
 import MediaItem from "../../cards/MediaItem/MediaItem";
 import NoFavorites from "../../../pages/Favorites/NoFavorites";
+import NoSearch from "../../../pages/Search/NoSearch/NoSearch";
+import NoResults from "../../../pages/Search/NoResults/NoResults";
 import styles from "./GridView.module.css";
-import NoSearch from "../../../pages/Search/NoSearch";
 
-export default function GridView({page, movies, query}: View) {
+export default function GridView({page, movies, query, currentPage, totalPages}: View) {
+    const context = useContext(LayoutContext)!;
+    const { handlePreviousPage, handleNextPage } = context;
+    
     if (page === "home") {
         return (
             <ul className={styles["grid-view"]}>
-                {movies.map(movie => (
+                {movies.slice(0, 18).map(movie => (
                     <MediaItem 
                         movie={movie} 
                         view="grid" 
@@ -16,13 +22,18 @@ export default function GridView({page, movies, query}: View) {
                         key={movie.id}
                     />
                 ))}
+
             </ul>    
         )
     } else if (page === "search") {
-        if (movies.length > 0) {
+        if (query && movies.length === 0) {
+            return (
+                <NoResults />
+            )              
+        } else if (query) {
             return (
                 <ul className={styles["grid-view"]}>
-                    {movies.map(movie => (
+                    {movies.slice(0, 18).map(movie => (
                         <MediaItem 
                             movie={movie} 
                             view="grid" 
@@ -30,6 +41,11 @@ export default function GridView({page, movies, query}: View) {
                             key={movie.id}
                         />
                     ))}
+                    <li className="">
+                        <button onClick={handlePreviousPage}>Prev</button>
+                        {currentPage}...{totalPages}
+                        <button onClick={() => handleNextPage(totalPages)}>Next</button>
+                    </li>
                 </ul>                
             )
         } else {
@@ -41,7 +57,7 @@ export default function GridView({page, movies, query}: View) {
         if (movies.length > 0) {
             return (
                 <ul className={styles["grid-view"]}>
-                    {movies.map(movie => (
+                    {movies.slice(0, 18).map(movie => (
                         <MediaItem 
                             movie={movie} 
                             view="grid" 
@@ -59,7 +75,7 @@ export default function GridView({page, movies, query}: View) {
     } else {
         return (<>
             <ul className={styles["grid-view"]}>
-                {movies.map(movie => (
+                {movies.slice(0, 18).map(movie => (
                     <MediaItem 
                         movie={movie} 
                         view="grid" 

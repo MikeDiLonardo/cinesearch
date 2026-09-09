@@ -6,12 +6,15 @@ import ListView from "../../components/views/ListView/ListView";
 
 export default function Search() {
     const context = useContext(LayoutContext)!;
-    const { isGrid, submittedQuery } = context;
-    const searchedMovies = useSearch(submittedQuery);  
+    const { isGrid, submittedQuery, pageNumber } = context;
+    const {currentPage = 1, results = [], totalPages = 1} = useSearch(submittedQuery, pageNumber);  
 
     return (
-        <div className="search">
-            {isGrid ? <GridView page="search" movies={searchedMovies} query={submittedQuery} /> : <ListView page="search" movies={searchedMovies} query={submittedQuery} />}
+        <div>
+            {isGrid ? 
+            <GridView page="search" movies={results} query={submittedQuery} currentPage={currentPage} totalPages={totalPages} /> 
+            : 
+            <ListView page="search" movies={results} query={submittedQuery} currentPage={currentPage} totalPages={totalPages} />}
         </div>
     )    
 }

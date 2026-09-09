@@ -11,7 +11,13 @@
   background-color: var(--bg-header-footer);
 }
 
+.header form {
+  width: 100%;
+}
+
 /* search input */
+
+
 
 .search-container {
   position: relative;

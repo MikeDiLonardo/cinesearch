@@ -2,15 +2,18 @@ import type { Movie } from "./movie";
 
 export interface LayoutContextType {
     clickedIcon: string;
+    handleClickedIcon: (clickedIcon: string) => void;     
     query: string;
     submittedQuery: string;
-    favorites: Movie[];
-    isGrid: boolean;
-    handleClickedIcon: (clickedIcon: string) => void; 
-    setSubmittedQuery: (query: string) => void;
+    setSubmittedQuery: (query: string) => void;  
+    pageNumber: number;
     handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    handleResetSearch: () => void;
+    handleResetSearch: () => void;    
+    handlePreviousPage: () => void;
+    handleNextPage: (totalPages: number) => void;    
+    favorites: Movie[];
     handleAddFavorite: (newFavorite: Movie) => void;
     handleRemoveFavorite: (exFavorite: Movie) => void;
+    isGrid: boolean;    
     onToggleLayout: () => void;
 }
