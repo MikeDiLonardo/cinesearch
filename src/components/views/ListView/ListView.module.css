@@ -1,8 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - var(--header-h));
+}
+
 .list-view {
   width: 100%;
   padding-inline: 1rem;
   padding-bottom: var(--p-md);
   background-color: var(--bg-main);
+
 }
 
 .list-view > li:last-of-type {
@@ -15,6 +22,7 @@
   align-items: center;
   gap: var(--gap-lg);
   width: 100%;
+  margin-top: auto;
   padding-inline: 1rem;
   padding-bottom: calc(var(--footer-h) + var(--p-md));
   color: var(--stroke-light);

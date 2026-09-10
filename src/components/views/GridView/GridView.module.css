@@ -1,3 +1,9 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - var(--header-h));
+}
+
 .grid-view {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -16,6 +22,7 @@
   align-items: center;
   gap: var(--gap-lg);
   width: 100%;
+  margin-top: auto;
   padding-inline: 1rem;
   padding-bottom: calc(var(--footer-h) + var(--p-md));
   color: var(--stroke-light);

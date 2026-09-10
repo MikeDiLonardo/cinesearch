@@ -13,9 +13,9 @@ export default function Credits() {
     const {id} = useParams();
     const actorId = Number.parseInt(id ?? "", 10); // ?? "" in case there's no number after credits/    
     const person = usePerson(actorId);
-    
+    console.log(person);    
     const context = useContext(LayoutContext)!;
-    const { isGrid } = context;
+    const { isGrid, pageNumber } = context;
 
     /* age */
 
@@ -64,6 +64,15 @@ export default function Credits() {
     function handleClickedTab(tabName: string) {
         setClickedTab(tabName);
     }
+
+    /* pages */
+
+    const startIndex = (pageNumber - 1) * 18;
+    const endIndex = startIndex + 18
+    const movies = uniqueMovies.slice(startIndex, endIndex);
+    const currentPage = pageNumber
+    const totalPages = Math.ceil(uniqueMovies.length / 18) || 1;
+
 
     return (<>
         <div /* background image */
@@ -139,7 +148,11 @@ export default function Credits() {
                 </div> 
                 : 
                 <div className={styles.filmography}>
-                    {isGrid ? <GridView page="credits" movies={uniqueMovies} /> : <ListView page="credits" movies={uniqueMovies} />}
+                    {isGrid ? 
+                        <GridView page="credits" movies={movies} currentPage={currentPage} totalPages={totalPages}/> 
+                        : 
+                        <ListView page="credits" movies={movies} currentPage={currentPage} totalPages={totalPages}/>
+                    }
                 </div> 
             }
         </CreditsDetailsLayout>

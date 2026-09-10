@@ -1,13 +1,13 @@
-import styles from "./PageNotFound.module.css";
+import Fallback from "../Fallback/Fallback"
 
 export default function PageNotFound() {
     return (
-        <div className={styles.container}>
-            <h1>Page Not Found</h1>         
-            <p className="text--base-rg">
-                We couldn't find the page you're looking for.<br />
-                Please make sure the link was typed correctly.
-            </p>   
-        </div>
+        <Fallback 
+            title="Page Not Found" 
+            subtitle="We couldn't find the page you're looking for.
+                      Please make sure the link was typed correctly." 
+        />
     )
 }
+
+

@@ -2,11 +2,15 @@ import type { Movies } from "../types/movies";
 import { apiFetcher } from "../utils/apiFetcher";
 import { useSuspenseQuery } from "@tanstack/react-query";
 
-export default function useTrending() {
+export default function useTrending(pageNumber: number) {
     const { data } = useSuspenseQuery<Movies>({
-        queryKey: ["movies"],
-        queryFn: () => apiFetcher("get", "3/trending/movie/day"),
+        queryKey: ["movies", pageNumber],
+        queryFn: () => apiFetcher("get", "3/trending/movie/day", undefined, undefined, pageNumber),
     });
 
-    return data.results;
+    return ({
+        currentPage: data.page, 
+        results: data.results, 
+        totalPages: data.total_pages 
+    })
 }

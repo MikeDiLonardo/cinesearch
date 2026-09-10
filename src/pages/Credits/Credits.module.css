@@ -2,7 +2,7 @@
 
 .container {
   position: relative;
-  z-index: 20;  
+  z-index: 20;
   border-bottom: 1px solid var(--stroke-mid);
   padding-inline: 1rem;
 }
@@ -35,10 +35,10 @@
 }
 
 .tabs button {
-  cursor: pointer;  
+  cursor: pointer;
 }
 
-.tabs .clicked-tab{
+.tabs .clicked-tab {
   color: var(--white);
   text-decoration: underline;
   text-decoration-thickness: 2.5px;
@@ -59,6 +59,7 @@
 .filmography {
   position: relative;
   z-index: 20;
+  background-color: var(--bg-main);
 }
 
 /* colors */

@@ -12,9 +12,10 @@ export default function Search() {
     return (
         <div>
             {isGrid ? 
-            <GridView page="search" movies={results} query={submittedQuery} currentPage={currentPage} totalPages={totalPages} /> 
-            : 
-            <ListView page="search" movies={results} query={submittedQuery} currentPage={currentPage} totalPages={totalPages} />}
+                <GridView page="search" movies={results} query={submittedQuery} currentPage={currentPage} totalPages={totalPages} /> 
+                : 
+                <ListView page="search" movies={results} query={submittedQuery} currentPage={currentPage} totalPages={totalPages} />
+            }
         </div>
     )    
 }

@@ -5,15 +5,17 @@ import GridView from "../../components/views/GridView/GridView";
 import ListView from "../../components/views/ListView/ListView";
 
 export default function Home() {
-    const movies = useTrending()    
     const context = useContext(LayoutContext)!;
-    const { isGrid } = context;    
-
-    console.log(movies)
+    const { isGrid, pageNumber } = context;    
+    const {currentPage = 1, results = [], totalPages = 1} = useTrending(pageNumber);  
 
     return (
         <div className="home">
-            {isGrid ? <GridView page="home" movies={movies}  /> : <ListView page="home" movies={movies} />}
+            {isGrid ? 
+                <GridView page="home" movies={results} currentPage={currentPage} totalPages={totalPages} /> 
+                : 
+                <ListView page="home" movies={results} currentPage={currentPage} totalPages={totalPages} />
+            }
         </div>
     )
 }

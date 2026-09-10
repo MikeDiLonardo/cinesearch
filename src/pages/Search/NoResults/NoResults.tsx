@@ -1,13 +1,12 @@
-import styles from "./NoResults.module.css";
+import Fallback from "../../../components/common/Fallback/Fallback"
 
 export default function NoResults() {
     return (
-        <div className={styles.container}>
-            <h1>No Results</h1>                    
-            <p className="text--base-rg">
-                We couldn't find any matches. <br />
-                Please search another title.
-            </p>
-        </div>                
+        <Fallback 
+            title="No Results" 
+            subtitle="We couldn't find any matches.
+                      Please search another title." 
+        />            
     )    
 }
+

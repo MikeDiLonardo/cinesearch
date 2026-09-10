@@ -13,54 +13,7 @@ export default function ListView({page, movies, query, currentPage, totalPages}:
         
     if (page === "home") {
         return (
-            <ul className={styles["list-view"]}>
-                {movies.slice(0, 18).map(movie => (
-                    <MediaItem 
-                        movie={movie} 
-                        view="list" 
-                        image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"}
-                        title={movie.title} 
-                        releaseDate={movie.release_date} 
-                        voteAverage={movie.vote_average} 
-                        key={movie.id}
-                    />
-                ))}
-            </ul>
-        )    
-    } else if (page === "search") {
-        if (query && movies.length === 0) {
-            return (
-                <NoResults />
-            )              
-        } else if (query) {
-            return (<>
-                <ul className={styles["list-view"]}>
-                    {movies.slice(0, 18).map(movie => (
-                        <MediaItem 
-                            movie={movie} 
-                            view="list" 
-                            image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"}
-                            title={movie.title} 
-                            releaseDate={movie.release_date} 
-                            voteAverage={movie.vote_average}                             
-                            key={movie.id}
-                        />
-                    ))}
-                </ul>
-                <div className={styles.pages}>  
-                    <button onClick={handlePreviousPage}>Prev</button>
-                    {currentPage} of {totalPages}
-                    <button onClick={() => handleNextPage(totalPages)}>Next</button>
-                </div>                            
-            </>)
-        } else {
-            return (
-                <NoSearch />
-            )            
-        }
-    } else if (page === "favorites") {
-        if (movies.length > 0) {
-            return (
+            <div className={styles.container}>
                 <ul className={styles["list-view"]}>
                     {movies.slice(0, 18).map(movie => (
                         <MediaItem 
@@ -74,6 +27,69 @@ export default function ListView({page, movies, query, currentPage, totalPages}:
                         />
                     ))}
                 </ul>
+                <div className={styles.pages}>  
+                    <button onClick={handlePreviousPage}>Prev</button>
+                    {currentPage} of {totalPages}
+                    <button onClick={() => handleNextPage(totalPages)}>Next</button>
+                </div>
+            </div> 
+        )    
+    } else if (page === "search") {
+        if (query && movies.length === 0) {
+            return (
+                <NoResults />
+            )              
+        } else if (query) {
+            return (
+                <div className={styles.container}>
+                    <ul className={styles["list-view"]}>
+                        {movies.slice(0, 18).map(movie => (
+                            <MediaItem 
+                                movie={movie} 
+                                view="list" 
+                                image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"}
+                                title={movie.title} 
+                                releaseDate={movie.release_date} 
+                                voteAverage={movie.vote_average}                             
+                                key={movie.id}
+                            />
+                        ))}
+                    </ul>
+                    <div className={styles.pages}>  
+                        <button onClick={handlePreviousPage}>Prev</button>
+                        {currentPage} of {totalPages}
+                        <button onClick={() => handleNextPage(totalPages)}>Next</button>
+                    </div>
+                </div>                            
+            )
+        } else {
+            return (
+                <NoSearch />
+            )            
+        }
+    } else if (page === "favorites") {
+        if (movies.length > 0) {
+            return (
+                <div className={styles.container}>
+                    <ul className={styles["list-view"]}>
+                        {movies.slice(0, 18).map(movie => (
+                            <MediaItem 
+                                movie={movie} 
+                                view="list" 
+                                image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"}
+                                title={movie.title} 
+                                releaseDate={movie.release_date} 
+                                voteAverage={movie.vote_average} 
+                                key={movie.id}
+                            />
+                        ))}
+                    </ul>
+                    <div className={styles.pages}>  
+                        <button onClick={handlePreviousPage}>Prev</button>
+                        {currentPage} of {totalPages}
+                        <button onClick={() => handleNextPage(totalPages)}>Next</button>
+                    </div>  
+                </div>                 
             )   
         } else {
             return (
@@ -82,19 +98,26 @@ export default function ListView({page, movies, query, currentPage, totalPages}:
         }
     } else {
         return (
-            <ul className={styles["list-view"]}>
-                {movies.slice(0, 18).map(movie => (
-                    <MediaItem 
-                        movie={movie} 
-                        view="list" 
-                        image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"}
-                        title={movie.title}
-                        releaseDate={movie.release_date}
-                        voteAverage={movie.vote_average}
-                        key={movie.id}
-                    />
-                ))}            
-            </ul>           
+            <div className={styles.container}>
+                <ul className={styles["list-view"]}>
+                    {movies.slice(0, 18).map(movie => (
+                        <MediaItem 
+                            movie={movie} 
+                            view="list" 
+                            image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"}
+                            title={movie.title}
+                            releaseDate={movie.release_date}
+                            voteAverage={movie.vote_average}
+                            key={movie.id}
+                        />
+                    ))}            
+                </ul>
+                <div className={styles.pages}>  
+                    <button onClick={handlePreviousPage}>Prev</button>
+                    {currentPage} of {totalPages}
+                    <button onClick={() => handleNextPage(totalPages)}>Next</button>
+                </div>                
+            </div>           
         )
     }
 }
