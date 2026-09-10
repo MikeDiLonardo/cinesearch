@@ -31,7 +31,7 @@ export default function GridView({page, movies, query, currentPage, totalPages}:
                 <NoResults />
             )              
         } else if (query) {
-            return (
+            return (<>
                 <ul className={styles["grid-view"]}>
                     {movies.slice(0, 18).map(movie => (
                         <MediaItem 
@@ -41,13 +41,13 @@ export default function GridView({page, movies, query, currentPage, totalPages}:
                             key={movie.id}
                         />
                     ))}
-                    <li className="">
-                        <button onClick={handlePreviousPage}>Prev</button>
-                        {currentPage}...{totalPages}
-                        <button onClick={() => handleNextPage(totalPages)}>Next</button>
-                    </li>
-                </ul>                
-            )
+                </ul>              
+                <div className={styles.pages}>  
+                    <button onClick={handlePreviousPage}>Prev</button>
+                    {currentPage} of {totalPages}
+                    <button onClick={() => handleNextPage(totalPages)}>Next</button>
+                </div>                      
+            </>)
         } else {
             return (
                 <NoSearch />

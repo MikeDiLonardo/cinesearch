@@ -1,10 +1,29 @@
 .list-view {
   width: 100%;
   padding-inline: 1rem;
-  padding-bottom: var(--footer-h);
+  padding-bottom: var(--p-md);
   background-color: var(--bg-main);
 }
 
 .list-view > li:last-of-type {
   border-bottom: 0;
+}
+
+.pages {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gap-lg);
+  width: 100%;
+  padding-inline: 1rem;
+  padding-bottom: calc(var(--footer-h) + var(--p-md));
+  color: var(--stroke-light);
+}
+
+.pages button {
+  align-self: center;
+  border-radius: var(--radius-sm);
+  padding: var(--p-xxs) var(--p-sm);
+  background-color: var(--stroke-mid);
+  cursor: pointer;
 }

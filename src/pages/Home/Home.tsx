@@ -9,6 +9,8 @@ export default function Home() {
     const context = useContext(LayoutContext)!;
     const { isGrid } = context;    
 
+    console.log(movies)
+
     return (
         <div className="home">
             {isGrid ? <GridView page="home" movies={movies}  /> : <ListView page="home" movies={movies} />}

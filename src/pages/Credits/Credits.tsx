@@ -16,7 +16,6 @@ export default function Credits() {
     
     const context = useContext(LayoutContext)!;
     const { isGrid } = context;
-    console.log(person)
 
     /* age */
 

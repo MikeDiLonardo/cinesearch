@@ -1,4 +1,6 @@
 import type { View } from "../../../types/view";
+import { useContext } from "react";
+import { LayoutContext } from "../../layout/Layout/Context/LayoutContext";
 import MediaItem from "../../cards/MediaItem/MediaItem";
 import NoFavorites from "../../../pages/Favorites/NoFavorites";
 import NoSearch from "../../../pages/Search/NoSearch/NoSearch";
@@ -6,6 +8,9 @@ import NoResults from "../../../pages/Search/NoResults/NoResults";
 import styles from "./ListView.module.css";
 
 export default function ListView({page, movies, query, currentPage, totalPages}: View) {
+    const context = useContext(LayoutContext)!;
+    const { handlePreviousPage, handleNextPage } = context;
+        
     if (page === "home") {
         return (
             <ul className={styles["list-view"]}>
@@ -28,7 +33,7 @@ export default function ListView({page, movies, query, currentPage, totalPages}:
                 <NoResults />
             )              
         } else if (query) {
-            return (
+            return (<>
                 <ul className={styles["list-view"]}>
                     {movies.slice(0, 18).map(movie => (
                         <MediaItem 
@@ -41,9 +46,13 @@ export default function ListView({page, movies, query, currentPage, totalPages}:
                             key={movie.id}
                         />
                     ))}
-                    <li>{currentPage}{totalPages}</li>
-                </ul>                
-            )
+                </ul>
+                <div className={styles.pages}>  
+                    <button onClick={handlePreviousPage}>Prev</button>
+                    {currentPage} of {totalPages}
+                    <button onClick={() => handleNextPage(totalPages)}>Next</button>
+                </div>                            
+            </>)
         } else {
             return (
                 <NoSearch />
