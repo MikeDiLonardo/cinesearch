@@ -17,8 +17,6 @@
 
 /* search input */
 
-
-
 .search-container {
   position: relative;
   width: 100%;
@@ -76,4 +74,18 @@
 .info-icon {
   color: var(--stroke-mid);
   cursor: pointer;
+}
+
+/* modals */
+
+.modal {
+  max-width: calc(100% - 2rem);
+  width: 100%;
+  margin: auto 1rem;
+  border: none;
+  background: transparent;
+}
+
+.modal::backdrop {
+  backdrop-filter: blur(3px) brightness(0.55);
 }

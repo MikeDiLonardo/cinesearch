@@ -13,7 +13,7 @@ export default function Credits() {
     const {id} = useParams();
     const actorId = Number.parseInt(id ?? "", 10); // ?? "" in case there's no number after credits/    
     const person = usePerson(actorId);
-    console.log(person);    
+   
     const context = useContext(LayoutContext)!;
     const { isGrid, pageNumber } = context;
 

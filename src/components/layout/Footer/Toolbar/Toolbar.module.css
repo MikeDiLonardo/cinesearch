@@ -39,3 +39,42 @@
   cursor: pointer;
 }
 
+/* funnel  */
+
+.modal {
+  position: fixed;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: ". funnel funnel";
+  max-width: calc(100% - 2rem);
+  width: 100%;
+  margin-top: auto;
+  margin-inline: 1rem;
+  margin-bottom: calc(var(--footer-h) + 1rem);
+  border: none;
+  background: transparent;
+}
+
+
+.modal::backdrop {
+  background-color: transparent; /* get rid of slight tint from browser */
+}
+
+.modal:not([open]) {
+  display: none;
+}
+
+.funnel-select {
+  grid-area: funnel;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap-sm);
+  height: 6rem;
+  border: 0.5px solid var(--stroke-mid);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(10px);
+  background-color: color-mix(in srgb, var(--bg-header-footer) 75%, transparent);
+  color: var(--stroke-light);
+}

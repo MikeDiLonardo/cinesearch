@@ -14,6 +14,10 @@ export interface LayoutContextType {
     favorites: Movie[];
     handleAddFavorite: (newFavorite: Movie) => void;
     handleRemoveFavorite: (exFavorite: Movie) => void;
+    isFunnelOpen: boolean;
+    handleIsFunnelOpen: () => void;
+    sortBy: string;
+    handleFunnelSelect: (event: React.ChangeEvent<HTMLSelectElement>) => void;
     isGrid: boolean;    
     onToggleLayout: () => void;
 }

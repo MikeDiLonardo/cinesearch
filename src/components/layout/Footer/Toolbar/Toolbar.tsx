@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState, useRef, useId } from "react";
 import { LayoutContext } from "../../Layout/Context/LayoutContext";
 import HomeIcon from "../../../icons/HomeIcon";
 import FunnelIcon from "../../../icons/FunnelIcon";
@@ -11,9 +11,44 @@ import styles from "./Toolbar.module.css";
 
 export default function Toolbar(){
     const context = useContext(LayoutContext)!;
-    const { clickedIcon, isGrid, handleClickedIcon, onToggleLayout } = context;
+    const { clickedIcon, isGrid, handleClickedIcon, sortBy, handleFunnelSelect, onToggleLayout } = context;
+    const id = useId();    
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const dialogRef = useRef<HTMLDialogElement>(null);        
 
-    return (
+    function openModal() {
+        if (!dialogRef.current) return;
+        dialogRef.current.showModal();
+        dialogRef.current.blur();
+        setIsModalOpen(!isModalOpen);
+    }
+
+    function closeModal(event: React.MouseEvent<HTMLDialogElement>) {
+        if (!dialogRef.current) return;
+        if (event.target === dialogRef.current) {
+            dialogRef.current.close()
+            setIsModalOpen(!isModalOpen);            
+        }
+    } 
+
+    return (<>
+        <dialog ref={dialogRef} onClick={closeModal} className={styles.modal}>
+            <div /* to avoid autofocus on the select dropdown on safari browser */
+                tabIndex={0} 
+                aria-hidden="true" 
+                style={{ position: "absolute", opacity: 0 }}>
+            </div>
+            <div className={styles["funnel-select"]}>
+                <label htmlFor={id} className="text--base-sb">Sort By:</label>
+                <select id={id} onChange={handleFunnelSelect} value={sortBy}>
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                    <option value="popular">Popular</option>
+                    <option value="a-z">A-Z</option>
+                    <option value="z-a">Z-A</option>
+                </select>
+            </div>
+        </dialog>        
         <div className={styles.toolbar}>
             <NavLink
                 className={({ isActive }) =>
@@ -63,15 +98,19 @@ export default function Toolbar(){
 
             <button 
                 className={`${styles["toolbar-icon-wrapper"]}`} 
-                aria-label="Toggle Filter"
-                onClick={() => handleClickedIcon("funnel")}
+                aria-label="Toggle Funnel"
+                onClick={() => {
+                    handleClickedIcon("funnel")
+                    openModal();
+                }}
             >
                 <FunnelIcon 
                     className={`${styles.icon} ${styles["funnel-icon"]} ${clickedIcon === "funnel" ? "clicked-icon" : ""}`} 
                     width={28} 
                     height={28} 
                     strokeWidth={1.25} />
-            </button>            
+            </button>       
+                
             <button 
                 className={`${styles["toolbar-icon-wrapper"]}`} 
                 onClick={() => {
@@ -95,5 +134,5 @@ export default function Toolbar(){
                 }
             </button>
         </div>
-    )
+    </>)
 }

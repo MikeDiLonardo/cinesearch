@@ -9,7 +9,7 @@ import styles from "./ListView.module.css";
 
 export default function ListView({page, movies, query, currentPage, totalPages}: View) {
     const context = useContext(LayoutContext)!;
-    const { handlePreviousPage, handleNextPage } = context;
+    const { handlePreviousPage, handleNextPage, sortBy } = context;
         
     if (page === "home") {
         return (

@@ -9,7 +9,19 @@ import styles from "./GridView.module.css";
 
 export default function GridView({page, movies, query, currentPage, totalPages}: View) {
     const context = useContext(LayoutContext)!;
-    const { handlePreviousPage, handleNextPage } = context;
+    const { handlePreviousPage, handleNextPage, sortBy } = context;
+
+    if (sortBy === "a-z") {
+        movies = movies.toSorted((a, b) => a.title.localeCompare(b.title));
+    } else if (sortBy === "z-a"){
+        movies = movies.toSorted((a, b) => b.title.localeCompare(a.title));
+    } else if (sortBy === "newest") {
+        movies =
+    } else if (sortBy === "oldest") {
+        movies =
+    } else {
+        movies =
+    } 
     
     if (page === "home") {
         return (

@@ -9,6 +9,8 @@ export function LayoutProvider(props: {children: React.ReactNode}) {
     const [query, setQuery] = useState("");    
     const [submittedQuery, setSubmittedQuery] = useState("");    
     const [pageNumber, setPageNumber] = useState(1);
+    const [isFunnelOpen, setIsFunnelOpen] = useState(false);
+    const [sortBy, setSortBy] = useState("newest");
 
     /* clicked toolbar icons */
 
@@ -33,6 +35,16 @@ export function LayoutProvider(props: {children: React.ReactNode}) {
         }
     }
 
+    /* search */
+
+    function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
+        setQuery(event.target.value);
+    }
+
+    function handleResetSearch() {
+        setQuery("");
+    }
+
     /* favorites */
 
     useEffect(() => {
@@ -48,16 +60,16 @@ export function LayoutProvider(props: {children: React.ReactNode}) {
         setFavorites(remainingFavorites);
     }
 
-    /* search */
-
-    function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
-        setQuery(event.target.value);
-    }
-
-    function handleResetSearch() {
-        setQuery("");
-    }
+    /* funnel */
     
+    function handleIsFunnelOpen() {
+        setIsFunnelOpen(!isFunnelOpen);
+    }
+
+    function handleFunnelSelect(event: React.ChangeEvent<HTMLSelectElement>) {
+        setSortBy(event.target.value);
+    }
+
     /* grid / list switch */
 
     function onToggleLayout() {
@@ -71,6 +83,8 @@ export function LayoutProvider(props: {children: React.ReactNode}) {
                 pageNumber, handlePreviousPage, handleNextPage,
                 handleSearch, handleResetSearch ,
                 favorites, handleAddFavorite, handleRemoveFavorite,
+                isFunnelOpen, handleIsFunnelOpen,
+                sortBy, handleFunnelSelect,
                 isGrid, onToggleLayout
             }}>
             {props.children}
