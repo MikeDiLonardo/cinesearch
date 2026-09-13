@@ -10,6 +10,20 @@ import styles from "./ListView.module.css";
 export default function ListView({page, movies, query, currentPage, totalPages}: View) {
     const context = useContext(LayoutContext)!;
     const { handlePreviousPage, handleNextPage, sortBy } = context;
+
+    if (sortBy === "a-z") {
+        movies = movies.toSorted((a, b) => a.title.localeCompare(b.title));
+    } else if (sortBy === "z-a"){
+        movies = movies.toSorted((a, b) => b.title.localeCompare(a.title));
+    } else if (sortBy === "newest") {
+        movies = movies.toSorted((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime()); // .getTime() to convert to number
+    } else if (sortBy === "oldest") {
+        movies = movies.toSorted((a, b) => new Date(a.release_date).getTime() - new Date(b.release_date).getTime());
+    } else if (sortBy === "rated") {
+        movies = movies.toSorted((a, b) => b.vote_average - a.vote_average);
+    } else {
+        movies = movies.toSorted((a, b) => b.popularity - a.popularity);
+    } 
         
     if (page === "home") {
         return (

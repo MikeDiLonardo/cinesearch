@@ -13,6 +13,8 @@ export default function Favorites() {
     const currentPage = pageNumber
     const totalPages = Math.ceil(favorites.length / 18) || 1;
 
+    console.log(favorites)
+
     return (
         <div className="favorites">
             {isGrid ? 

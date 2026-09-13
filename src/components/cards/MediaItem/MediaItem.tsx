@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import type {MediaItem} from "../../../types/media-item";
+import { Link } from "react-router-dom";
 import FavoriteButton from "../../buttons/FavoriteButton/FavoriteButton";
 import styles from "./MediaItem.module.css";
 

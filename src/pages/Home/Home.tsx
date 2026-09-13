@@ -8,7 +8,7 @@ export default function Home() {
     const context = useContext(LayoutContext)!;
     const { isGrid, pageNumber } = context;    
     const {currentPage = 1, results = [], totalPages = 1} = useTrending(pageNumber);  
-console.log(results)
+
     return (
         <div className="home">
             {isGrid ? 
