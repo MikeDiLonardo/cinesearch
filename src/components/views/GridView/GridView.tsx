@@ -9,20 +9,22 @@ import styles from "./GridView.module.css";
 
 export default function GridView({page, movies, query, currentPage, totalPages}: View) {
     const context = useContext(LayoutContext)!;
-    const { handlePreviousPage, handleNextPage, sortBy } = context;
+    const { handlePreviousPageHome, handleNextPageHome, handlePreviousPageSearch, handleNextPageSearch, handlePreviousPageFavorites, handleNextPageFavorites, handlePreviousPageCredits, handleNextPageCredits, sortBy } = context;
+
+    /* sort instead of toSorted, which only came out in 2023. This ensures backwards compatibility */ 
 
     if (sortBy === "a-z") {
-        movies = movies.toSorted((a, b) => a.title.localeCompare(b.title));
+        [...movies] = movies.sort((a, b) => a.title.localeCompare(b.title));
     } else if (sortBy === "z-a"){
-        movies = movies.toSorted((a, b) => b.title.localeCompare(a.title));
+        [...movies] = movies.sort((a, b) => b.title.localeCompare(a.title));
     } else if (sortBy === "newest") {
-        movies = movies.toSorted((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime()); // .getTime() to convert to number
+        [...movies] = movies.sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime()); // .getTime() to convert to number
     } else if (sortBy === "oldest") {
-        movies = movies.toSorted((a, b) => new Date(a.release_date).getTime() - new Date(b.release_date).getTime());
+        [...movies] = movies.sort((a, b) => new Date(a.release_date).getTime() - new Date(b.release_date).getTime());
     } else if (sortBy === "rated") {
-        movies = movies.toSorted((a, b) => b.vote_average - a.vote_average);
+        [...movies] = movies.sort((a, b) => b.vote_average - a.vote_average);
     } else {
-        movies = movies.toSorted((a, b) => b.popularity - a.popularity);
+        [...movies] = movies.sort((a, b) => b.popularity - a.popularity);
     } 
     
     if (page === "home") {
@@ -39,9 +41,9 @@ export default function GridView({page, movies, query, currentPage, totalPages}:
                     ))}
                 </ul>   
                 <div className={styles.pages}>  
-                    <button onClick={handlePreviousPage}>Prev</button>
+                    <button onClick={handlePreviousPageHome}>Prev</button>
                     {currentPage} of {totalPages}
-                    <button onClick={() => handleNextPage(totalPages)}>Next</button>
+                    <button onClick={() => handleNextPageHome(totalPages)}>Next</button>
                 </div>
             </div>
         )
@@ -64,9 +66,9 @@ export default function GridView({page, movies, query, currentPage, totalPages}:
                         ))}
                     </ul>              
                     <div className={styles.pages}>  
-                        <button onClick={handlePreviousPage}>Prev</button>
+                        <button onClick={handlePreviousPageSearch}>Prev</button>
                         {currentPage} of {totalPages}
-                        <button onClick={() => handleNextPage(totalPages)}>Next</button>
+                        <button onClick={() => handleNextPageSearch(totalPages)}>Next</button>
                     </div>
                 </div>
             )
@@ -90,9 +92,9 @@ export default function GridView({page, movies, query, currentPage, totalPages}:
                         ))}
                     </ul>
                     <div className={styles.pages}>  
-                        <button onClick={handlePreviousPage}>Prev</button>
+                        <button onClick={handlePreviousPageFavorites}>Prev</button>
                         {currentPage} of {totalPages}
-                        <button onClick={() => handleNextPage(totalPages)}>Next</button>
+                        <button onClick={() => handleNextPageFavorites(totalPages)}>Next</button>
                     </div>
                 </div>
             )            
@@ -115,9 +117,9 @@ export default function GridView({page, movies, query, currentPage, totalPages}:
                     ))}          
                 </ul>
                 <div className={styles.pages}>  
-                    <button onClick={handlePreviousPage}>Prev</button>
+                    <button onClick={handlePreviousPageCredits}>Prev</button>
                     {currentPage} of {totalPages}
-                    <button onClick={() => handleNextPage(totalPages)}>Next</button>
+                    <button onClick={() => handleNextPageCredits(totalPages)}>Next</button>
                 </div>                
             </div>
         )

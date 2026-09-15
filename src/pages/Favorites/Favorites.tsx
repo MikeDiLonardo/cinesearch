@@ -5,12 +5,12 @@ import ListView from "../../components/views/ListView/ListView";
 
 export default function Favorites() {
     const context = useContext(LayoutContext)!;
-    const { favorites, isGrid, pageNumber } = context;
+    const { favorites, isGrid, pageNumberFavorites } = context;
 
-    const startIndex = (pageNumber - 1) * 18;
+    const startIndex = (pageNumberFavorites - 1) * 18;
     const endIndex = startIndex + 18
     const movies = favorites.slice(startIndex, endIndex);
-    const currentPage = pageNumber
+    const currentPage = pageNumberFavorites
     const totalPages = Math.ceil(favorites.length / 18) || 1;
 
     console.log(favorites)

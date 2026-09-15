@@ -15,7 +15,7 @@ export default function Credits() {
     const person = usePerson(actorId);
    
     const context = useContext(LayoutContext)!;
-    const { isGrid, pageNumber } = context;
+    const { isGrid, pageNumberCredits } = context;
 
     /* age */
 
@@ -67,10 +67,10 @@ export default function Credits() {
 
     /* pages */
 
-    const startIndex = (pageNumber - 1) * 18;
+    const startIndex = (pageNumberCredits - 1) * 18;
     const endIndex = startIndex + 18
     const movies = uniqueMovies.slice(startIndex, endIndex);
-    const currentPage = pageNumber
+    const currentPage = pageNumberCredits
     const totalPages = Math.ceil(uniqueMovies.length / 18) || 1;
 
 

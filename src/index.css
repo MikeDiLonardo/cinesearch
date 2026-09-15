@@ -1,7 +1,8 @@
 :root {
   /* Colors */
   --bg-header-footer: #1d242b;
-  --bg-fav-circle: #1d242bcc;
+  --bg-header-footer-trans: #1d242bbf;
+  --bg-fav-circle: #1d242ba3;
   --bg-main: #2f3d4c;
   --stroke-mid: #526d82;
   --stroke-light: #9db2bf;
@@ -64,6 +65,7 @@ body {
 }
 
 html {
+  scroll-behavior: smooth;
   overscroll-behavior: none;
 }
 

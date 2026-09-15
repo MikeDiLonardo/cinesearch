@@ -6,7 +6,7 @@ import SearchIcon from "../../icons/SearchIcon"
 import ClearIcon from "../../icons/ClearIcon"
 import InfoIcon from "../../icons/InfoIcon";
 import styles from "./Header.module.css";
-import TmdbCredit from "./TmdbCredit/TmdbCredit";
+import TmdbLogo from "../../icons/TmdbLogo";
 
 export default function Header() {
     const searchId = useId();
@@ -41,7 +41,13 @@ export default function Header() {
 
     return (<>
         <dialog ref={dialogRef} onClick={closeModal} className={styles.modal}>
-            <TmdbCredit />
+            <div className={styles["tmdb-credit"]}>
+                <TmdbLogo className="tmdb-logo" width={118} height={85} fill="var(--stroke-light)" />
+                <p className="text--sm-rg">
+                    This product uses the TMDB API but<br />
+                    is not endorsed or certified by TMDB.
+                </p>
+            </div>  
         </dialog>    
         <div className={styles.header}>
             <form onSubmit={handleSearchSubmit}>

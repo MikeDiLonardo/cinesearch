@@ -33,7 +33,7 @@ export default function Toolbar(){
 
     return (<>
         <dialog ref={dialogRef} onClick={closeModal} className={styles.modal}>
-            <div /* to avoid autofocus on the select dropdown on safari browser */
+            <div /* empty div to avoid autofocus on the select dropdown on safari browser */
                 tabIndex={0} 
                 aria-hidden="true" 
                 style={{ position: "absolute", opacity: 0 }}>

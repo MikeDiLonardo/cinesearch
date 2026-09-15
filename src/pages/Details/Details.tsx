@@ -171,24 +171,38 @@ export default function Details() {
                 {/* credits */}
 
                 <section className={styles.credits}>
-                    <h3 className={styles["credits-heading"]}>Cast</h3>
+                    <div className={styles["credits-heading"]}>
+                        <h3 className={styles["cast-heading"]}>Cast</h3>
+                        <button 
+                            className={`${styles["skip-to-crew"]} text--xs-rg`} 
+                            onClick={() => document.querySelector("#crew-heading")!.scrollIntoView()}
+                        >
+                        Skip to Crew</button>
+                    </div>
+
                     <ul className={styles.cast}>
                         {castList}
                     </ul>
                     {movie.credits.cast.length > 10 ? 
-                        <button onClick={visibleCast === 10 ? handleMoreCast : handleLessCast}>
+                        <button className={styles["more-less"]} onClick={visibleCast === 10 ? handleMoreCast : handleLessCast}>
                             {visibleCast === 10 ? "More" : "Less"}
                         </button>    
                     :
                         null
                     }
 
-                    <h3 className={styles["credits-heading"]}>Crew</h3>
+                    <h3 
+                        id="crew-heading" 
+                        className={`${styles["crew-heading"]}`}
+                        style={{scrollMarginTop: "1rem"}}
+                    >
+                        Crew
+                    </h3>
                     <ul className={styles.crew}>
                         {crewList}
                     </ul>
                     {movie.credits.crew.length  > 10 ? 
-                        <button onClick={visibleCrew === 10 ? handleMoreCrew : handleLessCrew}>
+                        <button className={styles["more-less"]} onClick={visibleCrew === 10 ? handleMoreCrew : handleLessCrew}>
                             {visibleCrew === 10 ? "More" : "Less"}
                         </button>    
                     :

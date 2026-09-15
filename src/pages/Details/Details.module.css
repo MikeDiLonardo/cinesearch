@@ -70,7 +70,11 @@
   justify-content: center;
 }
 
-.credits button {
+.skip-to-crew {
+  cursor: pointer;
+}
+
+.credits .more-less {
   align-self: center;
   border-radius: var(--radius-sm);
   border: 0.5px solid var(--stroke-mid);
@@ -80,8 +84,14 @@
   cursor: pointer;
 }
 
-.credits button:last-of-type {
+.credits .more-less:last-of-type {
   margin-bottom: 1rem;
+}
+
+.credits-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .cast,
@@ -101,12 +111,15 @@
   background-color: var(--bg-main);
 }
 
+
+
 /* colors */
 
 .title,
 .genres,
 .headline,
-.credits-heading {
+.cast-heading,
+.crew-heading {
   color: var(--white);
 }
 
@@ -114,6 +127,7 @@
 .directed-by,
 .director,
 .duration,
-.summary {
+.summary,
+.skip-to-crew {
   color: var(--stroke-light);
 }

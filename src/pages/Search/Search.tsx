@@ -6,8 +6,8 @@ import ListView from "../../components/views/ListView/ListView";
 
 export default function Search() {
     const context = useContext(LayoutContext)!;
-    const { isGrid, submittedQuery, pageNumber } = context;
-    const {currentPage = 1, results = [], totalPages = 1} = useSearch(submittedQuery, pageNumber);  
+    const { isGrid, submittedQuery, pageNumberSearch } = context;
+    const {currentPage = 1, results = [], totalPages = 1} = useSearch(submittedQuery, pageNumberSearch);  
 
     return (
         <div>

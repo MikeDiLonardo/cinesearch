@@ -6,8 +6,8 @@ import ListView from "../../components/views/ListView/ListView";
 
 export default function Home() {
     const context = useContext(LayoutContext)!;
-    const { isGrid, pageNumber } = context;    
-    const {currentPage = 1, results = [], totalPages = 1} = useTrending(pageNumber);  
+    const { isGrid, pageNumberHome } = context;    
+    const {currentPage = 1, results = [], totalPages = 1} = useTrending(pageNumberHome);  
 
     return (
         <div className="home">
