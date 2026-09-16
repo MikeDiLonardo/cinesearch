@@ -63,7 +63,8 @@ export default function Toolbar(){
                     className={`${styles.icon} ${styles["home-icon"]} ${clickedIcon === "home" ? "clicked-icon" : ""}`} 
                     width={28} 
                     height={28} 
-                    strokeWidth={1.25} />
+                    strokeWidth={1.25} 
+                />
             </NavLink>
 
             <NavLink
@@ -78,7 +79,8 @@ export default function Toolbar(){
                     className={`${styles.icon} ${styles["search-icon"]} ${clickedIcon === "search" ? "clicked-icon" : ""}`} 
                     width={28} 
                     height={28} 
-                    strokeWidth={1.25} />
+                    strokeWidth={1.25} 
+                />
             </NavLink>
 
             <NavLink
@@ -109,7 +111,8 @@ export default function Toolbar(){
                     className={`${styles.icon} ${styles["funnel-icon"]} ${clickedIcon === "funnel" ? "clicked-icon" : ""}`} 
                     width={28} 
                     height={28} 
-                    strokeWidth={1.25} />
+                    strokeWidth={1.25} 
+                />
             </button>       
                 
             <button 
@@ -121,17 +124,19 @@ export default function Toolbar(){
                 aria-label="Toggle Layout"
             >
                 {isGrid ? 
-                  <GridIcon 
+                <GridIcon 
                     className={`${styles.icon} ${styles["grid-icon"]} ${clickedIcon === "view" ? "clicked-icon" : ""}`} 
                     width={28} 
                     height={28} 
-                    strokeWidth={1.25} />
+                    strokeWidth={1.25} 
+                />
                 : 
-                  <ListIcon 
+                <ListIcon 
                     className={`${styles.icon} ${styles["list-icon"]} ${clickedIcon === "view" ? "clicked-icon" : ""}`} 
                     width={28} 
                     height={28} 
-                    strokeWidth={1.25} />
+                    strokeWidth={1.25} 
+                />
                 }
             </button>
         </div>

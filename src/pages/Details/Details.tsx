@@ -115,15 +115,15 @@ export default function Details() {
     }
 
     return (<>
-        <div /* background image */
+        <div className={styles.backdrop} /* background image */
             style={{
                 position: "absolute",
                 top: "0",
-                height: "35vh",
+                height: "40vh",
                 width: "100%",
                 zIndex: "10",
                 opacity: "0.40",
-                backgroundImage: `linear-gradient(180deg, rgba(0, 0 , 0, 0), var(--bg-header-footer)), url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path})`, 
+                backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path})`, 
                 backgroundSize: "150%", 
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center top",

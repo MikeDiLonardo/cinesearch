@@ -75,7 +75,7 @@ export default function Credits() {
 
 
     return (<>
-        <div /* background image */
+        <div className={styles.backdrop} /* background image */
             style={{
                 position: "absolute",
                 top: "0",
@@ -83,7 +83,7 @@ export default function Credits() {
                 width: "100%",
                 zIndex: "10",
                 opacity: "0.45",
-                backgroundImage: `linear-gradient(180deg, rgba(0, 0 , 0, 0), var(--bg-header-footer)), url(https://image.tmdb.org/t/p/w500/${person.profile_path})`, 
+                backgroundImage: `url(https://image.tmdb.org/t/p/w500/${person.profile_path})`, 
                 backgroundSize: "100%", 
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center 40%",

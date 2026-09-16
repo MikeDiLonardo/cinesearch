@@ -76,16 +76,13 @@
 
 .credits .more-less {
   align-self: center;
+  margin-bottom: 1rem;  
   border-radius: var(--radius-sm);
   border: 0.5px solid var(--stroke-mid);
   padding: var(--p-xxs) var(--p-sm);
   background-color: var(--bg-main);
   color: var(--stroke-light);
   cursor: pointer;
-}
-
-.credits .more-less:last-of-type {
-  margin-bottom: 1rem;
 }
 
 .credits-heading {
@@ -111,7 +108,15 @@
   background-color: var(--bg-main);
 }
 
-
+.backdrop::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0), var(--bg-header-footer))
+}
 
 /* colors */
 
