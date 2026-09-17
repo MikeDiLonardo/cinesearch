@@ -1,4 +1,4 @@
-import Fallback from "../../../components/common/Fallback/Fallback"
+import Fallback from "../../components/common/Fallback/Fallback"
 
 export default function NoResults() {
     return (

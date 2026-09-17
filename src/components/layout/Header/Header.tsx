@@ -15,11 +15,17 @@ export default function Header() {
     const { query , setSubmittedQuery, handleSearch, handleResetSearch } = context;
     const [isModalOpen, setIsModalOpen] = useState(false);
     const dialogRef = useRef<HTMLDialogElement>(null);    
+    const searchRef = useRef<HTMLInputElement>(null);
 
     function handleSearchSubmit(event: React.SubmitEvent<HTMLFormElement>) {
         event.preventDefault();
         navigate("/search");
         setSubmittedQuery(query)
+    }
+
+    function clearSearch() {
+        handleResetSearch();
+        searchRef.current?.focus();
     }
 
     /* tmdb credit */
@@ -49,32 +55,38 @@ export default function Header() {
                 </p>
             </div>  
         </dialog>    
-        <div className={styles.header}>
-            <form onSubmit={handleSearchSubmit}>
-                <div className={styles["search-container"]}>
-                    <button className={styles["search-icon-wrapper"]}>
-                        <SearchIcon className={styles["search-icon"]} width={20} height={20} strokeWidth={2}/>
-                    </button>
+        <div className={styles["header-wrapper"]}>
+            <div className={styles.header}>
+                <form onSubmit={handleSearchSubmit}>
+                    <div className={styles.container}>
+                        <p className={`${styles.cineSearch} text--xxl-sb`}>CineSearch</p>
+                        <div className={styles["search-wrapper"]}>
+                            <button className={styles["search-icon-wrapper"]}>
+                                <SearchIcon className={styles["search-icon"]} width={20} height={20} strokeWidth={2}/>
+                            </button>
 
-                    <label htmlFor={searchId}>
-                        <input 
-                            className={styles.search}
-                            value={query}
-                            onChange={handleSearch} 
-                            type="search" 
-                            placeholder="Search..." 
-                            id={searchId}
-                        />
-                    </label>
+                            <label htmlFor={searchId}>
+                                <input 
+                                    className={styles.search}
+                                    value={query}
+                                    onChange={handleSearch} 
+                                    type="search" 
+                                    placeholder="Search..." 
+                                    id={searchId}
+                                    ref={searchRef}
+                                />
+                            </label>
 
-                    <button type="button" className={styles["clear-icon-wrapper"]} onClick={handleResetSearch} >
-                        <ClearIcon className={styles["clear-icon"]} width={20} height={20} strokeWidth={2}/>
-                    </button>                
-                </div>
-            </form>
-            <button className={styles["info-icon-wrapper"]} onClick={openModal}>
-                <InfoIcon className={styles["info-icon"]} width={32} height={32} strokeWidth={1.25} />
-            </button>              
+                            <button type="button" className={styles["clear-icon-wrapper"]} onClick={clearSearch} >
+                                <ClearIcon className={styles["clear-icon"]} width={20} height={20} strokeWidth={2}/>
+                            </button>    
+                        </div>            
+                    </div>
+                </form>
+                <button className={styles["info-icon-wrapper"]} onClick={openModal}>
+                    <InfoIcon className={styles["info-icon"]} width={32} height={32} strokeWidth={1.25} />
+                </button>      
+            </div>
         </div>
     </>)
 }

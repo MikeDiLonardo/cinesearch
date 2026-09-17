@@ -98,7 +98,7 @@ export default function Credits() {
                             image={person.profile_path ? `https://image.tmdb.org/t/p/w500/${person.profile_path}` : "/credit-page-placeholder.svg"} 
                         />
 
-                        <div className={styles.info}>
+                        <div className={styles.w324}>
                             <div>
                                 <h2 className={`${styles.name} text--md-sb`}>{person.name}</h2>
                                 {person.known_for_department ? <p className={`${styles.job} text--base-sb`}>{job()}</p> : <p className={`${styles.job} text--base-sb`}>Occupation Unknown</p>}

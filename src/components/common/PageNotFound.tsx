@@ -1,4 +1,4 @@
-import Fallback from "../Fallback/Fallback"
+import Fallback from "./Fallback/Fallback"
 
 export default function PageNotFound() {
     return (

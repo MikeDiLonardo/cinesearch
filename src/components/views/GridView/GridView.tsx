@@ -3,8 +3,8 @@ import { useContext } from "react";
 import { LayoutContext } from "../../layout/Layout/Context/LayoutContext";
 import MediaItem from "../../cards/MediaItem/MediaItem";
 import NoFavorites from "../../../pages/Favorites/NoFavorites";
-import NoSearch from "../../../pages/Search/NoSearch/NoSearch";
-import NoResults from "../../../pages/Search/NoResults/NoResults";
+import NoSearch from "../../../pages/Search/NoSearch";
+import NoResults from "../../../pages/Search/NoResults";
 import styles from "./GridView.module.css";
 
 export default function GridView({page, movies, query, currentPage, totalPages}: View) {

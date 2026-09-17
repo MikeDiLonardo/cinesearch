@@ -163,21 +163,21 @@ export default function Details() {
                 {/* headline / summary */}
 
                 <section className={styles["headline-summary"]}>
-                    <h3 className={`${styles.headline} text--base-sb`}> {movie.tagline === "" ? "Summary" : movie.tagline}
-                    </h3>
+                    <h3 className={`${styles.headline} text--base-sb`}> {movie.tagline === "" ? "Summary" : movie.tagline}</h3>
                     <p className={`${styles.summary} text--xs-rg`}>{movie.overview}</p>
                 </section>
                 
                 {/* credits */}
 
                 <section className={styles.credits}>
-                    <div className={styles["credits-heading"]}>
+                    <div className={styles["cast-heading-wrapper"]}>
                         <h3 className={styles["cast-heading"]}>Cast</h3>
                         <button 
                             className={`${styles["skip-to-crew"]} text--xs-rg`} 
                             onClick={() => document.querySelector("#crew-heading")!.scrollIntoView()}
                         >
-                        Skip to Crew</button>
+                            Skip to Crew
+                        </button>
                     </div>
 
                     <ul className={styles.cast}>

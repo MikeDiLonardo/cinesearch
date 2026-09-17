@@ -35,6 +35,7 @@
   --p-lg: 1.38rem; /* 22px */
   --p-xl: 2rem; /* 32px */
   --p-xxl: 2.5rem; /* 40px */
+  --p-xxxl: 3rem; /* 48px */
 
   /* Gaps */
   --gap-xs: 0.25rem;
@@ -42,10 +43,13 @@
   --gap-md: 0.88rem;
   --gap-lg: 1.13rem;
   --gap-xl: 1.375rem;
+  --gap-xxl: 2rem;
+  --gap-xxxl: 2.5rem;
 
   /* Radius */
   --radius-sm: 0.31rem;
   --radius-md: 0.63rem;
+  --radius-lg: 1.5rem;
 
   /* Header & Footer height */
   --header-h: 6rem;
@@ -62,10 +66,10 @@
 html,
 body {
   background-color: var(--bg-main);
+  scroll-behavior: smooth;
 }
 
 html {
-  scroll-behavior: smooth;
   overscroll-behavior: none;
 }
 
@@ -92,11 +96,6 @@ body {
 /* 28px - semibold */
 .text--lg-sb {
   font-size: var(--fs-lg);
-  font-weight: var(--fw-sb);
-}
-/* 52px - semibold */
-.text--xxl-sb {
-  font-size: var(--fs-xxl);
   font-weight: var(--fw-sb);
 }
 /* #endregion */
@@ -150,6 +149,11 @@ body {
 /* 36px - semibold */
 .text--xl-sb {
   font-size: var(--fs-xl);
+  font-weight: var(--fw-sb);
+}
+/* 52px - semibold */
+.text--xxl-sb {
+  font-size: var(--fs-xxl);
   font-weight: var(--fw-sb);
 }
 /* #endregion */

@@ -2,9 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Suspense } from "react";
 import ScrollToTop from "./components/common/ScrollToTop";
 import SuspenseFallback from "./components/common/Suspense/SuspenseFallback";
-import PageNotFound from "./components/common/PageNotFound/PageNotFound";
+import PageNotFound from "./components/common/PageNotFound";
 import BaseLayout from "./components/layout/Layout/BaseLayout/BaseLayout";
-import HeaderLayout from "./components/layout/Layout/HeaderLayout/HeaderLayout";
+import HeaderLayout from "./components/layout/Layout/HeaderLayout";
 import Credits from "./pages/Credits/Credits";
 import Details from "./pages/Details/Details";
 import Home from "./pages/Home/Home";
@@ -17,7 +17,7 @@ export default function App() {
     <ScrollToTop />
     <Suspense fallback={<SuspenseFallback />}>
       <Routes>
-        <Route element={<BaseLayout />}>
+        <Route element={<BaseLayout />} >
 
         <Route element={<HeaderLayout />}>
           <Route path="/" element={<Home />} />

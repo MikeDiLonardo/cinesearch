@@ -1,26 +1,31 @@
+/* .thumbnail */
+
 .thumbnail {
+  width: 100%;
+  object-fit: cover;  
   border-radius: var(--radius-sm);
   border: 1px solid var(--stroke-mid);
-  width: 100%;
-  object-fit: cover;
 }
+
 .thumbnail.rectangle {
   aspect-ratio: 2 / 3;
 }
+
 .thumbnail.rectangle.list {
   width: 4.38rem;
 }
+
 .thumbnail.square.details {
   aspect-ratio: 1 / 1;
   width: 3.5rem;
 }
 
+/* views */
+
 .grid-item,
 .details-item {
   position: relative; /* for FavoriteIcon's absolute positioning */
 }
-
-/* list view */
 
 .list-item {
   display: flex;
@@ -29,6 +34,7 @@
   height: 8.75rem;
   border-bottom: 0.5px solid var(--stroke-mid);
 }
+
 .info {
   display: flex;
   align-items: center;

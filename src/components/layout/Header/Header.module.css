@@ -1,26 +1,45 @@
+/* header */
+
+.header-wrapper {
+  border-bottom: 1px solid;
+  border-image: linear-gradient(90deg, var(--stroke-mid), var(--stroke-light)) 1;
+  background-color: var(--bg-header-footer);
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
+  max-width: 87.5rem;
   width: 100%;
   height: var(--header-h);
-  border-bottom: 1px solid;
-  border-image: linear-gradient(90deg, var(--stroke-mid), var(--stroke-light)) 1;
+  margin-inline: auto;
   padding: 0 1rem;
-  background-color: var(--bg-header-footer);
 }
 
 .header form {
   width: 100%;
 }
 
+/* logo */
+
+.cineSearch {
+  display: none;
+}
+
 /* search input */
 
-.search-container {
-  position: relative;
+.container {
+  display: flex;
+  gap: 1rem;
   width: 100%;
   height: 3.25rem;
+}
+
+.search-wrapper {
+  position: relative;
+  flex-grow: 1;
 }
 
 .search {
@@ -28,7 +47,7 @@
   height: 100%;
   border-radius: 100vw;
   border: 0.5px solid var(--stroke-light);
-  padding-inline: 2.5rem;
+  padding-inline: var(--p-xxxl);
   background-color: var(--stroke-mid);
   color: var(--white);
 }
@@ -41,23 +60,22 @@
 
 .search-icon-wrapper,
 .clear-icon-wrapper {
-  cursor: pointer;
-}
-
-.search-icon,
-.clear-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   color: var(--stroke-light);
+  cursor: pointer;
 }
 
-.search-icon {
-  left: var(--p-sm);
+.search-icon-wrapper {
+  left: var(--p-md);
 }
 
-.clear-icon {
-  right: var(--p-sm);
+.clear-icon-wrapper {
+  right: var(--p-md);
 }
 
 /* info icon */
@@ -67,8 +85,7 @@
   align-items: center;
   height: 2.75rem;
   padding-block: var(--p-xs);
-  padding-left: 0.75rem;
-  padding-right: 0;
+  padding-inline: 0.75rem 0;
 }
 
 .info-icon {
@@ -79,9 +96,9 @@
 /* modals */
 
 .modal {
-  max-width: calc(100% - 2rem);
-  width: 100%;
-  margin: auto 1rem;
+  max-width: 400px;
+  width: calc(100% - 2rem);
+  margin: auto;
   border: none;
   background: transparent;
 }
@@ -97,11 +114,12 @@
   justify-content: center;
   align-items: center;
   gap: var(--gap-md);
+  max-height: 400px;
   height: 40vh;
-  border: 0.5px solid var(--bg-main);
   border-radius: var(--radius-md);
+  border: 0.5px solid var(--bg-main);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);  
+  -webkit-backdrop-filter: blur(10px);
   background-color: var(--bg-header-footer-trans);
   color: var(--stroke-mid);
 }
@@ -109,4 +127,18 @@
 .tmdb-credit p {
   text-align: center;
   color: var(--stroke-light);
+}
+
+/* media queries */
+
+@media (width >= 66rem) {
+  .cineSearch {
+    display: inline-block;
+    align-self: center;
+    color: var(--white);
+  }
+
+  .tmdb-credit {
+    border-radius: var(--radius-lg);
+  }
 }
