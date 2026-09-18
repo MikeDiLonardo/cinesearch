@@ -47,7 +47,15 @@
 }
 
 @media (width >= 66rem) {
+  .container {
+    margin-top: var(--footer-h);
+  }
+  
   .grid-view {
     grid-template-columns: repeat(6, 1fr);
+  }
+
+  .pages {
+    padding-bottom: 1rem;
   }
 }

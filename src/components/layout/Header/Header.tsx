@@ -1,6 +1,5 @@
-import { useId } from "react";
-import { useContext, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useId, useContext, useState, useRef } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { LayoutContext } from "../Layout/Context/LayoutContext";
 import SearchIcon from "../../icons/SearchIcon"
 import ClearIcon from "../../icons/ClearIcon"
@@ -59,7 +58,10 @@ export default function Header() {
             <div className={styles.header}>
                 <form onSubmit={handleSearchSubmit}>
                     <div className={styles.container}>
-                        <p className={`${styles.cineSearch} text--xxl-sb`}>CineSearch</p>
+                        <Link to="/">
+                            <p className={`${styles.cineSearch} text--xxl-sb`}>CineSearch</p>
+                        </Link>
+                        
                         <div className={styles["search-wrapper"]}>
                             <button className={styles["search-icon-wrapper"]}>
                                 <SearchIcon className={styles["search-icon"]} width={20} height={20} strokeWidth={2}/>

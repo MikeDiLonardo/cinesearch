@@ -1,9 +1,12 @@
 .footer {
   position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 100;
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 1400px;
   width: 100%;
   /* -100px / +100px extends the container below the viewport to show footer bleed instead of bg content during scrolling */
   bottom: -100px;
@@ -11,4 +14,18 @@
   border-top: 1px solid;
   border-image: linear-gradient(90deg, var(--stroke-mid), var(--stroke-light)) 1;
   background-color: var(--bg-header-footer);
+}
+
+@media (width >= 66rem) {
+  .footer {
+    position: absolute;
+
+    top: calc(var(--header-h) + 1px);
+    bottom: auto;
+    height: var(--footer-h);
+    background-color: var(--bg-main);
+    border-top: 0;
+    border-image: 0;
+    border-bottom: 1px solid var(--stroke-mid);
+  }
 }

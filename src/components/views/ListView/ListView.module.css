@@ -34,3 +34,15 @@
   background-color: var(--stroke-mid);
   cursor: pointer;
 }
+
+/* media queries */
+
+@media (width >= 66rem) {
+  .container {
+    margin-top: var(--footer-h);
+  }
+
+  .pages {
+    padding-bottom: 1rem;
+  }
+}
