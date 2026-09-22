@@ -5,3 +5,8 @@
   padding-top: 3rem;
   background-color: var(--bg-header-footer);
 }
+
+.back-button {
+  max-width: 75rem;
+  margin-inline: auto;
+}

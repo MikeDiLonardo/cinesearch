@@ -2,7 +2,7 @@
 
 .thumbnail {
   width: 100%;
-  object-fit: cover;  
+  object-fit: cover;
   border-radius: var(--radius-sm);
   border: 1px solid var(--stroke-mid);
 }
@@ -49,4 +49,11 @@
 .year,
 .rating {
   color: var(--stroke-light);
+}
+
+@media (width >= 66rem) {
+  .thumbnail.rectangle.details,
+  .thumbnail.rectangle.credits {
+    width: 16rem;
+  }
 }

@@ -55,6 +55,7 @@
   --header-h: 6rem;
   --footer-h: 4rem;
   --header-footer-h: calc(var(--header-h) + var(--footer-h));
+
 }
 
 * {
@@ -92,11 +93,6 @@ body {
 .text--base-lt {
   font-size: var(--fs-base);
   font-weight: var(--fw-lt);
-}
-/* 28px - semibold */
-.text--lg-sb {
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-sb);
 }
 /* #endregion */
 
@@ -140,6 +136,11 @@ body {
 .text--base-sb {
   font-size: var(--fs-base);
   font-weight: var(--fw-sb);
+}
+/* 21x - regular */
+.text--md-rg {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-rg);
 }
 /* 21px - semibold */
 .text--md-sb {

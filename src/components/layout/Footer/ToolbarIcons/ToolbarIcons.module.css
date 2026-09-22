@@ -1,0 +1,51 @@
+.toolbar-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: var(--p-xs);
+}
+
+.toolbar-icon-wrapper.active::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3.75rem;
+  height: 2.75rem;
+  border-radius: 1rem;
+  border: 0.5px solid var(--stroke-light);
+  background-color: var(--active-icon);
+}
+
+.icon {
+  z-index: 10;
+  color: var(--white);
+}
+
+.funnel-icon,
+.grid-icon,
+.list-icon {
+  cursor: pointer;
+}
+
+/* media queries */
+
+@media (width >= 66rem) {
+  .toolbar-icon-wrapper.active::before {
+    border: none;
+    background-color: transparent;
+  }
+
+  .favorites-icon-wrapper.active .favorites-icon {
+    fill: var(--white);
+  }
+
+  .home-icon-wrapper,
+  .search-icon-wrapper,
+  .funnel-icon-wrapper,
+  .grid-icon-wrapper,
+  .list-icon-wrapper {
+    display: none;
+  }
+}

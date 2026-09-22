@@ -6,7 +6,6 @@
   width: 100vw;
   height: calc(100vh - var(--header-footer-h));
   background-color: var(--bg-main);
-  padding-inline: 1rem;
 }
 
 .container h1 {

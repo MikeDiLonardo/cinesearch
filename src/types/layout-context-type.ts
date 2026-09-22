@@ -1,6 +1,9 @@
 import type { Movie } from "./movie";
 
 export interface LayoutContextType {
+    isLargeScreen: boolean;
+    handleIsLargeScreen: () => void;
+
     clickedIcon: string;
     handleClickedIcon: (clickedIcon: string) => void;     
 
@@ -15,6 +18,7 @@ export interface LayoutContextType {
     handlePreviousPageSearch: () => void;
     handleNextPageSearch: (totalPages: number) => void;        
     pageNumberFavorites: number;
+    setPageNumberFavorites: (page: number) => void;    
     handlePreviousPageFavorites: () => void;
     handleNextPageFavorites: (totalPages: number) => void;        
     pageNumberCredits: number;

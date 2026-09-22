@@ -1,11 +1,11 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LayoutContext } from "../../components/layout/Layout/Context/LayoutContext";
-import GridView from "../../components/views/GridView/GridView";
-import ListView from "../../components/views/ListView/ListView";
+import GridView from "../../components/views/GridView";
+import ListView from "../../components/views/ListView";
 
 export default function Favorites() {
     const context = useContext(LayoutContext)!;
-    const { favorites, isGrid, pageNumberFavorites } = context;
+    const { isLargeScreen, handleIsLargeScreen, favorites, setPageNumberFavorites, pageNumberFavorites, isGrid } = context;
 
     const startIndex = (pageNumberFavorites - 1) * 18;
     const endIndex = startIndex + 18
@@ -13,7 +13,17 @@ export default function Favorites() {
     const currentPage = pageNumberFavorites
     const totalPages = Math.ceil(favorites.length / 18) || 1;
 
-    console.log(favorites)
+    useEffect(() => {
+        if (isLargeScreen) {
+            handleIsLargeScreen();
+        }
+    }, [isLargeScreen, handleIsLargeScreen])    
+
+    useEffect(() => {
+        if (currentPage > totalPages) {
+            setPageNumberFavorites(totalPages);
+        }
+    }, [favorites.length, currentPage, totalPages, setPageNumberFavorites]);
 
     return (
         <div className="favorites">

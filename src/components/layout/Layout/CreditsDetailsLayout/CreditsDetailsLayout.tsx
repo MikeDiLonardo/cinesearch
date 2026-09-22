@@ -5,7 +5,9 @@ import styles from "./CreditsDetailsLayout.module.css";
 export default function CreditsDetailsLayout({ page, children }: CreditsDetailsLayout) {
     return (
         <div className={styles[page]}>
-            <BackButton />
+            <div className={styles["back-button"]}>
+                <BackButton />
+            </div>
             {children}
         </div>
     )

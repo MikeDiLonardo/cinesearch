@@ -14,6 +14,11 @@ export function LayoutProvider(props: {children: React.ReactNode}) {
     const [pageNumberCredits, setPageNumberCredits] = useState(1);
     const [isFunnelOpen, setIsFunnelOpen] = useState(false);
     const [sortBy, setSortBy] = useState("newest");
+    const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+    function handleIsLargeScreen() {
+        setIsLargeScreen(!isLargeScreen);
+    }
 
     /* clicked toolbar icons */
 
@@ -114,11 +119,12 @@ export function LayoutProvider(props: {children: React.ReactNode}) {
 
     return <LayoutContext 
             value={{
+                isLargeScreen, handleIsLargeScreen,
                 clickedIcon, handleClickedIcon, 
                 query, submittedQuery, setSubmittedQuery, 
                 pageNumberHome, handlePreviousPageHome, handleNextPageHome,
                 pageNumberSearch, handlePreviousPageSearch, handleNextPageSearch,
-                pageNumberFavorites, handlePreviousPageFavorites, handleNextPageFavorites,
+                pageNumberFavorites, setPageNumberFavorites, handlePreviousPageFavorites, handleNextPageFavorites,
                 pageNumberCredits, handlePreviousPageCredits, handleNextPageCredits,
                 handleSearch, handleResetSearch ,
                 favorites, handleAddFavorite, handleRemoveFavorite,
