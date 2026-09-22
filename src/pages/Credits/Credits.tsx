@@ -102,21 +102,18 @@ export default function Credits() {
         ></div>        
         <CreditsDetailsLayout page="credits">  
             <div className={styles.container}>
+
+                {/* header */}
+
                 <section className={styles.header}>
-                    <div className={styles["thumbnail-desktop"]}>               
-                        <MediaItem 
-                            view="credits" 
-                            shape="rectangle" 
-                            image={person.profile_path ? `https://image.tmdb.org/t/p/w500/${person.profile_path}` : "/credit-page-placeholder.svg"} 
-                        />
-                    </div>                             
                     <div className={styles["thumbnail-mobile"]}>                  
                         <MediaItem 
                             view="credits" 
                             shape="rectangle" 
                             image={person.profile_path ? `https://image.tmdb.org/t/p/w500/${person.profile_path}` : "/credit-page-placeholder.svg"} 
                         />
-                    </div>                          
+                    </div>
+
                     <div className={styles.info}>
                         <h2 className={`${styles.name} text--md-sb`}>{person.name}</h2>
                         
@@ -143,8 +140,14 @@ export default function Credits() {
                             <p className={`${styles.age} text--sm-rg`}>Age Unknown</p>
                         }
                     </div>
-                </section>                
+                </section>
+
+                {/* tabs-biography-filmography */}
+
                 <section className={styles["biography-filmography"]}>
+
+                   {/*  tabs */}
+
                     <div className={`${styles.tabs} text--sm-rg`}>
                         <button 
                             className={`${styles["biography-tab"]} ${clickedTab === "biography" ? `${styles["clicked-tab"]}` : "" }`}
@@ -162,9 +165,11 @@ export default function Credits() {
                         </button>
                     </div>
 
+                    {/* biography-filmography */}
+
                     <div className={styles["biography-filmography-mobile"]}>                
                         {clickedTab === "biography" ? 
-                            <div className={`${styles["biography-wrapper"]} text--sm-rg`}>
+                            <div className={`${styles.biography} text--sm-rg`}>
                                 {person.biography ? 
                                     person.biography.split("\n").map((bio, index) => (bio === "" ? 
                                         <p key={index}>&nbsp;</p> // To create paragraphs
@@ -182,29 +187,7 @@ export default function Credits() {
                                 }
                             </div> 
                         }
-                    </div>
-
-                    <div className={styles["biography-filmography-desktop"]}>
-                        <div className={styles.filmography}>
-                            {isGrid ? 
-                                <GridView page="credits" movies={movies} currentPage={currentPage} totalPages={totalPages}/> 
-                                : 
-                                <ListView page="credits" movies={movies} currentPage={currentPage} totalPages={totalPages}/>
-                            }
-                        </div>    
-
-                        <div className={`${styles["biography-wrapper"]} text--sm-rg`}>
-                            {person.biography ? 
-                                person.biography.split("\n").map((bio, index) => (bio === "" ? 
-                                    <p key={index}>&nbsp;</p> // To create paragraphs
-                                    :
-                                    <p key={index}>{bio}</p>)) // Without &nbsp; to not add a space at the beginning of each paragraph
-                                : 
-                                "No biography provided. Please try again later."}
-                        </div>
-                                             
-                         
-                    </div>                          
+                    </div>                      
                 </section>
             </div>
         </CreditsDetailsLayout>

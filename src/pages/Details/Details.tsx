@@ -144,102 +144,100 @@ export default function Details() {
         ></div>
         <CreditsDetailsLayout page="details">
             <div className={styles.container}>
-
+                
                 {/* header */}
-                <div className={styles["thumbnail-desktop"]}>
-                    <MediaItem 
-                        movie={movie} 
-                        view="details" 
-                        shape="rectangle" 
-                        key={movie.id} 
-                        image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"}
-                    />
-                </div>       
-                <div>       
-                    <section className={styles.header}>
-                        <div className={styles["thumbnail-mobile"]}>
-                            <MediaItem 
-                                movie={movie} 
-                                view="details" 
-                                shape="rectangle" 
-                                key={movie.id} 
-                                image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"}
-                            />
-                        </div>
-                        <div className={styles.info}>
-                            <h2 className={`${styles.title} text--md-sb`}>{movie.title}</h2>
-                            <p className={`${styles.year} text--xs-lt`}><time dateTime="2019">{year}</time></p>
-                            <div>
-                                <p className={`${styles["directed-by"]} text--xs-lt`}>Directed by</p>
-                                <p className={`${styles.director} text--xs-sb`}>{director}</p>
-                            </div>
-                            <p className={`${styles.duration} text--xs-lt`}><time dateTime="PT96M">{movie.runtime} mins</time></p>
-                            <div className={styles.rating}>
-                                {rating}
-                            </div>
-                            <ul className={`${styles.genres} text--xs-lt`}>
-                                {movie.genres.map(genre => <li key={genre.id}>{genre.name}</li>)}
-                            </ul>
-                        </div>
-                    </section>
-                    
-                    {/* headline / summary */}
+                
+                <section className={styles.header}>
+                    <div className={styles["thumbnail-mobile"]}>
+                        <MediaItem 
+                            movie={movie} 
+                            view="details" 
+                            shape="rectangle" 
+                            key={movie.id} 
+                            image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"}
+                        />
+                    </div>
+                    <div className={styles.info}>
+                        <h2 className={`${styles.title} text--md-sb`}>{movie.title}</h2>
+                        <p className={`${styles.year} text--xs-lt`}><time dateTime="2019">{year}</time></p>
 
-                    <section className={styles["headline-summary"]}>
-                        <h3 className={`${styles.headline} text--base-sb`}> {movie.tagline === "" ? "Summary" : movie.tagline}</h3>
-                        <p className={`${styles.summary} text--xs-rg`}>{movie.overview}</p>
-                    </section>
-                    
-                    {/* credits */}
-
-                    <section className={styles.credits}>
-                        <div className={styles.cast}>
-                            <div className={styles["cast-heading-wrapper"]}>
-                                <h3 className={styles["cast-heading"]}>Cast</h3>
-                                <button 
-                                    className={`${styles["skip-to-crew"]} text--xs-rg`} 
-                                    onClick={() => document.querySelector("#crew-heading")!.scrollIntoView()}
-                                >
-                                    Skip to Crew
-                                </button>
-                            </div>
-
-                            <ul className={styles["cast-list"]}>
-                                {castList}
-                            </ul>
-                            {movie.credits.cast.length > 10 ? 
-                                <button className={styles["more-less"]} onClick={visibleCast === 10 ? handleMoreCast : handleLessCast}>
-                                    {visibleCast === 10 ? "More" : "Less"}
-                                </button>    
-                            :
-                                null
-                            }
+                        <div>
+                            <p className={`${styles["directed-by"]} text--xs-lt`}>Directed by</p>
+                            <p className={`${styles.director} text--xs-sb`}>{director}</p>
                         </div>
 
-                        <div className={styles.crew}>
-                            <div className={styles["crew-heading-wrapper"]}>                      
-                                <h3 
-                                    id="crew-heading" 
-                                    className={`${styles["crew-heading"]}`}
-                                    style={{scrollMarginTop: "1rem"}}
-                                >
-                                    Crew
-                                </h3>
-                            </div>  
-                            <ul className={styles["crew-list"]}>
-                                {crewList}
-                            </ul>
-                            {movie.credits.crew.length  > 10 ? 
-                                <button className={styles["more-less"]} onClick={visibleCrew === 10 ? handleMoreCrew : handleLessCrew}>
-                                    {visibleCrew === 10 ? "More" : "Less"}
-                                </button>    
-                            :
-                                null
-                            }    
+                        <p className={`${styles.duration} text--xs-lt`}><time dateTime="PT96M">{movie.runtime} mins</time></p>
+
+                        <div className={styles.rating}>
+                            {rating}
                         </div>
-                         
-                    </section>
-                </div>                  
+
+                        <ul className={`${styles.genres} text--xs-lt`}>
+                            {movie.genres.map(genre => <li key={genre.id}>{genre.name}</li>)}
+                        </ul>
+                    </div>
+                </section>
+                
+                {/* headline / summary */}
+
+                <section className={styles["headline-summary"]}>
+                    <h3 className={`${styles.headline} text--base-sb`}> {movie.tagline === "" ? "Summary" : movie.tagline}</h3>
+                    <p className={`${styles.summary} text--xs-rg`}>{movie.overview}</p>
+                </section>
+                
+                {/* credits */}
+
+                <section className={styles.credits}>
+
+                    {/* cast */}
+
+                    <div className={styles.cast}>
+                        <div className={styles["cast-heading-wrapper"]}>
+                            <h3 className={styles["cast-heading"]}>Cast</h3>
+                            <button 
+                                className={`${styles["skip-to-crew"]} text--xs-rg`} 
+                                onClick={() => document.querySelector("#crew-heading")!.scrollIntoView()}
+                            >
+                                Skip to Crew
+                            </button>
+                        </div>
+
+                        <ul className={styles["cast-list"]}>
+                            {castList}
+                        </ul>
+                        {movie.credits.cast.length > 10 ? 
+                            <button className={styles["more-less"]} onClick={visibleCast === 10 ? handleMoreCast : handleLessCast}>
+                                {visibleCast === 10 ? "More" : "Less"}
+                            </button>    
+                        :
+                            null
+                        }
+                    </div>
+
+                    {/* crew */}
+
+                    <div className={styles.crew}>
+                        <div className={styles["crew-heading-wrapper"]}>                      
+                            <h3 
+                                id="crew-heading" 
+                                className={`${styles["crew-heading"]}`}
+                                style={{scrollMarginTop: "1rem"}}
+                            >
+                                Crew
+                            </h3>
+                        </div>  
+                        <ul className={styles["crew-list"]}>
+                            {crewList}
+                        </ul>
+                        {movie.credits.crew.length  > 10 ? 
+                            <button className={styles["more-less"]} onClick={visibleCrew === 10 ? handleMoreCrew : handleLessCrew}>
+                                {visibleCrew === 10 ? "More" : "Less"}
+                            </button>    
+                        :
+                            null
+                        }    
+                    </div>
+                </section>     
             </div>
         </CreditsDetailsLayout>
     </>)    

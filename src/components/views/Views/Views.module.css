@@ -33,6 +33,11 @@
   background-color: var(--bg-main);
 }
 
+.grid-view,
+.list-view {
+  flex-grow: 1;
+}
+
 .grid-view.credits,
 .list-view.credits {
   padding-inline: 0;
@@ -42,10 +47,11 @@
 
 .pages {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: var(--gap-xxl);
   width: 100%;
+  margin-top: auto;
   padding-inline: 1rem;
   padding-bottom: calc(var(--footer-h) + var(--p-md));
   color: var(--stroke-light);
@@ -89,6 +95,7 @@
   }
 
   .pages {
+    justify-content: center;
     padding-bottom: var(--p-md);
   }
 }
