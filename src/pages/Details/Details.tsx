@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { LayoutContext } from "../../components/layout/Layout/Context/LayoutContext";
 import useCreditsDetails from "../../hooks/useCreditsDetails";
 import CreditsDetailsLayout from "../../components/layout/Layout/CreditsDetailsLayout/CreditsDetailsLayout";
 import MediaItem from "../../components/cards/MediaItem/MediaItem";
@@ -12,8 +13,17 @@ export default function Details() {
     const movieId = Number.parseInt(id ?? "", 10); // ?? "" in case there's no number after details/
     const movie = useCreditsDetails(movieId);
 
+    const context = useContext(LayoutContext)!;
+    const { isLargeScreen, handleIsLargeScreen } = context;    
+
     const [visibleCast, setVisibleCast] = useState(10);
     const [visibleCrew, setVisibleCrew] = useState(10);
+    
+    useEffect(() => {
+        if (!isLargeScreen) {
+            handleIsLargeScreen();
+        }
+    }, [isLargeScreen, handleIsLargeScreen])
     
     /* Variables for header */
 
@@ -65,8 +75,6 @@ export default function Details() {
                     role={cast.character}
                 />
             </li>);
-
-
 
     function handleMoreCast() {
         setVisibleCast(movie.credits.cast.length);
@@ -120,9 +128,14 @@ export default function Details() {
                 position: "absolute",
                 top: "0",
                 height: "40vh",
+                maxWidth: "87.5rem",
+                WebkitMaskImage: "var(--mask)",
+                maskImage: "var(--mask)",
                 width: "100%",
                 zIndex: "10",
                 opacity: "0.40",
+                left: "50%", 
+                transform: "translateX(-50%)",                 
                 backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path})`, 
                 backgroundSize: "150%", 
                 backgroundRepeat: "no-repeat",
@@ -133,82 +146,100 @@ export default function Details() {
             <div className={styles.container}>
 
                 {/* header */}
-
-                <section className={styles.header}>
+                <div className={styles["thumbnail-desktop"]}>
                     <MediaItem 
                         movie={movie} 
                         view="details" 
                         shape="rectangle" 
                         key={movie.id} 
                         image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"}
-                     />
-
-                    <div className={styles.info}>
-                        <h2 className={`${styles.title} text--md-sb`}>{movie.title}</h2>
-                        <p className={`${styles.year} text--xs-lt`}><time dateTime="2019">{year}</time></p>
-                        <div>
-                            <p className={`${styles["directed-by"]} text--xs-lt`}>Directed by</p>
-                            <p className={`${styles.director} text--xs-sb`}>{director}</p>
+                    />
+                </div>       
+                <div>       
+                    <section className={styles.header}>
+                        <div className={styles["thumbnail-mobile"]}>
+                            <MediaItem 
+                                movie={movie} 
+                                view="details" 
+                                shape="rectangle" 
+                                key={movie.id} 
+                                image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/movie-photo-placeholder.svg"}
+                            />
                         </div>
-                        <p className={`${styles.duration} text--xs-lt`}><time dateTime="PT96M">{movie.runtime} mins</time></p>
-                        <div className={styles.rating}>
-                            {rating}
+                        <div className={styles.info}>
+                            <h2 className={`${styles.title} text--md-sb`}>{movie.title}</h2>
+                            <p className={`${styles.year} text--xs-lt`}><time dateTime="2019">{year}</time></p>
+                            <div>
+                                <p className={`${styles["directed-by"]} text--xs-lt`}>Directed by</p>
+                                <p className={`${styles.director} text--xs-sb`}>{director}</p>
+                            </div>
+                            <p className={`${styles.duration} text--xs-lt`}><time dateTime="PT96M">{movie.runtime} mins</time></p>
+                            <div className={styles.rating}>
+                                {rating}
+                            </div>
+                            <ul className={`${styles.genres} text--xs-lt`}>
+                                {movie.genres.map(genre => <li key={genre.id}>{genre.name}</li>)}
+                            </ul>
                         </div>
-                        <ul className={`${styles.genres} text--xs-lt`}>
-                            {movie.genres.map(genre => <li key={genre.id}>{genre.name}</li>)}
-                        </ul>
-                    </div>
-                </section>
-                
-                {/* headline / summary */}
+                    </section>
+                    
+                    {/* headline / summary */}
 
-                <section className={styles["headline-summary"]}>
-                    <h3 className={`${styles.headline} text--base-sb`}> {movie.tagline === "" ? "Summary" : movie.tagline}</h3>
-                    <p className={`${styles.summary} text--xs-rg`}>{movie.overview}</p>
-                </section>
-                
-                {/* credits */}
+                    <section className={styles["headline-summary"]}>
+                        <h3 className={`${styles.headline} text--base-sb`}> {movie.tagline === "" ? "Summary" : movie.tagline}</h3>
+                        <p className={`${styles.summary} text--xs-rg`}>{movie.overview}</p>
+                    </section>
+                    
+                    {/* credits */}
 
-                <section className={styles.credits}>
-                    <div className={styles["cast-heading-wrapper"]}>
-                        <h3 className={styles["cast-heading"]}>Cast</h3>
-                        <button 
-                            className={`${styles["skip-to-crew"]} text--xs-rg`} 
-                            onClick={() => document.querySelector("#crew-heading")!.scrollIntoView()}
-                        >
-                            Skip to Crew
-                        </button>
-                    </div>
+                    <section className={styles.credits}>
+                        <div className={styles.cast}>
+                            <div className={styles["cast-heading-wrapper"]}>
+                                <h3 className={styles["cast-heading"]}>Cast</h3>
+                                <button 
+                                    className={`${styles["skip-to-crew"]} text--xs-rg`} 
+                                    onClick={() => document.querySelector("#crew-heading")!.scrollIntoView()}
+                                >
+                                    Skip to Crew
+                                </button>
+                            </div>
 
-                    <ul className={styles.cast}>
-                        {castList}
-                    </ul>
-                    {movie.credits.cast.length > 10 ? 
-                        <button className={styles["more-less"]} onClick={visibleCast === 10 ? handleMoreCast : handleLessCast}>
-                            {visibleCast === 10 ? "More" : "Less"}
-                        </button>    
-                    :
-                        null
-                    }
+                            <ul className={styles["cast-list"]}>
+                                {castList}
+                            </ul>
+                            {movie.credits.cast.length > 10 ? 
+                                <button className={styles["more-less"]} onClick={visibleCast === 10 ? handleMoreCast : handleLessCast}>
+                                    {visibleCast === 10 ? "More" : "Less"}
+                                </button>    
+                            :
+                                null
+                            }
+                        </div>
 
-                    <h3 
-                        id="crew-heading" 
-                        className={`${styles["crew-heading"]}`}
-                        style={{scrollMarginTop: "1rem"}}
-                    >
-                        Crew
-                    </h3>
-                    <ul className={styles.crew}>
-                        {crewList}
-                    </ul>
-                    {movie.credits.crew.length  > 10 ? 
-                        <button className={styles["more-less"]} onClick={visibleCrew === 10 ? handleMoreCrew : handleLessCrew}>
-                            {visibleCrew === 10 ? "More" : "Less"}
-                        </button>    
-                    :
-                        null
-                    }                             
-                </section>
+                        <div className={styles.crew}>
+                            <div className={styles["crew-heading-wrapper"]}>                      
+                                <h3 
+                                    id="crew-heading" 
+                                    className={`${styles["crew-heading"]}`}
+                                    style={{scrollMarginTop: "1rem"}}
+                                >
+                                    Crew
+                                </h3>
+                            </div>  
+                            <ul className={styles["crew-list"]}>
+                                {crewList}
+                            </ul>
+                            {movie.credits.crew.length  > 10 ? 
+                                <button className={styles["more-less"]} onClick={visibleCrew === 10 ? handleMoreCrew : handleLessCrew}>
+                                    {visibleCrew === 10 ? "More" : "Less"}
+                                </button>    
+                            :
+                                null
+                            }    
+                        </div>
+                         
+                    </section>
+                </div>                  
             </div>
         </CreditsDetailsLayout>
     </>)    
