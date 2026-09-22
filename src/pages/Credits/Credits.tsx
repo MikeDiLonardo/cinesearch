@@ -1,11 +1,11 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { LayoutContext } from "../../components/layout/Layout/Context/LayoutContext";
 import usePerson from "../../hooks/usePerson";
 import CreditsDetailsLayout from "../../components/layout/Layout/CreditsDetailsLayout/CreditsDetailsLayout";
 import MediaItem from "../../components/cards/MediaItem/MediaItem";
-import GridView from "../../components/views/GridView/GridView";
-import ListView from "../../components/views/ListView/ListView";
+import GridView from "../../components/views/GridView";
+import ListView from "../../components/views/ListView";
 import styles from "./Credits.module.css";
 
 export default function Credits() {
@@ -15,7 +15,13 @@ export default function Credits() {
     const person = usePerson(actorId);
    
     const context = useContext(LayoutContext)!;
-    const { isGrid, pageNumberCredits } = context;
+    const { isLargeScreen, handleIsLargeScreen, isGrid, pageNumberCredits } = context;
+
+    useEffect(() => {
+        if (!isLargeScreen) {
+            handleIsLargeScreen();
+        }
+    }, [isLargeScreen, handleIsLargeScreen])
 
     /* age */
 
@@ -79,10 +85,15 @@ export default function Credits() {
             style={{
                 position: "absolute",
                 top: "0",
-                height: "40vh",
+                height: "45vh",
+                maxWidth: "87.5rem",
+                WebkitMaskImage: "var(--mask)",
+                maskImage: "var(--mask)",              
                 width: "100%",
                 zIndex: "10",
-                opacity: "0.45",
+                opacity: "0.40",
+                left: "50%", 
+                transform: "translateX(-50%)",                   
                 backgroundImage: `url(https://image.tmdb.org/t/p/w500/${person.profile_path})`, 
                 backgroundSize: "100%", 
                 backgroundRepeat: "no-repeat",
@@ -92,69 +103,110 @@ export default function Credits() {
         <CreditsDetailsLayout page="credits">  
             <div className={styles.container}>
                 <section className={styles.header}>
+                    <div className={styles["thumbnail-desktop"]}>               
                         <MediaItem 
                             view="credits" 
                             shape="rectangle" 
                             image={person.profile_path ? `https://image.tmdb.org/t/p/w500/${person.profile_path}` : "/credit-page-placeholder.svg"} 
                         />
+                    </div>                             
+                    <div className={styles["thumbnail-mobile"]}>                  
+                        <MediaItem 
+                            view="credits" 
+                            shape="rectangle" 
+                            image={person.profile_path ? `https://image.tmdb.org/t/p/w500/${person.profile_path}` : "/credit-page-placeholder.svg"} 
+                        />
+                    </div>                          
+                    <div className={styles.info}>
+                        <h2 className={`${styles.name} text--md-sb`}>{person.name}</h2>
+                        
+                        {person.known_for_department ? 
+                            <p className={`${styles.job} text--base-sb`}>{job()}</p> 
+                        :   
+                            <p className={`${styles.job} text--base-sb`}>Occupation Unknown</p>
+                        }
 
-                        <div className={styles.w324}>
-                            <div>
-                                <h2 className={`${styles.name} text--md-sb`}>{person.name}</h2>
-                                {person.known_for_department ? <p className={`${styles.job} text--base-sb`}>{job()}</p> : <p className={`${styles.job} text--base-sb`}>Occupation Unknown</p>}
-                            </div>
-                            <div>
-                                {person.place_of_birth ?
-                                    <p className={`${styles.birthplace} text--sm-rg`}>Born in <span className="text--sm-sb">{person.place_of_birth}</span></p>
-                                    : 
-                                    <p className={`${styles.birthplace} text--sm-rg`}> Birthplace <span className="text--sm-sb">Unknown</span></p>
-                                }
-                                {person.birthday? 
-                                    <p className={`${styles.age} text--sm-rg`}>
-                                        {deathday ? `${age} years old (Deceased)` : `${age} years old`}
-                                    </p>
+                        {person.place_of_birth ?
+                            <p className={`${styles.birthplace} text--sm-rg`}>Born in <span className="text--sm-sb">{person.place_of_birth}</span></p>
+                            : 
+                            <p className={`${styles.birthplace} text--sm-rg`}> Birthplace <span className="text--sm-sb">Unknown</span></p>
+                        }
+
+                        {person.birthday? 
+                            <p className={`${styles.age} text--sm-rg`}>
+                                {deathday ? 
+                                    `${age} years old (Deceased)` 
                                 : 
-                                    <p className={`${styles.age} text--sm-rg`}>Age Unknown</p>
+                                    `${age} years old`}
+                            </p>
+                        : 
+                            <p className={`${styles.age} text--sm-rg`}>Age Unknown</p>
+                        }
+                    </div>
+                </section>                
+                <section className={styles["biography-filmography"]}>
+                    <div className={`${styles.tabs} text--sm-rg`}>
+                        <button 
+                            className={`${styles["biography-tab"]} ${clickedTab === "biography" ? `${styles["clicked-tab"]}` : "" }`}
+                            aria-label="View Biography"
+                            onClick={() => handleClickedTab("biography")}
+                        >
+                            Biography
+                        </button>
+                        <button 
+                            className={`${styles["filmography-tab"]} ${clickedTab === "filmography" ? `${styles["clicked-tab"]}` : "" }`}
+                            aria-label="View Filmography"
+                            onClick={() => handleClickedTab("filmography")}
+                        >
+                            Filmography
+                        </button>
+                    </div>
+
+                    <div className={styles["biography-filmography-mobile"]}>                
+                        {clickedTab === "biography" ? 
+                            <div className={`${styles["biography-wrapper"]} text--sm-rg`}>
+                                {person.biography ? 
+                                    person.biography.split("\n").map((bio, index) => (bio === "" ? 
+                                        <p key={index}>&nbsp;</p> // To create paragraphs
+                                        :
+                                        <p key={index}>{bio}</p>)) // Without &nbsp; to not add a space at the beginning of each paragraph
+                                    : 
+                                    "No biography provided. Please try again later."}
+                            </div> 
+                            : 
+                            <div className={styles.filmography}>
+                                {isGrid ? 
+                                    <GridView page="credits" movies={movies} currentPage={currentPage} totalPages={totalPages}/> 
+                                    : 
+                                    <ListView page="credits" movies={movies} currentPage={currentPage} totalPages={totalPages}/>
                                 }
-                            </div>
+                            </div> 
+                        }
+                    </div>
+
+                    <div className={styles["biography-filmography-desktop"]}>
+                        <div className={styles.filmography}>
+                            {isGrid ? 
+                                <GridView page="credits" movies={movies} currentPage={currentPage} totalPages={totalPages}/> 
+                                : 
+                                <ListView page="credits" movies={movies} currentPage={currentPage} totalPages={totalPages}/>
+                            }
+                        </div>    
+
+                        <div className={`${styles["biography-wrapper"]} text--sm-rg`}>
+                            {person.biography ? 
+                                person.biography.split("\n").map((bio, index) => (bio === "" ? 
+                                    <p key={index}>&nbsp;</p> // To create paragraphs
+                                    :
+                                    <p key={index}>{bio}</p>)) // Without &nbsp; to not add a space at the beginning of each paragraph
+                                : 
+                                "No biography provided. Please try again later."}
                         </div>
+                                             
+                         
+                    </div>                          
                 </section>
-                <div className={`${styles.tabs} text--sm-rg`}>
-                    <button 
-                        className={`${styles["biography-tab"]} ${clickedTab === "biography" ? `${styles["clicked-tab"]}` : "" }`}
-                        aria-label="View Biography"
-                        onClick={() => handleClickedTab("biography")}
-                    >
-                        Biography
-                    </button>
-                    <button 
-                        className={`${styles["filmography-tab"]} ${clickedTab === "filmography" ? `${styles["clicked-tab"]}` : "" }`}
-                        aria-label="View Filmography"
-                        onClick={() => handleClickedTab("filmography")}
-                    >
-                        Filmography
-                    </button>
-                </div>
             </div>
-            {clickedTab === "biography" ? 
-                <div className={`${styles["biography-wrapper"]} text--sm-rg`}>
-                    {person.biography ? 
-                        person.biography.split("\n").map((bio, index) => (bio === "" ? 
-                            <p key={index}>&nbsp;</p> // To create paragraphs
-                            :
-                            <p key={index}>{bio}</p>)) // Without &nbsp; to not add a space at the beginning of each paragraph
-                        : 
-                        "No biography provided. Please try again later."}
-                </div> 
-                : 
-                <div className={styles.filmography}>
-                    {isGrid ? 
-                        <GridView page="credits" movies={movies} currentPage={currentPage} totalPages={totalPages}/> 
-                        : 
-                        <ListView page="credits" movies={movies} currentPage={currentPage} totalPages={totalPages}/>
-                    }
-                </div> 
-            }
         </CreditsDetailsLayout>
     </>)    
 }   
