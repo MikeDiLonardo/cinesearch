@@ -52,8 +52,13 @@
 }
 
 @media (width >= 66rem) {
+  .thumbnail.rectangle.credits {
+
+  }
+  
   .thumbnail.rectangle.details,
   .thumbnail.rectangle.credits {
     width: 16rem;
+    border-radius: var(--radius-md);    
   }
 }

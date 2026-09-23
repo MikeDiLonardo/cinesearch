@@ -131,7 +131,7 @@
 
 /* media queries */
 
-@media (width >= 66rem) {
+@media (width >= 48rem) {
   .cineSearch {
     display: inline-block;
     color: var(--white);
@@ -140,7 +140,9 @@
   .container {
     gap: 1rem;
   }
+}
 
+@media (width >= 66rem) {
   .tmdb-credit {
     border-radius: var(--radius-lg);
   }

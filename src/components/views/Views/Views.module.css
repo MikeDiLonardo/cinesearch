@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column;
   max-width: 87.5rem;
-  min-height: calc(100dvh - var(--header-h));
+  /*   min-height: calc(100dvh - var(--header-h)); */
   margin-inline: auto;
 }
 
@@ -71,12 +71,6 @@
 
 /* media queries */
 
-@media (width >= 48rem) {
-  .grid-view {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
 @media (width >= 66rem) {
   .grid-view {
     grid-template-columns: repeat(6, 1fr);
@@ -96,6 +90,5 @@
 
   .pages {
     justify-content: center;
-    padding-bottom: var(--p-md);
   }
 }

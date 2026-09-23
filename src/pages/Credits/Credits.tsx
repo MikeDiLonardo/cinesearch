@@ -94,7 +94,7 @@ export default function Credits() {
                 opacity: "0.40",
                 left: "50%", 
                 transform: "translateX(-50%)",                   
-                backgroundImage: `url(https://image.tmdb.org/t/p/w500/${person.profile_path})`, 
+                backgroundImage: `url(https://image.tmdb.org/t/p/original/${person.profile_path})`, 
                 backgroundSize: "100%", 
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center 40%",
@@ -105,48 +105,52 @@ export default function Credits() {
 
                 {/* header */}
 
-                <section className={styles.header}>
-                    <div className={styles["thumbnail-mobile"]}>                  
-                        <MediaItem 
-                            view="credits" 
-                            shape="rectangle" 
-                            image={person.profile_path ? `https://image.tmdb.org/t/p/w500/${person.profile_path}` : "/credit-page-placeholder.svg"} 
-                        />
-                    </div>
+                <div className={styles["thumbnail-desktop"]}>                  
+                    <MediaItem 
+                        view="credits" 
+                        shape="rectangle" 
+                        image={person.profile_path ? `https://image.tmdb.org/t/p/w500/${person.profile_path}` : "/credit-page-placeholder.svg"} 
+                    />
+                </div>
+                <div>
+                    <section className={styles.header}>
+                        <div className={styles["thumbnail-mobile"]}>                  
+                            <MediaItem 
+                                view="credits" 
+                                shape="rectangle" 
+                                image={person.profile_path ? `https://image.tmdb.org/t/p/w500/${person.profile_path}` : "/credit-page-placeholder.svg"} 
+                            />
+                        </div>
 
-                    <div className={styles.info}>
-                        <h2 className={`${styles.name} text--md-sb`}>{person.name}</h2>
-                        
-                        {person.known_for_department ? 
-                            <p className={`${styles.job} text--base-sb`}>{job()}</p> 
-                        :   
-                            <p className={`${styles.job} text--base-sb`}>Occupation Unknown</p>
-                        }
+                        <div className={styles.info}>
+                            <h2 className={`${styles.name} text--md-sb`}>{person.name}</h2>
+                            
+                            {person.known_for_department ? 
+                                <p className={`${styles.job} text--base-sb`}>{job()}</p> 
+                            :   
+                                <p className={`${styles.job} text--base-sb`}>Occupation Unknown</p>
+                            }
 
-                        {person.place_of_birth ?
-                            <p className={`${styles.birthplace} text--sm-rg`}>Born in <span className="text--sm-sb">{person.place_of_birth}</span></p>
-                            : 
-                            <p className={`${styles.birthplace} text--sm-rg`}> Birthplace <span className="text--sm-sb">Unknown</span></p>
-                        }
-
-                        {person.birthday? 
-                            <p className={`${styles.age} text--sm-rg`}>
-                                {deathday ? 
-                                    `${age} years old (Deceased)` 
+                            {person.place_of_birth ?
+                                <p className={`${styles.birthplace} text--sm-rg`}>Born in <span className="text--sm-sb">{person.place_of_birth}</span></p>
                                 : 
-                                    `${age} years old`}
-                            </p>
-                        : 
-                            <p className={`${styles.age} text--sm-rg`}>Age Unknown</p>
-                        }
-                    </div>
-                </section>
+                                <p className={`${styles.birthplace} text--sm-rg`}> Birthplace <span className="text--sm-sb">Unknown</span></p>
+                            }
 
-                {/* tabs-biography-filmography */}
+                            {person.birthday? 
+                                <p className={`${styles.age} text--sm-rg`}>
+                                    {deathday ? 
+                                        `${age} years old (Deceased)` 
+                                    : 
+                                        `${age} years old`}
+                                </p>
+                            : 
+                                <p className={`${styles.age} text--sm-rg`}>Age Unknown</p>
+                            }
+                        </div>
+                    </section>
 
-                <section className={styles["biography-filmography"]}>
-
-                   {/*  tabs */}
+                    {/* tabs */}
 
                     <div className={`${styles.tabs} text--sm-rg`}>
                         <button 
@@ -167,7 +171,7 @@ export default function Credits() {
 
                     {/* biography-filmography */}
 
-                    <div className={styles["biography-filmography-mobile"]}>                
+                    <section className={styles["biography-filmography-mobile"]}>                
                         {clickedTab === "biography" ? 
                             <div className={`${styles.biography} text--sm-rg`}>
                                 {person.biography ? 
@@ -187,8 +191,34 @@ export default function Credits() {
                                 }
                             </div> 
                         }
-                    </div>                      
-                </section>
+                    </section>
+
+                    <section className={styles["biography-filmography-desktop"]}>
+                        <section className={`${styles["biography"]} text--sm-rg`}>
+                            <h3 className={styles["biography-heading"]}>Biography</h3>
+                            
+                            {person.biography ? 
+                                person.biography.split("\n").map((bio, index) => (bio === "" ? 
+                                    <p key={index}>&nbsp;</p> // To create paragraphs
+                                    :
+                                    <p key={index}>{bio}</p>)) // Without &nbsp; to not add a space at the beginning of each paragraph
+                                : 
+                                "No biography provided. Please try again later."}
+                        </section>
+                                                
+                        <section className={styles.filmography}>
+                            <h3 className={styles["filmography-heading"]}>Filmography</h3>
+                            {isGrid ? 
+                                <GridView page="credits" movies={movies} currentPage={currentPage} totalPages={totalPages}/> 
+                                : 
+                                <ListView page="credits" movies={movies} currentPage={currentPage} totalPages={totalPages}/>
+                            }
+                        </section>    
+
+
+                    </section>                                     
+
+                </div>
             </div>
         </CreditsDetailsLayout>
     </>)    
