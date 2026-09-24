@@ -166,7 +166,7 @@
   .container {
     display: flex;
     gap: var(--gap-xl);
-    height: calc(100dvh - 3rem - 44px - var(--p-lg)); /* 3rem for padding-top from CreditsDetailsLayout, 44px for back arrow, var(--p-lg) for container section padding-block */        
+    min-height: calc(100dvh - 3rem - 44px - var(--p-lg)); /* 3rem for padding-top from CreditsDetailsLayout, 44px for back arrow, var(--p-lg) for container section padding-block */
   }
 
   .container section:first-of-type {

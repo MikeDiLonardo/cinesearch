@@ -12,3 +12,6 @@
 .back-icon {
   color: var(--stroke-light);
 }
+.back-icon:hover {
+  color: var(--white);
+}
