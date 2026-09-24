@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 675">
+  <g id="Elements">
+    <g>
+      <rect width="450" height="675" fill="#2f3d4c"/>
+      <path d="m283.25,244.3c0,32.17-26.08,58.25-58.25,58.25s-58.25-26.08-58.25-58.25,26.08-58.25,58.25-58.25,58.25,26.08,58.25,58.25Zm-174.73,219.29c1.05-64.33,54.05-115.63,118.38-114.58,62.85,1.03,113.55,51.73,114.58,114.58-36.54,16.76-76.28,25.4-116.48,25.35-41.57,0-81.02-9.07-116.48-25.35Z" fill="#2f3d4c" stroke="#526d82" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.5"/>
+    </g>
+  </g>
+</svg>
