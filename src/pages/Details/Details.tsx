@@ -71,7 +71,7 @@ export default function Details() {
                     id={cast.id}
                     index={index}
                     name={cast.name} 
-                    image={cast.profile_path ? `https://image.tmdb.org/t/p/w500/${cast.profile_path}` : `credit-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
+                    image={cast.profile_path ? `https://image.tmdb.org/t/p/w500/${cast.profile_path}` : `${import.meta.env.BASE_URL}credit-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
                     role={cast.character}
                 />
             </li>);
@@ -110,7 +110,7 @@ export default function Details() {
                 id={crew.id}
                 index={index}                                
                 name={crew.name} 
-                image={crew.profile_path ? `https://image.tmdb.org/t/p/w500/${crew.profile_path}`: `credit-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
+                image={crew.profile_path ? `https://image.tmdb.org/t/p/w500/${crew.profile_path}`: `${import.meta.env.BASE_URL}credit-placeholder-${index % 2 === 0 ? "dark" : "light"}.svg`} 
                 role={crew.job}
             />
         </li>);             
@@ -153,7 +153,7 @@ export default function Details() {
                         view="details" 
                         shape="rectangle" 
                         key={movie.id} 
-                        image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "movie-photo-placeholder.svg"}
+                        image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : `${import.meta.env.BASE_URL}movie-photo-placeholder.svg`}
                     />
                 </div>
                 <div>
@@ -164,7 +164,7 @@ export default function Details() {
                                 view="details" 
                                 shape="rectangle" 
                                 key={movie.id} 
-                                image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "movie-photo-placeholder.svg"}
+                                image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : `${import.meta.env.BASE_URL}movie-photo-placeholder.svg`}
                             />
                         </div>
                         <div className={styles.info}>

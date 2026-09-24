@@ -109,7 +109,7 @@ export default function Credits() {
                     <MediaItem 
                         view="credits" 
                         shape="rectangle" 
-                        image={person.profile_path ? `https://image.tmdb.org/t/p/w500/${person.profile_path}` : "credit-page-placeholder.svg"} 
+                        image={person.profile_path ? `https://image.tmdb.org/t/p/w500/${person.profile_path}` : `${import.meta.env.BASE_URL}credit-page-placeholder.svg`} 
                     />
                 </div>
                 <div>
@@ -118,7 +118,7 @@ export default function Credits() {
                             <MediaItem 
                                 view="credits" 
                                 shape="rectangle" 
-                                image={person.profile_path ? `https://image.tmdb.org/t/p/w500/${person.profile_path}` : "credit-page-placeholder.svg"} 
+                                image={person.profile_path ? `https://image.tmdb.org/t/p/w500/${person.profile_path}` : `${import.meta.env.BASE_URL}credit-page-placeholder.svg`} 
                             />
                         </div>
 

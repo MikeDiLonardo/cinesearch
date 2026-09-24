@@ -11,7 +11,7 @@ export default function Views({view, credits, movies, handlePrevious, handleNext
                         <MediaItem 
                             movie={movie} 
                             view="grid" 
-                            image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "movie-photo-placeholder.svg"}
+                            image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : `${import.meta.env.BASE_URL}movie-photo-placeholder.svg`}
                             key={movie.id}
                         />
                     ))}
@@ -31,7 +31,7 @@ export default function Views({view, credits, movies, handlePrevious, handleNext
                         <MediaItem 
                             movie={movie} 
                             view="list" 
-                            image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "movie-photo-placeholder.svg"}
+                            image={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : `${import.meta.env.BASE_URL}movie-photo-placeholder.svg`}
                             title={movie.title} 
                             releaseDate={movie.release_date} 
                             voteAverage={movie.vote_average} 
