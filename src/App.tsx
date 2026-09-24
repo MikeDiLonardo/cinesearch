@@ -13,7 +13,7 @@ import Favorites from "./pages/Favorites/Favorites";
 
 export default function App() {
   return (
-  <BrowserRouter>
+  <BrowserRouter basename="/cinesearch">
     <ScrollToTop />
     <Suspense fallback={<SuspenseFallback />}>
       <Routes>
