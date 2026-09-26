@@ -104,8 +104,8 @@
 }
 
 .modal::backdrop {
+  -webkit-backdrop-filter: blur(3px) brightness(0.55);  
   backdrop-filter: blur(3px) brightness(0.55);
-  -webkit-backdrop-filter: blur(3px) brightness(0.55);
 }
 
 .tmdb-credit {
@@ -118,8 +118,9 @@
   height: 40vh;
   border-radius: var(--radius-md);
   border: 0.5px solid var(--bg-main);
+  -webkit-backdrop-filter: blur(10px);  
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+
   background-color: var(--bg-header-footer-trans);
   color: var(--stroke-mid);
 }

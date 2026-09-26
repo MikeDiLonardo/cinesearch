@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { Suspense } from "react";
 import ScrollToTop from "./components/common/ScrollToTop";
 import SuspenseFallback from "./components/common/Suspense/SuspenseFallback";
@@ -13,7 +13,7 @@ import Favorites from "./pages/Favorites/Favorites";
 
 export default function App() {
   return (
-  <BrowserRouter basename="/cinesearch">
+  <HashRouter>
     <ScrollToTop />
     <Suspense fallback={<SuspenseFallback />}>
       <Routes>
@@ -31,6 +31,6 @@ export default function App() {
         </Route>
       </Routes>
     </Suspense>
-  </BrowserRouter>
+  </HashRouter>
   )
 }
